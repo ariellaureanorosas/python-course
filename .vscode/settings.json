@@ -23,6 +23,10 @@
     "pyproject.toml": "uv.lock, poetry.lock, requirements*.txt, .python-version, .env*",
     "README.md": "CONTRIBUTING.md, LICENSE, CHANGELOG.md"
   },
+  "workbench.editor.labelFormat": "short",
+  "breadcrumbs.enabled": true,
+  "workbench.editor.enablePreview": false,
+  "editor.glyphMargin": true,
 
   // ========== EDITOR E FORMATAÇÃO ==========
   "editor.tabSize": 4,
@@ -40,21 +44,24 @@
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.autoSave": "off",
+  "files.eol": "\n",
+  "editor.rulers": [79, 88, 120],
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
 
   // ========== PYTHON ESPECÍFICO ==========
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "never"
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
     },
     "editor.tabSize": 4
   },
   "python.languageServer": "Pylance",
   "python.analysis.typeCheckingMode": "off",
-  "python.analysis.autoImportCompletions": false,
+  "python.analysis.autoImportCompletions": true,
   "python.analysis.inlayHints.variableTypes": false,
   "python.analysis.inlayHints.functionReturnTypes": false,
   "python.analysis.diagnosticSeverity": {
@@ -68,15 +75,14 @@
   "python.testing.pytestArgs": ["-v", "--maxfail=1"],
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
 
-  // ========== PYTHON INDENT (novo) ==========
+  // ========== PYTHON INDENT ==========
   "pythonIndent.useTabOnHangingIndent": true,
   "pythonIndent.trimLinesWithOnlyWhitespace": false,
   "pythonIndent.keepHangingBracketOnLine": false,
 
-  // ========== LINTING E FORMATAÇÃO EXTERNA ==========
-  "black-formatter.args": ["--line-length", "88"],
-  "isort.args": ["--profile", "black", "--line-length", "88"],
-  "flake8.args": ["--max-line-length=88", "--extend-ignore=E203,W503"],
+  // ========== RUFF (FORMATAÇÃO + LINT) ==========
+  "ruff.lineLength": 88,
+  "ruff.lint.extendSelect": ["I"],
 
   // ========== CODE RUNNER ==========
   "code-runner.runInTerminal": true,
@@ -114,7 +120,8 @@
     "blackformatter",
     "venv",
     "virtualenv",
-    "typeguard"
+    "typeguard",
+    "ruff"
   ],
 
   // ========== ARQUIVOS E WORKSPACE ==========
