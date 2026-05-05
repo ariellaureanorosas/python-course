@@ -23,7 +23,7 @@
     "pyproject.toml": "uv.lock, poetry.lock, requirements*.txt, .python-version, .env*",
     "README.md": "CONTRIBUTING.md, LICENSE, CHANGELOG.md"
   },
-  "workbench.editor.labelFormat": "short",
+  "workbench.editor.labelFormat": "default",
   "breadcrumbs.enabled": true,
   "workbench.editor.enablePreview": false,
   "editor.glyphMargin": true,
