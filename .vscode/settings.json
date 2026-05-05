@@ -45,7 +45,6 @@
   "files.insertFinalNewline": true,
   "files.autoSave": "off",
   "files.eol": "\n",
-  "editor.rulers": [79, 88, 120],
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
 
