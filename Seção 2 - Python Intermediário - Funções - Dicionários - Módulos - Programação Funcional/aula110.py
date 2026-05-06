@@ -1,12 +1,13 @@
-# Count é um iterador sem fim
+# Count is an endless iterator
 from itertools import count
 
-# -> count(inicio, step)
+# -> count(start, step)
 c1 = count()
 # print(next(c1))
 # print(next(c1))
 
-for i in c1:
-    if i > 200:
+for index in c1:
+    if index > 200:
         break
-    print(i)
+    print(index)
+
