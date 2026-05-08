@@ -7,6 +7,9 @@
 # -> A base case that terminates the recursion
 # - factorial - n! = 5! = 5 * 4 * 3 * 2 * 1 = 120
 # https://brasilescola.uol.com.br/matematica/fatorial.htm
+import sys
+
+sys.setrecursionlimit(1004)  # Redefine recursion limit
 
 
 def recursive(start=0, end=10):
@@ -20,4 +23,4 @@ def recursive(start=0, end=10):
     return recursive(start, end)
 
 
-print(recursive())
+print(recursive(0, 1000))
