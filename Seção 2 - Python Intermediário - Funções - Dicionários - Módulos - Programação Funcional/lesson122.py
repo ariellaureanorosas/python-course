@@ -29,7 +29,7 @@ import os
 from encodings import utf_8
 
 base_dir = os.path.dirname(__file__)
-path = os.path.join(base_dir, "lesson121_teste.txt")
+path = os.path.join(base_dir, "lesson120_teste.txt")
 
 with open(path, "w+", encoding=utf_8) as file:
     file.write("Hello Word\n")
@@ -47,3 +47,8 @@ with open(path, "w+", encoding=utf_8) as file:
     for line in file.readlines():
         print(line.strip())
     print("-" * 10)
+
+os.unlink(path)  # remove the file
+os.remove(path)  # remove the file
+
+os.rename(path, "lesson122_teste.txt")
