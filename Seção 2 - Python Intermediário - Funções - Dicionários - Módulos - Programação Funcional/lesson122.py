@@ -26,12 +26,11 @@
 #     print("The file will be closed")
 
 import os
-from encodings import utf_8
 
 base_dir = os.path.dirname(__file__)
 path = os.path.join(base_dir, "lesson120_teste.txt")
 
-with open(path, "w+", encoding=utf_8) as file:
+with open(path, "w+", encoding="utf-8") as file:
     file.write("Hello Word\n")
     file.write("line 2\n")
     file.writelines(("line 3\n", "line 4\n", "line 5\n"))
