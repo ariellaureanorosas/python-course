@@ -27,7 +27,7 @@ O curso aborda desde os conceitos fundamentais até tópicos avançados, incluin
 |         Fase         | Conteúdo                                                     | Status |
 | :------------------: | :----------------------------------------------------------- | :----: |
 |    🔰 **Básico**     | Variáveis, operadores, estruturas de controle, entrada/saída |   ✅   |
-| ⚡ **Intermediário** | Funções, repetições, list comprehensions, módulos            |   ⏳   |
+| ⚡ **Intermediário** | Funções, repetições, list comprehensions, módulos            |   ✅   |
 |   🚀 **Avançado**    | POO, Design Patterns, decorators, generators                 |   ⏳   |
 |     🎁 **Bônus**     | Django, PySide6, Selenium, SQL, Regex, HTML/CSS              |   ⏳   |
 
