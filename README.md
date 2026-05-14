@@ -7,7 +7,7 @@
 ![SQLite](https://img.shields.io/badge/SQLite-database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Em%20andamento-F59E0B?style=for-the-badge)
 
-Anotações, exercícios e projetos do curso **Python 3 do Zero ao Avançado**  
+Anotações, exercícios e projetos do curso **Python 3 do Zero ao Avançado**
 ministrado por [Luiz Otávio Miranda](https://www.udemy.com/course/python-3-do-zero-ao-avancado/) na Udemy — **745+ aulas**.
 
 </div>
@@ -17,7 +17,7 @@ ministrado por [Luiz Otávio Miranda](https://www.udemy.com/course/python-3-do-z
 ## Estrutura do Repositório
 
 ```
-python-studies/
+PYTHON-COURSE/
 ├── .vscode/
 ├── Seção 1 - Iniciando na programação com Python (Lógica de programação básica)/
 ├── Seção 2 - Python Intermediário - Funções - Dicionários - Módulos - Programação Funcional/
