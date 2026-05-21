@@ -19,6 +19,12 @@ ministrado por [Luiz Otávio Miranda](https://www.udemy.com/course/python-3-do-z
 ```
 PYTHON-COURSE/
 ├── .vscode/
+├── anotacoes/                          ← resumo e revisão do conteúdo
+│   ├── secao-1-logica-programacao/
+│   └── secao-2-funcoes-modulos/
+├── exercicios/                         ← exercícios práticos + gabaritos
+│   ├── secao-1-logica-programacao/
+│   └── secao-2-funcoes-modulos/
 ├── Seção 1 - Iniciando na programação com Python (Lógica de programação básica)/
 ├── Seção 2 - Python Intermediário - Funções - Dicionários - Módulos - Programação Funcional/
 ├── Seção 3 - Introdução à Programação Orientada a Objetos em Python - POO (Classes)/
@@ -40,6 +46,21 @@ PYTHON-COURSE/
 ├── .gitignore
 └── README.md
 ```
+
+---
+
+## 💪 Bônus — Exercícios Extras
+
+Além do material do curso, este repositório contém exercícios complementares para fixação:
+
+| Pasta | Conteúdo |
+|:------|:---------|
+| `exercicios/secao-1-logica-programacao/` | 20 exercícios de lógica (print a CPF) + gabaritos profissionais |
+| `exercicios/secao-2-funcoes-modulos/` | 20 exercícios de funções/dicts/modulos + gabaritos profissionais |
+| `anotacoes/secao-1-logica-programacao/` | 15 resumos em markdown para revisão rápida |
+| `anotacoes/secao-2-funcoes-modulos/` | 16 resumos em markdown para revisão rápida |
+
+Os gabaritos seguem estilo **dev sênior** com type hints, docstrings e PEP 8.
 
 ---
 
