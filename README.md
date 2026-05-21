@@ -24,7 +24,11 @@ PYTHON-COURSE/
 │   └── secao-2-funcoes-modulos/
 ├── exercicios/                       ← exercícios práticos + gabaritos
 │   ├── secao-1-logica-programacao/
+│   │   ├── exercicios/
+│   │   └── gabaritos/
 │   └── secao-2-funcoes-modulos/
+│       ├── exercicios/
+│       └── gabaritos/
 ├── Seção 1 - Iniciando na programação com Python (Lógica de programação básica)/
 ├── Seção 2 - Python Intermediário - Funções - Dicionários - Módulos - Programação Funcional/
 ├── Seção 3 - Introdução à Programação Orientada a Objetos em Python - POO (Classes)/
@@ -49,12 +53,20 @@ Além do material do curso, este repositório contém exercícios complementares
   </thead>
   <tbody>
     <tr>
-      <td><code>exercicios/secao-1-logica-programacao/</code></td>
-      <td>20 exercícios de lógica (print a CPF) + gabaritos profissionais</td>
+      <td><code>exercicios/secao-1-logica-programacao/exercicios/</code></td>
+      <td>20 exercícios de lógica (print a CPF)</td>
     </tr>
     <tr>
-      <td><code>exercicios/secao-2-funcoes-modulos/</code></td>
-      <td>20 exercícios de funções/dicts/modulos + gabaritos profissionais</td>
+      <td><code>exercicios/secao-1-logica-programacao/gabaritos/</code></td>
+      <td>20 gabaritos profissionais (seção 1)</td>
+    </tr>
+    <tr>
+      <td><code>exercicios/secao-2-funcoes-modulos/exercicios/</code></td>
+      <td>20 exercícios de funções/dicts/módulos</td>
+    </tr>
+    <tr>
+      <td><code>exercicios/secao-2-funcoes-modulos/gabaritos/</code></td>
+      <td>20 gabaritos profissionais (seção 2)</td>
     </tr>
     <tr>
       <td><code>anotacoes/secao-1-logica-programacao/</code></td>
