@@ -1,37 +1,56 @@
-"""
-GABARITO 13 - Filter para Selecionar Produtos
-"""
+from copy import deepcopy
 
 
-def produtos_disponiveis(produtos: list[dict]) -> list[dict]:
-    """Seleciona produtos com preço e quantidade positivos.
+def _produto_valido(produto: dict, /) -> bool:
+    """Retorna True se produto tem preco e quantidade positivos."""
+    return produto.get('preco', 0) > 0 and produto.get('quantidade', 0) > 0
 
-    Args:
-        produtos: Lista de dicionários de produtos.
+
+def produtos_disponiveis(
+    produtos: list[dict],
+    /,
+) -> list[dict]:
+    """Retorna nova lista apenas com produtos com preco e quantidade > 0.
+
+    Parametros:
+        produtos: Lista de dicionarios de produtos.
 
     Returns:
-        Lista filtrada de produtos disponíveis.
+        Lista filtrada de produtos disponiveis.
+
+    Exemplos:
+    >>> p1 = {'nome': 'Caneta', 'preco': 1.5, 'quantidade': 10}
+    >>> p2 = {'nome': 'Lapis', 'preco': 0.0, 'quantidade': 5}
+    >>> produtos_disponiveis([p1, p2])
+    [{'nome': 'Caneta', 'preco': 1.5, 'quantidade': 10}]
+    >>> produtos_disponiveis([])
+    []
     """
-    return list(filter(
-        lambda p: p['preco'] > 0 and p['quantidade'] > 0,
-        produtos,
-    ))
+    return list(filter(_produto_valido, produtos))
 
 
 def produtos_por_faixa_de_preco(
     produtos: list[dict],
     minimo: float,
     maximo: float,
+    /,
 ) -> list[dict]:
-    """Seleciona produtos dentro de uma faixa de preço.
+    """Retorna nova lista com produtos dentro da faixa de preco (inclusive).
 
-    Args:
-        produtos: Lista de dicionários de produtos.
-        minimo: Preço mínimo (inclusive).
-        maximo: Preço máximo (inclusive).
+    Parametros:
+        produtos: Lista de dicionarios de produtos.
+        minimo: Preco minimo.
+        maximo: Preco maximo.
 
     Returns:
         Lista filtrada de produtos na faixa.
+
+    Exemplos:
+    >>> p1 = {'preco': 10.0}
+    >>> p2 = {'preco': 50.0}
+    >>> p3 = {'preco': 100.0}
+    >>> produtos_por_faixa_de_preco([p1, p2, p3], 10.0, 50.0)
+    [{'preco': 10.0}, {'preco': 50.0}]
     """
     return list(filter(
         lambda p: minimo <= p['preco'] <= maximo,
@@ -39,17 +58,38 @@ def produtos_por_faixa_de_preco(
     ))
 
 
-def filtrar_por_nome(produtos: list[dict], termo: str) -> list[dict]:
-    """Seleciona produtos cujo nome contenha o termo (case insensitive).
+def filtrar_por_nome(
+    produtos: list[dict],
+    termo: str,
+    /,
+) -> list[dict]:
+    """Retorna nova lista com produtos cujo nome contenha o termo.
 
-    Args:
-        produtos: Lista de dicionários de produtos.
+    A busca e case insensitive.
+
+    Parametros:
+        produtos: Lista de dicionarios de produtos.
         termo: Texto a buscar no nome.
 
     Returns:
-        Lista filtrada de produtos com nome correspondente.
+        Lista filtrada de produtos.
+
+    Exemplos:
+    >>> p1 = {'nome': 'Caneta Azul'}
+    >>> p2 = {'nome': 'Lapis Preto'}
+    >>> filtrar_por_nome([p1, p2], 'caneta')
+    [{'nome': 'Caneta Azul'}]
+    >>> filtrar_por_nome([p1, p2], 'preto')
+    [{'nome': 'Lapis Preto'}]
+    >>> filtrar_por_nome([p1, p2], 'borracha')
+    []
     """
     return list(filter(
-        lambda p: termo.lower() in p['nome'].lower(),
+        lambda p: termo.lower() in p.get('nome', '').lower(),
         produtos,
     ))
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()

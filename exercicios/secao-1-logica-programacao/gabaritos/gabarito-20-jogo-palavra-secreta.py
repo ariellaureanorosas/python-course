@@ -1,14 +1,15 @@
 """
-GABARITO — EXERCÍCIO 20 — Jogo da Palavra Secreta
+Jogo da Palavra Secreta
 
-Jogo de adivinhar palavra secreta baseado na aula 47. Usa lista,
-random.choice(), os.system() para limpar tela e laço while.
+Jogo interativo de adivinhação de palavras. O programa escolhe
+aleatoriamente uma palavra de uma lista pré-definida, e o usuário
+tenta acertar letra por letra. Utiliza random.choice() e laço while.
 """
 
 import random
 import os
 
-palavras: list = [
+PALAVRAS_DISPONIVEIS: list = [
     "python",
     "programacao",
     "computador",
@@ -16,23 +17,25 @@ palavras: list = [
     "variavel",
     "estrutura",
 ]
+SIMBOLO_OCULTO: str = "*"
+COMANDO_SAIDA: str = "sair"
 
-palavra_secreta: str = random.choice(palavras)
-letras_acertadas: list = ["*"] * len(palavra_secreta)
-tentativas: int = 0
-acertou: bool = False
+palavra_secreta: str = random.choice(PALAVRAS_DISPONIVEIS)
+letras_reveladas: list = [SIMBOLO_OCULTO] * len(palavra_secreta)
+quantidade_tentativas: int = 0
+palavra_revelada: bool = False
 
 os.system("clear")
 
 print("=== JOGO DA PALAVRA SECRETA ===")
-print("Digite 'sair' a qualquer momento para encerrar.\n")
+print(f"Digite '{COMANDO_SAIDA}' a qualquer momento para encerrar.\n")
 
-while not acertou:
-    print("Palavra: " + " ".join(letras_acertadas))
+while not palavra_revelada:
+    print("Palavra:", " ".join(letras_reveladas))
 
     chute: str = input("Digite uma letra: ").strip().lower()
 
-    if chute == "sair":
+    if chute == COMANDO_SAIDA:
         print(f"\nVocê desistiu! A palavra era: {palavra_secreta}")
         break
 
@@ -40,20 +43,20 @@ while not acertou:
         print("Digite apenas uma letra.\n")
         continue
 
-    tentativas += 1
+    quantidade_tentativas += 1
 
     if chute in palavra_secreta:
-        for i, letra in enumerate(palavra_secreta):
+        for indice, letra in enumerate(palavra_secreta):
             if letra == chute:
-                letras_acertadas[i] = chute
+                letras_reveladas[indice] = chute
     else:
         print(f"A letra '{chute}' não está na palavra.")
 
-    if "*" not in letras_acertadas:
-        acertou = True
+    if SIMBOLO_OCULTO not in letras_reveladas:
+        palavra_revelada = True
         os.system("clear")
-        print("Palavra: " + " ".join(letras_acertadas))
+        print("Palavra:", " ".join(letras_reveladas))
         print(f"\nParabéns! Você acertou a palavra '{palavra_secreta}'!")
-        print(f"Tentativas: {tentativas}")
+        print(f"Total de tentativas: {quantidade_tentativas}")
 
     print()

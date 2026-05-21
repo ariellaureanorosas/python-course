@@ -1,16 +1,24 @@
 """
-GABARITO — EXERCÍCIO 16 — Desempacotamento com Ternário
+Desempacotamento com Ternário e sorted()
 
-Recebe 3 números e usa sorted(), desempacotamento e operação ternária
-para determinar menor, meio e maior.
+Solicita três números inteiros, utiliza sorted() para ordená-los,
+desempacota os valores ordenados e exibe menor, valor do meio e maior.
 """
 
-n1: int = int(input("Digite o 1º número: "))
-n2: int = int(input("Digite o 2º número: "))
-n3: int = int(input("Digite o 3º número: "))
+QUANTIDADE_NUMEROS: int = 3
 
-numeros_ordenados: list = sorted([n1, n2, n3])
+numeros_digitados: list = []
 
+for posicao in range(1, QUANTIDADE_NUMEROS + 1):
+    while True:
+        try:
+            valor_atual: int = int(input(f"Digite o {posicao}º número: "))
+            break
+        except ValueError:
+            print("Erro: digite um número inteiro válido.")
+    numeros_digitados.append(valor_atual)
+
+numeros_ordenados: list = sorted(numeros_digitados)
 menor, meio, maior = numeros_ordenados
 
-print(f"Menor: {menor}, Meio: {meio}, Maior: {maior}")
+print(f"Menor: {menor}  |  Meio: {meio}  |  Maior: {maior}")

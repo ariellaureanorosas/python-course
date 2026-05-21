@@ -1,28 +1,28 @@
 """
-GABARITO — EXERCÍCIO 17 — Sorteio da Mega-Sena com random
+Sorteio da Mega-Sena com random
 
-Sorteia 6 números únicos entre 1 e 60 usando random.randint(),
-verifica duplicatas com o operador in e exibe ordenado com sorted().
+Gera 6 números aleatórios únicos entre 1 e 60 simulando
+um sorteio da Mega-Sena. Utiliza random.randint() e verifica
+duplicatas com o operador in. Exibe os números ordenados.
 """
 
 import random
 
-sorteio: list = []
-QUANTIDADE: int = 6
-MINIMO: int = 1
-MAXIMO: int = 60
+QUANTIDADE_SORTEIO: int = 6
+VALOR_MINIMO: int = 1
+VALOR_MAXIMO: int = 60
 
-while len(sorteio) < QUANTIDADE:
-    numero: int = random.randint(MINIMO, MAXIMO)
-    if numero not in sorteio:
-        sorteio.append(numero)
+numeros_sorteados: list = []
 
-sorteio_ordenado: list = sorted(sorteio)
+while len(numeros_sorteados) < QUANTIDADE_SORTEIO:
+    numero_sorteado: int = random.randint(VALOR_MINIMO, VALOR_MAXIMO)
+    if numero_sorteado not in numeros_sorteados:
+        numeros_sorteados.append(numero_sorteado)
 
-print("Números sorteados:", end=" [")
-for i, numero in enumerate(sorteio_ordenado):
-    if i == len(sorteio_ordenado) - 1:
-        print(f"{numero:02d}", end="")
-    else:
-        print(f"{numero:02d}", end=", ")
-print("]")
+numeros_ordenados: list = sorted(numeros_sorteados)
+
+numeros_formatados: list = []
+for numero in numeros_ordenados:
+    numeros_formatados.append(f"{numero:02d}")
+
+print(f"Números sorteados: [{', '.join(numeros_formatados)}]")

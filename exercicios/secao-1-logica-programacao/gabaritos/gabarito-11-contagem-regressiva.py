@@ -1,13 +1,19 @@
 """
-GABARITO — EXERCÍCIO 11 — Contagem Regressiva com for
+Contagem Regressiva com for
 
-Recebe um número inteiro N e exibe contagem regressiva de N até 0,
-seguida da palavra "Fogo!".
+Solicita um número inteiro N ao usuário e exibe uma contagem
+regressiva de N até 0, finalizando com a palavra "Fogo!".
 """
 
-N: int = int(input("Digite um número: "))
+VALOR_FINAL: int = 0
+PASSO_REGRESSIVO: int = -1
 
-for i in range(N, -1, -1):
-    print(i)
+try:
+    numero_limite: int = int(input("Digite um número para contagem regressiva: "))
+except ValueError:
+    print("Erro: digite um número inteiro válido.")
+else:
+    for contador in range(numero_limite, VALOR_FINAL - 1, PASSO_REGRESSIVO):
+        print(contador)
 
-print("Fogo!")
+    print("Fogo!")

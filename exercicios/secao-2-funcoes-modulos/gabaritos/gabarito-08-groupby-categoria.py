@@ -1,10 +1,6 @@
-"""
-Gabarito 08 - Group By com itertools.groupby
-"""
 from itertools import groupby
 
-
-produtos = [
+PRODUTOS = [
     {"nome": "Arroz", "preco": 25.90, "categoria": "Alimento"},
     {"nome": "Feijão", "preco": 12.90, "categoria": "Alimento"},
     {"nome": "Detergente", "preco": 4.50, "categoria": "Limpeza"},
@@ -15,21 +11,14 @@ produtos = [
 
 
 def agrupar_por_categoria(produtos: list[dict]) -> dict:
-    """Agrupa os produtos por categoria usando itertools.groupby.
+    ordenados = sorted(produtos, key=lambda p: p["categoria"])
+    return {
+        categoria: list(grupo)
+        for categoria, grupo in groupby(ordenados, key=lambda p: p["categoria"])
+    }
 
-    A lista é ordenada por categoria antes do agrupamento.
 
-    Exemplo:
-        >>> resultado = agrupar_por_categoria(produtos)
-        >>> list(resultado.keys())
-        ['Alimento', 'Eletrônico', 'Limpeza']
-        >>> len(resultado['Alimento'])
-        2
-    """
-    produtos_ordenados = sorted(produtos, key=lambda p: p["categoria"])
-
-    resultado: dict = {}
-    for categoria, grupo in groupby(produtos_ordenados, key=lambda p: p["categoria"]):
-        resultado[categoria] = list(grupo)
-
-    return resultado
+if __name__ == "__main__":
+    resultado = agrupar_por_categoria(PRODUTOS)
+    for categoria, itens in resultado.items():
+        print(f"{categoria}: {[i['nome'] for i in itens]}")

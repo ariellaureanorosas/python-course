@@ -1,16 +1,20 @@
 """
-GABARITO — EXERCÍCIO 13 — Analisador de Frase com split/join
+Analisador de Frase com split/join
 
-Recebe uma frase, conta as palavras com split() e as junta com hífen
-usando join().
+Recebe uma frase digitada pelo usuário, conta a quantidade de
+palavras utilizando split() e as reexibe unidas por hífen com join().
 """
 
-frase: str = input("Digite uma frase: ")
+SEPARADOR_HIFEN: str = "-"
 
-palavras: list = frase.split()
-quantidade: int = len(palavras)
+frase_original: str = input("Digite uma frase: ").strip()
 
-frase_hifen: str = "-".join(palavras)
+if not frase_original:
+    print("Erro: a frase não pode estar vazia.")
+else:
+    lista_palavras: list = frase_original.split()
+    quantidade_palavras: int = len(lista_palavras)
+    frase_hifenizada: str = SEPARADOR_HIFEN.join(lista_palavras)
 
-print(f"Palavras: {quantidade}")
-print(f"Frase com hífen: \"{frase_hifen}\"")
+    print(f"Quantidade de palavras: {quantidade_palavras}")
+    print(f"Frase com hífen: \"{frase_hifenizada}\"")

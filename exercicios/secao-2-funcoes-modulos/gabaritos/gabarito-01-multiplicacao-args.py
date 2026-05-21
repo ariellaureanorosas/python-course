@@ -1,12 +1,17 @@
-"""
-Gabarito 01 - Função de Multiplicação com *args
-"""
+from functools import reduce
 
 
 def multiplicar(*args: float) -> float:
     """Multiplica todos os argumentos recebidos.
 
-    Se nenhum argumento for passado, retorna 1.0.
+    Args:
+        *args: Valores a serem multiplicados.
+
+    Returns:
+        Produto de todos os argumentos. Retorna 1.0 se nenhum for passado.
+
+    Raises:
+        TypeError: Se algum argumento não for int ou float.
 
     Exemplos:
         >>> multiplicar(2, 3, 4)
@@ -16,7 +21,17 @@ def multiplicar(*args: float) -> float:
         >>> multiplicar(5.0)
         5.0
     """
-    total = 1.0
     for numero in args:
-        total *= numero
-    return total
+        if not isinstance(numero, (int, float)):
+            raise TypeError(
+                f"Argumento inválido: {numero!r}. "
+                "Todos os argumentos devem ser int ou float."
+            )
+
+    return reduce(lambda a, b: a * b, args, 1.0)
+
+
+if __name__ == "__main__":
+    print(multiplicar(2, 3, 4))
+    print(multiplicar())
+    print(multiplicar(5.0))

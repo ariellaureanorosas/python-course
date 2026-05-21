@@ -1,19 +1,26 @@
 """
-GABARITO — EXERCÍCIO 12 — Tabuada com Lista
+Tabuada com Lista
 
-Recebe um número, calcula a tabuada de 1 a 10, armazena em uma lista
-e exibe o resultado formatado.
+Solicita um número inteiro, calcula sua tabuada de 1 a 10,
+armazena os resultados em uma lista e exibe no formato tradicional.
 """
 
-numero: int = int(input("Digite um número para ver sua tabuada: "))
+INICIO_TABUADA: int = 1
+FIM_TABUADA: int = 10
 
-resultados: list = []
+try:
+    numero_tabuada: int = int(input("Digite um número para ver sua tabuada: "))
+except ValueError:
+    print("Erro: digite um número inteiro válido.")
+else:
+    resultados_tabuada: list = []
 
-for i in range(1, 11):
-    resultado: int = numero * i
-    resultados.append(resultado)
+    for multiplicador in range(INICIO_TABUADA, FIM_TABUADA + 1):
+        resultados_tabuada.append(numero_tabuada * multiplicador)
 
-print(f"\nTabuada do {numero}:")
+    print(f"\nTabuada do {numero_tabuada}:")
 
-for i, valor in enumerate(resultados, start=1):
-    print(f"{numero} x {i} = {valor}")
+    for indice, resultado in enumerate(
+        resultados_tabuada, start=INICIO_TABUADA
+    ):
+        print(f"{numero_tabuada} x {indice} = {resultado}")

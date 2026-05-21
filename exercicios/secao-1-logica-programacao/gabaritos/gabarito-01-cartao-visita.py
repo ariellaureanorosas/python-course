@@ -1,16 +1,16 @@
 """
-Gabarito 01 — Cartão de Visita com print()
+Exibe um cartão de visita formatado com nome, telefone e e-mail.
 """
+
+SEPARADOR: str = '=' * 20
 
 nome: str = 'Maria Silva'
 telefone: str = '(11) 99999-0000'
 email: str = 'maria@email.com'
 
-linha: str = '=' * 20
-
-print(linha)
+print(SEPARADOR)
 print(f'Nome: {nome}')
 print(f'Telefone: {telefone}')
 print()
-print(f'Email: {email}')
-print(linha)
+print(f'E-mail: {email}')
+print(SEPARADOR)

@@ -1,20 +1,25 @@
-"""
-GABARITO 14 - Reduce para Calcular Total
-"""
-
 from functools import reduce
 
 
-def calcular_total_estoque(produtos: list[dict]) -> float:
-    """Calcula o valor total do estoque com reduce.
+def calcular_total_estoque(
+    produtos: list[dict],
+    /,
+) -> float:
+    """Retorna soma de preco * quantidade de todos os produtos com reduce.
 
-    Soma preco * quantidade de cada produto usando reduce.
-
-    Args:
-        produtos: Lista de dicionários de produtos.
+    Parametros:
+        produtos: Lista de dicionarios de produtos.
 
     Returns:
         Valor total do estoque.
+
+    Exemplos:
+    >>> p1 = {'preco': 10.0, 'quantidade': 3}
+    >>> p2 = {'preco': 5.0, 'quantidade': 2}
+    >>> calcular_total_estoque([p1, p2])
+    40.0
+    >>> calcular_total_estoque([])
+    0.0
     """
     return reduce(
         lambda acc, p: acc + p['preco'] * p['quantidade'],
@@ -23,36 +28,61 @@ def calcular_total_estoque(produtos: list[dict]) -> float:
     )
 
 
-def calcular_total_sum(produtos: list[dict]) -> float:
-    """Calcula o valor total do estoque com sum e generator.
+def calcular_total_sum(
+    produtos: list[dict],
+    /,
+) -> float:
+    """Retorna soma de preco * quantidade com sum e generator expression.
 
-    Args:
-        produtos: Lista de dicionários de produtos.
+    Parametros:
+        produtos: Lista de dicionarios de produtos.
 
     Returns:
         Valor total do estoque.
+
+    Exemplos:
+    >>> p1 = {'preco': 10.0, 'quantidade': 3}
+    >>> p2 = {'preco': 5.0, 'quantidade': 2}
+    >>> calcular_total_sum([p1, p2])
+    40.0
+    >>> calcular_total_sum([])
+    0.0
     """
-    return sum(p['preco'] * p['quantidade'] for p in produtos)
+    return float(sum(p['preco'] * p['quantidade'] for p in produtos))
 
 
 def calcular_total_com_desconto(
     produtos: list[dict],
     desconto: float,
+    /,
 ) -> float:
-    """Calcula o valor total do estoque aplicando desconto no preço.
+    """Retorna valor total do estoque aplicando desconto percentual no preco.
 
-    Usa reduce para aplicar desconto percentual no preço de cada produto
-    antes de somar ao total.
-
-    Args:
-        produtos: Lista de dicionários de produtos.
-        desconto: Percentual de desconto (ex: 10 para 10%).
+    Parametros:
+        produtos: Lista de dicionarios de produtos.
+        desconto: Percentual de desconto (ex: 10 para 10%%).
 
     Returns:
-        Valor total com desconto aplicado.
+        Valor total com desconto.
+
+    Exemplos:
+    >>> p1 = {'preco': 100.0, 'quantidade': 1}
+    >>> p2 = {'preco': 200.0, 'quantidade': 1}
+    >>> calcular_total_com_desconto([p1, p2], 10.0)
+    270.0
+    >>> calcular_total_com_desconto([], 10.0)
+    0.0
     """
+    if desconto < 0:
+        raise ValueError('Desconto nao pode ser negativo')
+
     return reduce(
         lambda acc, p: acc + (p['preco'] * (1 - desconto / 100)) * p['quantidade'],
         produtos,
         0.0,
     )
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()

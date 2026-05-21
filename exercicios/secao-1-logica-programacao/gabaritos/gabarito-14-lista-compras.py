@@ -1,57 +1,59 @@
 """
-GABARITO — EXERCÍCIO 14 — Lista de Compras com Menu
+Lista de Compras com Menu Interativo
 
-CRUD completo com menu interativo usando lista, while e tratamento de
-erros com try/except.
+Sistema CRUD de lista de compras com menu iterativo, utilizando
+lista, laço while e tratamento de exceções com try/except.
 """
 
-import os
+OPCOES_VALIDAS: str = "ials"
 
 lista_compras: list = []
 
 while True:
-    print("\nOperações disponíveis:")
-    print("[i] Inserir item")
-    print("[a] Apagar item")
-    print("[l] Listar itens")
-    print("[s] Sair")
+    print("\n=== LISTA DE COMPRAS ===")
+    print("[I] Inserir item")
+    print("[A] Apagar item")
+    print("[L] Listar itens")
+    print("[S] Sair")
 
-    opcao: str = input("\nOperação [i/a/l/s]: ").strip().lower()
+    opcao_usuario: str = input("\nOperação [I/A/L/S]: ").strip().lower()
 
-    if opcao == "i":
-        item: str = input("Item: ").strip()
-        if item:
-            lista_compras.append(item)
-            print(f"'{item}' adicionado com sucesso.")
-        else:
-            print("Item inválido.")
+    if opcao_usuario not in OPCOES_VALIDAS:
+        print("Opção inválida. Escolha I, A, L ou S.")
+        continue
 
-    elif opcao == "a":
+    if opcao_usuario == "i":
+        novo_item: str = input("Nome do item: ").strip()
+        if not novo_item:
+            print("Erro: o nome do item não pode estar vazio.")
+            continue
+        lista_compras.append(novo_item)
+        print(f"'{novo_item}' foi adicionado à lista.")
+
+    elif opcao_usuario == "a":
         if not lista_compras:
-            print("Lista vazia. Nada para apagar.")
+            print("A lista está vazia. Nada para apagar.")
             continue
 
-        for indice, item in enumerate(lista_compras):
-            print(f"{indice} - {item}")
+        print("\nItens cadastrados:")
+        for indice, item_atual in enumerate(lista_compras):
+            print(f"  [{indice}] {item_atual}")
 
         try:
-            indice_apagar: int = int(input("Índice para apagar: "))
-            item_apagado: str = lista_compras.pop(indice_apagar)
-            print(f"Item '{item_apagado}' apagado.")
+            indice_apagar: int = int(input("\nÍndice do item para remover: "))
+            item_removido: str = lista_compras.pop(indice_apagar)
+            print(f"'{item_removido}' foi removido da lista.")
         except (ValueError, IndexError):
-            print("Índice inválido. Tente novamente.")
+            print("Erro: índice inválido. Informe um número da lista.")
 
-    elif opcao == "l":
+    elif opcao_usuario == "l":
         if not lista_compras:
-            print("Lista vazia.")
+            print("A lista está vazia.")
         else:
-            print("\nLista de compras:")
-            for indice, item in enumerate(lista_compras):
-                print(f"{indice} - {item}")
+            print("\nItens cadastrados:")
+            for indice, item_atual in enumerate(lista_compras):
+                print(f"  [{indice}] {item_atual}")
 
-    elif opcao == "s":
-        print("Saindo...")
+    elif opcao_usuario == "s":
+        print("Encerrando o programa.")
         break
-
-    else:
-        print("Opção inválida. Escolha i, a, l ou s.")

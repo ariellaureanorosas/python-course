@@ -1,24 +1,27 @@
-"""
-GABARITO 20 - Positional-Only e Keyword-Only
-"""
-
-
 def calcular(
     valor: float,
     /,
     taxa: float,
     *,
-    desconto: float = 0,
+    desconto: float = 0.0,
 ) -> float:
-    """Calcula valor * taxa - desconto com tipos de parâmetros mistos.
+    """Retorna resultado de valor * taxa - desconto.
 
-    Args:
-        valor: Posicional apenas (/).
+    Parametros:
+        valor: Posicional apenas (nao pode ser nomeado).
         taxa: Posicional ou nomeado.
-        desconto: Nomeado apenas (*), padrão 0.
+        desconto: Nomeado apenas, padrao 0.0.
 
     Returns:
-        Resultado do cálculo.
+        Resultado do calculo.
+
+    Exemplos:
+    >>> calcular(100.0, 0.1, desconto=5.0)
+    5.0
+    >>> calcular(200.0, 0.05)
+    10.0
+    >>> calcular(50.0, 0.2, desconto=2.0)
+    8.0
     """
     return valor * taxa - desconto
 
@@ -30,17 +33,23 @@ def criar_usuario(
     *,
     idade: int = 0,
     ativo: bool = True,
-) -> dict:
-    """Cria um dicionário de usuário com parâmetros mistos.
+) -> dict[str, str | int | bool]:
+    """Retorna dicionario representando um usuario.
 
-    Args:
-        nome: Posicional apenas (/).
+    Parametros:
+        nome: Posicional apenas.
         email: Posicional ou nomeado.
-        idade: Nomeado apenas (*), padrão 0.
-        ativo: Nomeado apenas (*), padrão True.
+        idade: Nomeado apenas, padrao 0.
+        ativo: Nomeado apenas, padrao True.
 
     Returns:
-        Dicionário representando o usuário.
+        Dicionario com dados do usuario.
+
+    Exemplos:
+    >>> criar_usuario('Ana', 'ana@email.com')
+    {'nome': 'Ana', 'email': 'ana@email.com', 'idade': 0, 'ativo': True}
+    >>> criar_usuario('Joao', 'joao@email.com', idade=25, ativo=False)
+    {'nome': 'Joao', 'email': 'joao@email.com', 'idade': 25, 'ativo': False}
     """
     return {
         'nome': nome,
@@ -51,24 +60,26 @@ def criar_usuario(
 
 
 def registrar_venda(
-    /,
     *,
     produto: str,
     quantidade: int,
     preco_unitario: float,
-) -> dict:
-    """Registra uma venda com todos os parâmetros keyword-only.
+) -> dict[str, str | int | float]:
+    """Retorna dicionario com dados da venda e total calculado.
 
-    Como / aparece antes de *, não há parâmetros posicionais.
-    Todos os parâmetros devem ser passados como keyword.
+    Todos os parametros sao nomeados apenas (keyword-only).
 
-    Args:
-        produto: Nome do produto (keyword-only).
-        quantidade: Quantidade vendida (keyword-only).
-        preco_unitario: Preço unitário (keyword-only).
+    Parametros:
+        produto: Nome do produto.
+        quantidade: Quantidade vendida.
+        preco_unitario: Preco unitario.
 
     Returns:
-        Dicionário com dados da venda e total calculado.
+        Dicionario com produto, quantidade, preco_unitario e total.
+
+    Exemplos:
+    >>> registrar_venda(produto='Caneta', quantidade=10, preco_unitario=1.5)
+    {'produto': 'Caneta', 'quantidade': 10, 'preco_unitario': 1.5, 'total': 15.0}
     """
     return {
         'produto': produto,
@@ -76,3 +87,8 @@ def registrar_venda(
         'preco_unitario': preco_unitario,
         'total': quantidade * preco_unitario,
     }
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
