@@ -40,16 +40,32 @@ PYTHON-COURSE/
 
 Além do material do curso, este repositório contém exercícios complementares para fixação:
 
-<div align="center">
-
-| Pasta | Conteúdo |
-|:------|:---------|
-| `exercicios/secao-1-logica-programacao/` | 20 exercícios de lógica (print a CPF) + gabaritos profissionais |
-| `exercicios/secao-2-funcoes-modulos/` | 20 exercícios de funções/dicts/modulos + gabaritos profissionais |
-| `anotacoes/secao-1-logica-programacao/` | 15 resumos em markdown para revisão rápida |
-| `anotacoes/secao-2-funcoes-modulos/` | 16 resumos em markdown para revisão rápida |
-
-</div>
+<table align="center">
+  <thead>
+    <tr>
+      <th>Pasta</th>
+      <th>Conteúdo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>exercicios/secao-1-logica-programacao/</code></td>
+      <td>20 exercícios de lógica (print a CPF) + gabaritos profissionais</td>
+    </tr>
+    <tr>
+      <td><code>exercicios/secao-2-funcoes-modulos/</code></td>
+      <td>20 exercícios de funções/dicts/modulos + gabaritos profissionais</td>
+    </tr>
+    <tr>
+      <td><code>anotacoes/secao-1-logica-programacao/</code></td>
+      <td>15 resumos em markdown para revisão rápida</td>
+    </tr>
+    <tr>
+      <td><code>anotacoes/secao-2-funcoes-modulos/</code></td>
+      <td>16 resumos em markdown para revisão rápida</td>
+    </tr>
+  </tbody>
+</table>
 
 Os gabaritos seguem estilo **dev sênior** com type hints, docstrings e PEP 8.
 
