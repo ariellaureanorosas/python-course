@@ -1,22 +1,24 @@
 # Projetos da Seção 1
 
-## 1. Calculadora com Menu (aula 40)
+## Calculadora com Menu
+
 ```python
 while True:
     n1 = input("Número 1: ")
     n2 = input("Número 2: ")
     operador = input("Operador (+-*/): ")
-    
+
     if operador not in "+-*/":
         print("Operador inválido")
         continue
-    
-    # Converter com try/except
-    # Executar operação com if/elif
+
+    # try/except para conversão
+    # if/elif para operação
     # Perguntar se quer sair (S/N)
 ```
 
-## 2. Jogo da Palavra Secreta (aula 47)
+## Jogo da Palavra Secreta
+
 ```python
 palavra_secreta = "python"
 letras_acertadas = ""
@@ -25,10 +27,10 @@ tentativas = 0
 while True:
     letra = input("Digite uma letra: ")
     tentativas += 1
-    
+
     if letra in palavra_secreta:
         letras_acertadas += letra
-    
+
     palavra_formada = ""
     for letra_secreta in palavra_secreta:
         if letra_secreta in letras_acertadas:
@@ -37,19 +39,18 @@ while True:
             palavra_formada += "*"
 ```
 
-## 3. Lista de Compras (aula 56)
+## Lista de Compras
+
 ```python
 lista = []
 while True:
     opcao = input("[I]nserir [A]pagar [L]istar [S]air: ")
-    
+
     if opcao == "i":
-        valor = input("Item: ")
-        lista.append(valor)
+        lista.append(input("Item: "))
     elif opcao == "a":
-        indice = int(input("Índice: "))
         try:
-            lista.pop(indice)
+            lista.pop(int(input("Índice: ")))
         except IndexError:
             print("Índice inválido")
     elif opcao == "l":

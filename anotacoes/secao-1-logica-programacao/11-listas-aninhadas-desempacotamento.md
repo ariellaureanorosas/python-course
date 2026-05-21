@@ -1,6 +1,7 @@
 # Listas Aninhadas e Desempacotamento
 
 ## Listas de Listas (Matriz)
+
 ```python
 salas = [
     ["Ana", "João"],
@@ -16,7 +17,8 @@ for sala in salas:
         print(aluno)
 ```
 
-## Desempacotamento *
+## Desempacotamento com `*`
+
 ```python
 # Em atribuição
 primeiro, segundo, *resto = [1, 2, 3, 4, 5]
@@ -25,7 +27,7 @@ primeiro, segundo, *resto = [1, 2, 3, 4, 5]
 _, nome, *_ = ["Sr.", "João", "Silva", "Jr."]
 # nome = "João"
 
-# Em chamadas de funções
+# Em chamadas de função
 print(*[1, 2, 3])  # 1 2 3
 print(*"ABC")       # A B C
 ```

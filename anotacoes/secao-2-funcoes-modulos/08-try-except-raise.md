@@ -1,6 +1,7 @@
-# Tratamento de Erros (try/except/raise)
+# Tratamento de Erros (`try`/`except`/`raise`)
 
-## try / except / else / finally
+## `try` / `except` / `else` / `finally`
+
 ```python
 try:
     resultado = 10 / 0
@@ -15,16 +16,18 @@ finally:
 ```
 
 ## Exceções Comuns
+
 ```python
-ValueError      # valor inválido
-TypeError       # tipo inválido
-KeyError        # chave de dict não existe
-IndexError      # índice de lista inválido
+ValueError           # valor inválido
+TypeError            # tipo inválido
+KeyError             # chave de dict não existe
+IndexError           # índice de lista inválido
 ZeroDivisionError
 FileNotFoundError
 ```
 
-## raise — lançar exceções
+## `raise` — lançar exceções
+
 ```python
 def dividir(a, b):
     if not isinstance(a, (int, float)):
@@ -35,7 +38,8 @@ def dividir(a, b):
 ```
 
 ## Boas Práticas
+
 - Sempre especificar o tipo de exceção
-- Não usar `except:` sem tipo
+- Nunca usar `except:` sem tipo
 - Não silenciar erros com `except: pass`
 - Usar `raise` para repassar se não puder tratar

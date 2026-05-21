@@ -1,6 +1,7 @@
 # Positional-Only e Keyword-Only Arguments
 
-## Positional-Only Parameters (/)
+## Positional-Only (`/`)
+
 ```python
 # Parâmetros ANTES de / são APENAS posicionais
 def somar(a, b, /):
@@ -10,7 +11,8 @@ somar(1, 2)      # OK
 somar(a=1, b=2)  # ERRO!
 ```
 
-## Keyword-Only Arguments (*)
+## Keyword-Only (`*`)
+
 ```python
 # Parâmetros DEPOIS de * são APENAS nomeados
 def saudacao(*, nome, saudacao="Olá"):
@@ -21,6 +23,7 @@ saudacao("João")       # ERRO!
 ```
 
 ## Combinando Ambos
+
 ```python
 def calcular(valor, /, taxa, *, desconto=0):
     """
@@ -33,5 +36,5 @@ def calcular(valor, /, taxa, *, desconto=0):
 calcular(100, 0.1)               # OK
 calcular(100, taxa=0.1)          # OK
 calcular(100, 0.1, desconto=5)   # OK
-calcular(valor=100, taxa=0.1)    # ERRO (valor é positional-only)
+calcular(valor=100, taxa=0.1)    # ERRO!
 ```

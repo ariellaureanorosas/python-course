@@ -1,6 +1,7 @@
 # JSON
 
 ## Escrever JSON
+
 ```python
 import json
 
@@ -15,12 +16,14 @@ with open("dados.json", "w", encoding="utf-8") as f:
 ```
 
 ## Ler JSON
+
 ```python
 with open("dados.json", "r", encoding="utf-8") as f:
     dados = json.load(f)
 ```
 
-## Operações Diretas
+## Operações em Memória
+
 ```python
 # dict → string JSON
 string_json = json.dumps(dados, indent=2, ensure_ascii=False)
@@ -30,13 +33,15 @@ dados = json.loads(string_json)
 ```
 
 ## Parâmetros Importantes
+
 ```python
 indent=2              # formata com indentação
-ensure_ascii=False    # preserva acentos (ñ vira \u00f1)
-sort_keys=True        # ordena chaves alfabeticamente
+ensure_ascii=False    # preserva acentos
+sort_keys=True        # ordena chaves
 ```
 
-## Projeto: Lista de Tarefas com JSON
+## Exemplo: Lista de Tarefas
+
 ```python
 def ler_tarefas():
     try:

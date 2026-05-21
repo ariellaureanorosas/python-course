@@ -1,12 +1,14 @@
 # Input e Estruturas Condicionais
 
-## input() - Entrada do Usuário
+## `input()` — Entrada do Usuário
+
 ```python
-nome = input("Digite seu nome: ")   # sempre retorna str
-idade = int(input("Digite sua idade: "))  # converter
+nome = input("Digite seu nome: ")          # sempre retorna str
+idade = int(input("Digite sua idade: "))   # converter para int
 ```
 
-## if / elif / else
+## `if` / `elif` / `else`
+
 ```python
 if condicao:
     bloco
@@ -17,16 +19,18 @@ else:
 ```
 
 ## Operadores de Comparação
+
 ```python
->  # maior
->= # maior ou igual
-<  # menor
-<= # menor ou igual
-== # igual
-!= # diferente
+>   # maior
+>=  # maior ou igual
+<   # menor
+<=  # menor ou igual
+==  # igual
+!=  # diferente
 ```
 
-## Exemplo: Comparar dois números
+## Exemplo
+
 ```python
 a = int(input("Valor 1: "))
 b = int(input("Valor 2: "))

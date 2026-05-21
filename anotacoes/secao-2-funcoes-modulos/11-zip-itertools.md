@@ -1,6 +1,7 @@
-# zip e itertools
+# `zip` e `itertools`
 
-## zip() — unir iteráveis
+## `zip()` — unir iteráveis
+
 ```python
 nomes = ["Ana", "João", "Maria"]
 idades = [25, 30, 22]
@@ -12,7 +13,8 @@ list(zip(nomes, idades))
 # [("Ana", 25), ("João", 30), ("Maria", 22)]
 ```
 
-## zip_longest — unir com tamanhos diferentes
+## `zip_longest` — tamanhos diferentes
+
 ```python
 from itertools import zip_longest
 
@@ -22,7 +24,8 @@ list(zip_longest(a, b, fillvalue=0))
 # [(1, 1), (2, 2), (3, 0)]
 ```
 
-## itertools.count()
+## `itertools.count()`
+
 ```python
 from itertools import count
 for i in count(start=0, step=2):
@@ -31,7 +34,8 @@ for i in count(start=0, step=2):
     print(i)  # 0, 2, 4, 6, 8, 10
 ```
 
-## combinations, permutations, product
+## `combinations`, `permutations`, `product`
+
 ```python
 from itertools import combinations, permutations, product
 
@@ -45,7 +49,8 @@ list(product([1, 2], [3, 4]))
 # [(1, 3), (1, 4), (2, 3), (2, 4)]
 ```
 
-## groupby — agrupar dados
+## `groupby` — agrupar dados
+
 ```python
 from itertools import groupby
 alunos = [("A", 8), ("B", 7), ("A", 9), ("B", 6)]

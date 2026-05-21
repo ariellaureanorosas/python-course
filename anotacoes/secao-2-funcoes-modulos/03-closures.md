@@ -1,6 +1,7 @@
 # Closures
 
 ## Função que Retorna Função
+
 ```python
 def criar_saudacao(saudacao):
     def saudar(nome):
@@ -10,11 +11,12 @@ def criar_saudacao(saudacao):
 dizer_oi = criar_saudacao("Olá")
 dizer_tchau = criar_saudacao("Tchau")
 
-print(dizer_oi("João"))   # "Olá, João!"
-print(dizer_tchau("Ana")) # "Tchau, Ana!"
+dizer_oi("João")    # "Olá, João!"
+dizer_tchau("Ana")  # "Tchau, Ana!"
 ```
 
-## Exercício: Multiplicador
+## Exemplo: Multiplicador
+
 ```python
 def criar_multiplicador(multiplicador):
     def multiplicar(numero):
@@ -24,11 +26,12 @@ def criar_multiplicador(multiplicador):
 dobro = criar_multiplicador(2)
 triplo = criar_multiplicador(3)
 
-print(dobro(10))   # 20
-print(triplo(10))  # 30
+dobro(10)   # 20
+triplo(10)  # 30
 ```
 
-## nonlocal — modificar variável do escopo externo
+## `nonlocal` — modificar escopo externo
+
 ```python
 def contador():
     count = 0

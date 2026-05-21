@@ -1,28 +1,31 @@
-# Slicing, None, Constantes, try/except
+# Slicing, None, Constantes, Try/Except
 
-## Fatiamento de Strings [i:f:p]
+## Fatiamento de Strings `[i:f:p]`
+
 ```python
 texto = "Python"
 
 texto[0]        # 'P'
 texto[-1]       # 'n' (último)
-texto[0:3]      # 'Pyt' (início:fim:passo)
+texto[0:3]      # 'Pyt'
 texto[::2]      # 'Pto' (pulando de 2)
 texto[::-1]     # 'nohtyP' (invertido)
 len(texto)      # 6
 ```
 
 ## Constantes (convenção)
+
 ```python
 VELOCIDADE_MAXIMA = 80
 TAXA_JUROS = 0.05
-# Apenas convenção, Python não impede alteração
+# Python não impede alteração — é convenção
 ```
 
-## None, is, is not, id()
+## `None`, `is`, `is not`, `id()`
+
 ```python
 variavel = None
-if variavel is None:     # compara identidade
+if variavel is None:
     print("Não definido")
 if variavel is not None:
     print("Definido")
@@ -30,7 +33,8 @@ if variavel is not None:
 id(variavel)  # endereço de memória do objeto
 ```
 
-## try/except Básico
+## `try`/`except` Básico
+
 ```python
 try:
     numero = float(input("Digite um número: "))

@@ -1,6 +1,7 @@
-# Funções (def)
+# Funções (`def`)
 
-## Estrutura Básica
+## Estrutura
+
 ```python
 def nome_funcao(param1, param2=valor_padrao):
     """Docstring explicativa."""
@@ -8,6 +9,7 @@ def nome_funcao(param1, param2=valor_padrao):
 ```
 
 ## Argumentos Nomeados vs Posicionais
+
 ```python
 def soma(a, b):
     return a + b
@@ -17,19 +19,21 @@ soma(a=1, b=2)  # nomeados
 soma(1, b=2)    # misto (posicionais primeiro)
 ```
 
-## Escopo (global/local)
+## Escopo (local/global)
+
 ```python
 x = "global"
 
 def func():
-    x = "local"   # variável local (não modifica global)
-    
+    x = "local"    # não modifica a global
+
 def func2():
     global x       # modifica a global
     x = "alterada"
 ```
 
-## return
+## `return`
+
 ```python
 def soma(a, b):
     return a + b    # retorna valor
