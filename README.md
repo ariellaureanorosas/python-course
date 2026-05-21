@@ -19,32 +19,19 @@ ministrado por [Luiz Otávio Miranda](https://www.udemy.com/course/python-3-do-z
 ```
 PYTHON-COURSE/
 ├── .vscode/
-├── anotacoes/                          ← resumo e revisão do conteúdo
+├── anotacoes/                        ← resumo e revisão do conteúdo
 │   ├── secao-1-logica-programacao/
 │   └── secao-2-funcoes-modulos/
-├── exercicios/                         ← exercícios práticos + gabaritos
+├── exercicios/                       ← exercícios práticos + gabaritos
 │   ├── secao-1-logica-programacao/
 │   └── secao-2-funcoes-modulos/
 ├── Seção 1 - Iniciando na programação com Python (Lógica de programação básica)/
 ├── Seção 2 - Python Intermediário - Funções - Dicionários - Módulos - Programação Funcional/
 ├── Seção 3 - Introdução à Programação Orientada a Objetos em Python - POO (Classes)/
-├── Seção 4 - Módulos Python - os, datetime, sys, json, csv, selenium, pillow e mais/
-├── Seção 5 - PySide6 - Interface gráfica com QT 6 no Python - GUI para Desktop/
-├── Seção 6 - Bases de dados com Python - SQLite (sqlite3) e MySQL (pymysql)/
-├── Seção 7 - Django no Python - Básico/
-├── Seção 8 - Django no Python - Projeto Agenda/
-├── Seção 9 - Django com Python - Primeiro Deploy (Linux)/
-├── Seção 10 - Django com Python - Projeto Blog/
-├── Seção 11 - Django com Python - Projeto E-commerce/
-├── Seção 12 - Testes e introdução ao TDD no Python - unittest/
-├── Seção 13 - Design Patterns - Padrões de projeto - GOF - POO Avançado/
-├── Seção 14 - Expressões regulares com Python - Regex/
-├── Seção 15 - Bases de dados Relacionais com Python - SQL usando MySQL/
-├── Seção 16 - HTML5 e CSS3 Para iniciantes/
-├── Seção 17 - Landing Page com HTML5 e CSS3/
-├── Seção 18 - Comandos Linux Unix mais usados/
+├── ... (mais seções em andamento)
 ├── .gitignore
-└── README.md
+├── README.md
+└── venv/
 ```
 
 ---
@@ -53,12 +40,16 @@ PYTHON-COURSE/
 
 Além do material do curso, este repositório contém exercícios complementares para fixação:
 
+<div align="center">
+
 | Pasta | Conteúdo |
 |:------|:---------|
 | `exercicios/secao-1-logica-programacao/` | 20 exercícios de lógica (print a CPF) + gabaritos profissionais |
 | `exercicios/secao-2-funcoes-modulos/` | 20 exercícios de funções/dicts/modulos + gabaritos profissionais |
 | `anotacoes/secao-1-logica-programacao/` | 15 resumos em markdown para revisão rápida |
 | `anotacoes/secao-2-funcoes-modulos/` | 16 resumos em markdown para revisão rápida |
+
+</div>
 
 Os gabaritos seguem estilo **dev sênior** com type hints, docstrings e PEP 8.
 
