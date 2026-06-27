@@ -1,5 +1,7 @@
 # Loop `while`
 
+Usado para repetir blocos de código enquanto uma condição for verdadeira.
+
 ## Estrutura
 
 ```python

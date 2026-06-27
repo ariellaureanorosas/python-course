@@ -1,5 +1,7 @@
 # Loop `for` e `range()`
 
+Usado para percorrer sequências e iterar sobre elementos de forma controlada.
+
 ## `for` com string
 
 ```python

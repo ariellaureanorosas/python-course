@@ -1,5 +1,7 @@
 # Variáveis e Operadores
 
+Usado para armazenar dados na memória e realizar cálculos matemáticos.
+
 ## Variáveis (PEP 8)
 
 ```python

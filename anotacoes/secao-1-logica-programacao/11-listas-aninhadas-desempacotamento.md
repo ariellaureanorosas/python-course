@@ -1,5 +1,7 @@
 # Listas Aninhadas e Desempacotamento
 
+Usado para estruturas multidimensionais e distribuir valores entre variáveis.
+
 ## Listas de Listas (Matriz)
 
 ```python

@@ -1,5 +1,7 @@
 # Zen of Python e Boas Práticas
 
+Princípios e convenções para escrever código Python legível e de qualidade.
+
 ## Zen of Python (PEP 20)
 
 ```python

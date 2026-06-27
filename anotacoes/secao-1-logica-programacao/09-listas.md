@@ -1,5 +1,7 @@
 # Listas
 
+Usado para armazenar e manipular coleções ordenadas e mutáveis de dados.
+
 ## Criação
 
 ```python

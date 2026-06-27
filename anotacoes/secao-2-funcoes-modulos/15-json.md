@@ -1,5 +1,7 @@
 # JSON
 
+Usado para salvar e carregar dados estruturados no formato JSON (trocas entre sistemas).
+
 ## Escrever JSON
 
 ```python

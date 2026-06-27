@@ -1,5 +1,7 @@
 # Funções (`def`)
 
+Usado para organizar e reutilizar blocos de código com parâmetros e retorno.
+
 ## Estrutura
 
 ```python

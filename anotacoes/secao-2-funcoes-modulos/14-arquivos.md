@@ -1,5 +1,7 @@
 # Manipulação de Arquivos
 
+Usado para ler e escrever dados em arquivos no disco de forma persistente.
+
 ## Modos de Abertura
 
 ```python

@@ -1,5 +1,7 @@
 # Map, Filter, Reduce
 
+Usado para transformar, filtrar e acumular dados em sequências de forma funcional.
+
 ## `map` — transformar cada elemento
 
 ```python

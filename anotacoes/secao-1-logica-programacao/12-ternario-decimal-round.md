@@ -1,5 +1,7 @@
 # Operação Ternária e Utilitários
 
+Usado para condicionais simples em uma linha e operações com precisão decimal.
+
 ## Operador Ternário
 
 ```python

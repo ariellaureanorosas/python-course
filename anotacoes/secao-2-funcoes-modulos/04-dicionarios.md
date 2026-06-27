@@ -1,5 +1,7 @@
 # Dicionários (`dict`)
 
+Usado para armazenar dados no formato chave-valor com acesso rápido.
+
 ## Criação
 
 ```python

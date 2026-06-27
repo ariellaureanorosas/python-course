@@ -1,5 +1,7 @@
 # Funções Recursivas
 
+Usado para resolver problemas que podem ser divididos em subproblemas menores e repetidos.
+
 Função que chama a si mesma. Precisa de:
 1. **Caso base** — condição de parada
 2. **Caso recursivo** — chamada a si mesma

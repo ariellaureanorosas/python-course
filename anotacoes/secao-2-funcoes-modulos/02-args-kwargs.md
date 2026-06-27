@@ -1,5 +1,7 @@
 # `*args`, `**kwargs` e Higher Order Functions
 
+Usado para criar funções flexíveis que aceitam quantidade variável de argumentos.
+
 ## `*args` — argumentos posicionais extras
 
 ```python

@@ -1,5 +1,7 @@
 # Módulos e Pacotes
 
+Usado para organizar e reutilizar código entre diferentes arquivos do projeto.
+
 ## Importação
 
 ```python

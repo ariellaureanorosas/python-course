@@ -1,5 +1,7 @@
 # Sets (Conjuntos)
 
+Usado para trabalhar com coleções não ordenadas sem elementos duplicados.
+
 ## Criação
 
 ```python

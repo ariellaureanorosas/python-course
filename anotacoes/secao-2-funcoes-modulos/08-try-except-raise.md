@@ -1,5 +1,7 @@
 # Tratamento de Erros (`try`/`except`/`raise`)
 
+Usado para lidar com erros de forma controlada sem interromper o programa.
+
 ## `try` / `except` / `else` / `finally`
 
 ```python

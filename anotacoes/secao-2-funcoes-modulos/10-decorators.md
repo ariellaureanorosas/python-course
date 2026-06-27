@@ -1,5 +1,7 @@
 # Decorators
 
+Usado para adicionar funcionalidades a funções existentes sem modificar seu código.
+
 ## Estrutura Básica
 
 ```python

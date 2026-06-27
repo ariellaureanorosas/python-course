@@ -1,5 +1,7 @@
 # Positional-Only e Keyword-Only Arguments
 
+Usado para controlar como os argumentos devem ser passados para as funções.
+
 ## Positional-Only (`/`)
 
 ```python

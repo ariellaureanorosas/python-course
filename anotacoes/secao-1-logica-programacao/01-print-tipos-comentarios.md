@@ -1,5 +1,7 @@
 # Print, Tipos Primitivos e Comentários
 
+Usado para exibir informações no terminal, trabalhar com diferentes tipos de dados e documentar o código.
+
 ## `print()`
 
 ```python

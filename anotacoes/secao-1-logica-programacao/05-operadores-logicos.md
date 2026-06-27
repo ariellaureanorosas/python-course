@@ -1,5 +1,7 @@
 # Operadores Lógicos
 
+Usado para combinar múltiplas condições e verificar pertencimento em coleções.
+
 ## `and` — todas precisam ser True
 
 ```python

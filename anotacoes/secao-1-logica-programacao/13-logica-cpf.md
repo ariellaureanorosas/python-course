@@ -1,5 +1,7 @@
 # Lógica de Validação de CPF
 
+Usado para validar CPF aplicando o algoritmo dos dígitos verificadores.
+
 Estrutura: `XXX.XXX.XXX-DD` (9 dígitos + 2 dígitos verificadores)
 
 ## 1º Dígito Verificador

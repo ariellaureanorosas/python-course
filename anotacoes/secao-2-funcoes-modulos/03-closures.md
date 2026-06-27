@@ -1,5 +1,7 @@
 # Closures
 
+Usado para criar funções que lembram o escopo onde foram criadas (funções que retornam funções).
+
 ## Função que Retorna Função
 
 ```python

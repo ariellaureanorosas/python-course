@@ -1,5 +1,7 @@
 # Lambda, List/Dict/Set Comprehension
 
+Usado para criar funções anônimas e construir coleções de forma concisa.
+
 ## Lambda
 
 ```python

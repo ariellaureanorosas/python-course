@@ -1,5 +1,7 @@
 # Input e Estruturas Condicionais
 
+Usado para capturar entrada do usuário e tomar decisões no código com base em condições.
+
 ## `input()` — Entrada do Usuário
 
 ```python

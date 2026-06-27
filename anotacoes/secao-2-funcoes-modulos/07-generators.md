@@ -1,5 +1,7 @@
 # Generators
 
+Usado para processar grandes volumes de dados sob demanda sem consumir muita memória.
+
 ## Generator Expression
 
 ```python

@@ -1,5 +1,7 @@
 # Projetos da Seção 1
 
+Projetos práticos para consolidar os conceitos aprendidos na seção 1.
+
 ## Calculadora com Menu
 
 ```python

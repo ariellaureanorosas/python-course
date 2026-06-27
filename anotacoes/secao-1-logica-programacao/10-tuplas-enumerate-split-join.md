@@ -1,5 +1,7 @@
 # Tuplas, Enumerate, Split/Join
 
+Usado para dados imutáveis, iteração com índice e manipulação de strings.
+
 ## Tuplas (imutáveis)
 
 ```python

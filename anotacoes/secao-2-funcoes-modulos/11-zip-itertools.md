@@ -1,5 +1,7 @@
 # `zip` e `itertools`
 
+Usado para combinar iteráveis e criar iteradores eficientes para diversos padrões.
+
 ## `zip()` — unir iteráveis
 
 ```python

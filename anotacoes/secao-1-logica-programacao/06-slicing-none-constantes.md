@@ -1,5 +1,7 @@
 # Slicing, None, Constantes, Try/Except
 
+Usado para extrair partes de strings, representar ausência de valor e tratar erros básicos.
+
 ## Fatiamento de Strings `[i:f:p]`
 
 ```python

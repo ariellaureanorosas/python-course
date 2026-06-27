@@ -1,5 +1,7 @@
 # Strings e Formatação
 
+Usado para formatar e exibir textos de forma organizada com variáveis.
+
 ## f-strings (Python 3.6+, preferencial)
 
 ```python
