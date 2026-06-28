@@ -20,5 +20,32 @@ Tópicos da aula: dict, input, for, manipulação de dicts
 """
 
 
+def verificar_resposta(pergunta: dict, resposta: str) -> bool:
+    return resposta == pergunta["resposta"]
+
+
 def executar_quiz(perguntas: list[dict]) -> int:
-    ...
+    acertos = 0
+    for pergunta in perguntas:
+        print(pergunta["pergunta"])
+        for alternativa, texto in pergunta["opcoes"].items():
+            print(f"{alternativa}) {texto}")
+        resposta = input("Digite a alternativa correta: ").strip().lower()
+        if verificar_resposta(pergunta, resposta):
+            acertos += 1
+            print("Correta a resposta")
+        else:
+            print("Resposta Errada")
+    print(f"Você acertou {acertos} de {len(perguntas)} perguntas.")
+    return acertos
+
+
+if __name__ == "__main__":
+    PERGUNTAS = [
+        {
+            "pergunta": "Qual é a capital do Brasil?",
+            "opcoes": {"a": "Rio de Janeiro", "b": "Brasília", "c": "São Paulo"},
+            "resposta": "b",
+        },
+    ]
+    executar_quiz(PERGUNTAS)

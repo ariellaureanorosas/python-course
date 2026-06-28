@@ -14,4 +14,12 @@ Tópicos da aula: closure, parâmetros, return de função
 
 
 def criar_multiplicador(multiplicador: int):
-    ...
+    def multiplicacao(numero: int) -> int:
+        return numero * multiplicador
+
+    return multiplicacao
+
+
+if __name__ == "__main__":
+    multiplo_dois = criar_multiplicador(2)
+    print(multiplo_dois(3))
