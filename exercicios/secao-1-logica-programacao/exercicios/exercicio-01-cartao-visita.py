@@ -24,3 +24,12 @@ as quebras. Ou pode simplesmente chamar print() vazio para pular linha.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+SEPARADOR = "=" * 30
+
+nome: str = input("Digite seu nome: ")
+telefone: int = input("Digite seu telefone: ")
+email: str = input("Digite seu email: ")
+
+print(SEPARADOR)
+print(nome, telefone, email, sep="\n")
+print(SEPARADOR)
