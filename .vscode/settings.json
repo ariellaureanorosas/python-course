@@ -1,6 +1,6 @@
 {
   // ========== APARÊNCIA E TEMA ==========
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
   "workbench.statusBar.visible": true,
   "workbench.layoutControl.enabled": false,
   "window.menuBarVisibility": "compact",
