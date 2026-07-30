@@ -150,7 +150,7 @@
   "code-runner.ignoreSelection": true,
 
   "code-runner.executorMap": {
-    "python": "python -u $fullFileName",
+    "python": "cls && python -u $fullFileName",
     "javascript": "node",
     "typescript": "ts-node"
   },

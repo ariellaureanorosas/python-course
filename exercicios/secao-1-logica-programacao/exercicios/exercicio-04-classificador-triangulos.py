@@ -19,3 +19,23 @@ Dica: use if/elif/else encadeados.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+try:
+    lado1: float = float(input("Digite um Número:"))
+    lado2: float = float(input("Digite um Número:"))
+    lado3: float = float(input("Digite um Número:"))
+except ValueError:
+    print("Digite números válidos")
+else:
+    if lado1 <= 0 or lado2 <= 0 or lado3 <= 0:
+        print("Triângulo Inválido")
+    elif lado1 >= lado2 + lado3 or lado2 >= lado1 + lado3 or lado3 >= lado1 + lado2:
+        print("Erro: as medidas não formam um triângulo")
+    elif lado1 == lado2 == lado3:
+        print("Triângulo Equilátero")
+    elif lado1 == lado2 or lado1 == lado3 or lado2 == lado3:
+        print("Triângulo isósceles")
+    else:
+        print("Triângulo Escaleno")
+finally:
+    print("-" * 10)
+    print("Deus seja Louvado")
