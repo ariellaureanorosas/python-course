@@ -20,6 +20,11 @@ class Conta(abc.ABC):
         print(f"O seu saldo é: {self.saldo:.2f} {msg}")
         print("-" * 10)
 
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+        attrs = f"{self.agencia!r}, {self.conta!r}, {self.saldo!r}"
+        return f"{class_name} {attrs}"
+
 
 class ContaPoupanca(Conta):
     def sacar(self, valor) -> float:
@@ -55,6 +60,11 @@ class ContaCorrente(Conta):
         print(f"Seu limite é, {self.limite:.2f}")
         self.detalhes(msg=f"(SAQUE NEGADO {valor})")
         return self.saldo
+
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+        attrs = f"{self.agencia!r}, {self.conta!r}, {self.saldo!r}, {self.limite!r}"
+        return f"{class_name} {attrs}"
 
 
 if __name__ == "__main__":
