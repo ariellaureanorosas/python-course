@@ -1,16 +1,100 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // Configurações de debug Python profissional
+    // Compatível com Pylance + Ruff + Mypy + Pytest
+
     "version": "0.2.0",
+
     "configurations": [
-        
+
         {
-            "name": "Python Debugger: Current File",
+            "name": "🐍 Python: Arquivo Atual",
             "type": "debugpy",
             "request": "launch",
+
             "program": "${file}",
-            "console": "integratedTerminal"
+
+            "console": "integratedTerminal",
+
+            "justMyCode": true,
+
+            "envFile": "${workspaceFolder}/.env",
+
+            "cwd": "${workspaceFolder}",
+
+            "python": "${command:python.interpreterPath}",
+
+            "redirectOutput": true,
+
+            "stopOnEntry": false
+        },
+
+
+        {
+            "name": "🐍 Python: Módulo Atual",
+            "type": "debugpy",
+            "request": "launch",
+
+            "module": "${relativeFileDirname}.${fileBasenameNoExtension}",
+
+            "console": "integratedTerminal",
+
+            "justMyCode": true,
+
+            "envFile": "${workspaceFolder}/.env",
+
+            "cwd": "${workspaceFolder}",
+
+            "python": "${command:python.interpreterPath}"
+        },
+
+
+        {
+            "name": "🧪 Pytest: Arquivo Atual",
+            "type": "debugpy",
+            "request": "launch",
+
+            "module": "pytest",
+
+            "args": [
+                "${file}",
+                "-v",
+                "--tb=short"
+            ],
+
+            "console": "integratedTerminal",
+
+            "justMyCode": false,
+
+            "envFile": "${workspaceFolder}/.env",
+
+            "cwd": "${workspaceFolder}",
+
+            "python": "${command:python.interpreterPath}"
+        },
+
+
+        {
+            "name": "🧪 Pytest: Todos os Testes",
+            "type": "debugpy",
+            "request": "launch",
+
+            "module": "pytest",
+
+            "args": [
+                "-v",
+                "--tb=short"
+            ],
+
+            "console": "integratedTerminal",
+
+            "justMyCode": false,
+
+            "envFile": "${workspaceFolder}/.env",
+
+            "cwd": "${workspaceFolder}",
+
+            "python": "${command:python.interpreterPath}"
         }
+
     ]
 }
