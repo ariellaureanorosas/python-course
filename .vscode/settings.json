@@ -4,9 +4,8 @@
   "workbench.colorTheme": "Bearded Theme Vivid Black",
   "workbench.statusBar.visible": true,
   "workbench.layoutControl.enabled": false,
-  "window.menuBarVisibility": "compact",
   "window.commandCenter": false,
-  "window.autoDetectColorScheme": false,
+
   "editor.fontFamily": "'JetBrains Mono', monospace",
   "editor.fontSize": 17,
   "editor.fontLigatures": true,
@@ -17,51 +16,80 @@
   "editor.renderLineHighlight": "gutter",
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
+
   "workbench.tree.indent": 20,
+  "workbench.tree.renderIndentGuides": "always",
   "explorer.compactFolders": false,
   "explorer.sortOrder": "foldersNestsFiles",
+  "explorer.confirmDelete": true,
+
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "pyproject.toml": "uv.lock, poetry.lock, requirements*.txt, .python-version, .env*, mypy.ini, .flake8, pytest.ini",
     "README.md": "CONTRIBUTING.md, LICENSE, CHANGELOG.md"
   },
+
   "workbench.editor.labelFormat": "default",
+  "workbench.editor.highlightModifiedTabs": true,
   "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "last",
   "workbench.editor.enablePreview": false,
-  "workbench.startupEditor": "none",
-  "workbench.editor.empty.hint": "hidden",
   "editor.glyphMargin": true,
 
-  // ========== EDITOR E FORMATAÇÃO (regras universais, não específicas de linguagem) ==========
+
+  // ========== EDITOR E FORMATAÇÃO ==========
   "editor.tabSize": 4,
   "editor.insertSpaces": true,
-  "editor.detectIndentation": true,
+  "editor.detectIndentation": false,
+
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit"
-  },
+
   "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.suggestSelection": "first",
+  "editor.snippetSuggestions": "top",
+
+  "editor.wordWrap": "bounded",
   "editor.accessibilitySupport": "off",
   "editor.semanticHighlighting.enabled": true,
   "editor.stickyScroll.enabled": true,
+
   "editor.inlayHints.enabled": "onUnlessPressed",
+  "editor.inlayHints.padding": true,
+
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.autoSave": "off",
   "files.eol": "\n",
-  "diffEditor.ignoreTrimWhitespace": false,
-  "diffEditor.renderSideBySide": true,
 
-  // ========== PYTHON (defaults globais — regras de projeto vão no .vscode/settings.json) ==========
-  "python.languageServer": "Pylance",
-  "python.analysis.typeCheckingMode": "basic",
+
+  // ========== PYTHON ==========
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    },
+    "editor.tabSize": 4,
+    "editor.rulers": [88]
+  },
+
+  "python.analysis.typeCheckingMode": "strict",
   "python.analysis.autoImportCompletions": true,
+  "python.analysis.completeFunctionParens": true,
+
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.callArgumentNames": "all",
+
   "python.analysis.autoSearchPaths": true,
+
   "python.analysis.diagnosticSeverityOverrides": {
     "reportMissingImports": "error",
     "reportMissingTypeStubs": "information"
   },
+
   "python.analysis.exclude": [
     "**/__pycache__",
     "**/.venv",
@@ -70,26 +98,49 @@
     "**/.ruff_cache",
     "**/.pytest_cache"
   ],
+
   "python.terminal.activateEnvironment": true,
   "python.terminal.activateEnvInCurrentTerminal": true,
+
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
-  "python.testing.autoTestDiscoverOnSaveEnabled": true,
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.ruff": "explicit",
-      "source.organizeImports.ruff": "explicit"
-    },
-    "editor.tabSize": 4
-  },
-  "ruff.organizeImports": true,
+  "python.testing.pytestArgs": [
+    "-v",
+    "--tb=short"
+  ],
+
 
   // ========== PYTHON INDENT ==========
-  "pythonIndent.useTabOnHangingIndent": true,
+  "pythonIndent.useTabOnHangingIndent": false,
   "pythonIndent.trimLinesWithOnlyWhitespace": false,
   "pythonIndent.keepHangingBracketOnLine": false,
+
+
+  // ========== RUFF ==========
+  "ruff.lineLength": 88,
+
+  "ruff.lint.extendSelect": [
+    "I",
+    "N",
+    "UP",
+    "B",
+    "C4",
+    "SIM",
+    "TCH",
+    "PT"
+  ],
+
+  "ruff.organizeImports": true,
+
+
+  // ========== MYPY ==========
+  "mypy-type-checker.args": [
+    "--show-column-numbers",
+    "--pretty"
+  ],
+
+  "mypy-type-checker.reportingScope": "workspace",
+
 
   // ========== CODE RUNNER ==========
   "code-runner.runInTerminal": true,
@@ -97,11 +148,13 @@
   "code-runner.saveFileBeforeRun": true,
   "code-runner.showExecutionMessage": false,
   "code-runner.ignoreSelection": true,
+
   "code-runner.executorMap": {
-    "python": "clear; python3 -u $fullFileName",
+    "python": "python -u $fullFileName",
     "javascript": "node",
     "typescript": "ts-node"
   },
+
 
   // ========== TERMINAL ==========
   "terminal.integrated.shellIntegration.enabled": true,
@@ -109,6 +162,7 @@
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontFamily": "'JetBrains Mono', monospace",
+
 
   // ========== GIT ==========
   "git.enableSmartCommit": true,
@@ -119,9 +173,10 @@
   "git.autoStash": true,
   "git.pruneOnFetch": true,
 
+
   // ========== CORREÇÃO ORTOGRÁFICA ==========
-  "cSpell.enabled": true,
   "cSpell.language": "en,pt,pt-BR",
+
   "cSpell.userWords": [
     "pytest",
     "pylint",
@@ -136,8 +191,14 @@
     "pyproject",
     "asyncio",
     "dataclass",
-    "dunder"
+    "dunder",
+    "classmethod",
+    "staticmethod",
+    "pydantic",
+    "fastapi",
+    "sqlalchemy"
   ],
+
 
   // ========== ARQUIVOS E WORKSPACE ==========
   "files.associations": {
@@ -145,6 +206,7 @@
     "pyproject.toml": "toml",
     "requirements*.txt": "pip-requirements"
   },
+
   "files.exclude": {
     "**/__pycache__": true,
     "**/.mypy_cache": true,
@@ -152,6 +214,7 @@
     "**/.pytest_cache": true,
     "**/*.egg-info": true
   },
+
   "search.exclude": {
     "**/__pycache__": true,
     "**/.mypy_cache": true,
@@ -159,13 +222,20 @@
     "**/.pytest_cache": true,
     "**/.venv": true,
     "**/venv": true,
-    "**/*.egg-info": true
+    "**/*.egg-info": true,
+    "**/.env": true
   },
+
+  "workbench.startupEditor": "none",
+  "workbench.editor.empty.hint": "hidden",
+  "window.autoDetectColorScheme": false,
+
   "security.workspace.trust.untrustedFiles": "newWindow",
 
-  // ========== DESEMPENHO ==========
+
+  // ========== PRIVACIDADE E DESEMPENHO ==========
+  "telemetry.telemetryLevel": "off",
   "extensions.ignoreRecommendations": true,
-  "mcp.enabled": false,
   "update.mode": "start",
   "update.showReleaseNotes": false
 }

@@ -27,7 +27,7 @@ class Conta(abc.ABC):
 
 
 class ContaPoupanca(Conta):
-    def sacar(self, valor) -> float:
+    def sacar(self, valor: float) -> float:
         valor_pos_saque: float = self.saldo - valor
 
         if valor_pos_saque >= 0:
@@ -47,7 +47,7 @@ class ContaCorrente(Conta):
         super().__init__(agencia, conta, saldo)
         self.limite: float = limite
 
-    def sacar(self, valor) -> float:
+    def sacar(self, valor: float) -> float:
         valor_pos_saque: float = self.saldo - valor
         limite_maximo: float = -self.limite
 
