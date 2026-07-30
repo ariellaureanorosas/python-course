@@ -1,100 +1,66 @@
 {
-    // Configurações de debug Python profissional
-    // Compatível com Pylance + Ruff + Mypy + Pytest
-
     "version": "0.2.0",
-
     "configurations": [
-
         {
-            "name": "🐍 Python: Arquivo Atual",
+            "name": "Python: Arquivo Atual",
             "type": "debugpy",
             "request": "launch",
-
             "program": "${file}",
-
             "console": "integratedTerminal",
-
             "justMyCode": true,
-
             "envFile": "${workspaceFolder}/.env",
-
             "cwd": "${workspaceFolder}",
-
             "python": "${command:python.interpreterPath}",
-
             "redirectOutput": true,
-
             "stopOnEntry": false
         },
-
-
         {
-            "name": "🐍 Python: Módulo Atual",
+            "name": "Python: Módulo Atual",
             "type": "debugpy",
             "request": "launch",
-
-            "module": "${relativeFileDirname}.${fileBasenameNoExtension}",
-
+            "module": "${fileBasenameNoExtension}",
+            "cwd": "${fileDirname}",
             "console": "integratedTerminal",
-
             "justMyCode": true,
-
             "envFile": "${workspaceFolder}/.env",
-
-            "cwd": "${workspaceFolder}",
-
-            "python": "${command:python.interpreterPath}"
+            "python": "${command:python.interpreterPath}",
+            "redirectOutput": true,
+            "stopOnEntry": false
         },
-
-
         {
-            "name": "🧪 Pytest: Arquivo Atual",
+            "name": "Pytest: Arquivo Atual",
             "type": "debugpy",
             "request": "launch",
-
             "module": "pytest",
-
             "args": [
                 "${file}",
                 "-v",
                 "--tb=short"
             ],
-
             "console": "integratedTerminal",
-
             "justMyCode": false,
-
             "envFile": "${workspaceFolder}/.env",
-
             "cwd": "${workspaceFolder}",
-
-            "python": "${command:python.interpreterPath}"
+            "python": "${command:python.interpreterPath}",
+            "redirectOutput": true,
+            "stopOnEntry": false
         },
-
-
         {
-            "name": "🧪 Pytest: Todos os Testes",
+            "name": "Pytest: Todos os Testes",
             "type": "debugpy",
             "request": "launch",
-
             "module": "pytest",
-
             "args": [
                 "-v",
                 "--tb=short"
             ],
-
             "console": "integratedTerminal",
-
             "justMyCode": false,
-
             "envFile": "${workspaceFolder}/.env",
-
             "cwd": "${workspaceFolder}",
-
-            "python": "${command:python.interpreterPath}"
+            "python": "${command:python.interpreterPath}",
+            "redirectOutput": true,
+            "stopOnEntry": false
         }
-
     ]
 }
