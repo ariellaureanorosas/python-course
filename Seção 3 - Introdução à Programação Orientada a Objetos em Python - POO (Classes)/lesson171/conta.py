@@ -2,27 +2,28 @@ import abc
 
 
 class Conta(abc.ABC):
-    def __init__(self, agencia, conta, saldo=0):
-        self.agencia = agencia
-        self.conta = conta
-        self.saldo = saldo
+    def __init__(self, agencia: int, conta: int, saldo: float = 0) -> None:
+        self.agencia: int = agencia
+        self.conta: int = conta
+        self.saldo: float = saldo
 
     @abc.abstractmethod
-    def sacar(self, valor):
+    def sacar(self, valor: float) -> float:
         pass
 
-    def depositar(self, valor):
+    def depositar(self, valor: float) -> float:
         self.saldo += valor
         self.detalhes(f"(DEPÓSITO {valor})")
+        return self.saldo
 
-    def detalhes(self, msg=""):
+    def detalhes(self, msg: str = "") -> None:
         print(f"O seu saldo é: {self.saldo:.2f} {msg}")
         print("-" * 10)
 
 
 class ContaPoupanca(Conta):
-    def sacar(self, valor):
-        valor_pos_saque = self.saldo - valor
+    def sacar(self, valor) -> float:
+        valor_pos_saque: float = self.saldo - valor
 
         if valor_pos_saque >= 0:
             self.saldo -= valor
@@ -30,26 +31,30 @@ class ContaPoupanca(Conta):
             return self.saldo
 
         print("Não foi possivel sacar o valor desejado")
-        self.detalhes(f"(SAQUE NEGADO {valor})")
+        self.detalhes(msg=f"(SAQUE NEGADO {valor})")
+        return self.saldo
 
 
 class ContaCorrente(Conta):
-    def __init__(self, agencia, conta, saldo=0, limite=0):
+    def __init__(
+        self, agencia: int, conta: int, saldo: float = 0, limite: float = 0
+    ) -> None:
         super().__init__(agencia, conta, saldo)
-        self.limite = limite
+        self.limite: float = limite
 
-    def sacar(self, valor):
-        valor_pos_saque = self.saldo - valor
-        limite_maximo = -self.limite
+    def sacar(self, valor) -> float:
+        valor_pos_saque: float = self.saldo - valor
+        limite_maximo: float = -self.limite
 
         if valor_pos_saque >= limite_maximo:
             self.saldo -= valor
-            self.detalhes(f"(SAQUE {valor})")
+            self.detalhes(msg=f"(SAQUE {valor})")
             return self.saldo
 
         print("Não foi possivel sacar o valor desejado")
         print(f"Seu limite é, {self.limite:.2f}")
-        self.detalhes(f"(SAQUE NEGADO {valor})")
+        self.detalhes(msg=f"(SAQUE NEGADO {valor})")
+        return self.saldo
 
 
 if __name__ == "__main__":
