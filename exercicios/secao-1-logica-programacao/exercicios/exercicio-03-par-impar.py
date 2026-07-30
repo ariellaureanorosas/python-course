@@ -23,3 +23,14 @@ Exemplos:
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+try:
+    numero: int = int(input("Digite um valor: "))
+except TypeError:
+    print("Digite um Número")
+else:
+    paridade: str = "par" if numero % 2 == 0 else "impar"
+    print(f"{numero} é {paridade}")
+finally:
+    print("-" * 15)
+    print("Deus seja Louvado")
