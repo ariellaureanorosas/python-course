@@ -93,6 +93,7 @@ Os gabaritos seguem estilo **dev sênior** com type hints, docstrings e PEP 8.
 | 02 | Python + VS Code — Ambiente de desenvolvimento |
 | 03 | Lógica de programação básica com Python |
 | 04 | Python Intermediário — Funções, Dicionários, Módulos e Programação Funcional |
+| 05 | Introdução à POO em Python — Classes |
 
 ---
 
@@ -102,7 +103,6 @@ Os gabaritos seguem estilo **dev sênior** com type hints, docstrings e PEP 8.
 
 | # | Seção |
 |:-:|:------|
-| 05 | Introdução à POO em Python — Classes |
 | 06 | Módulos Python — os, datetime, sys, json, csv, selenium, pillow e mais |
 
 **— Interfaces e Banco de Dados —**
