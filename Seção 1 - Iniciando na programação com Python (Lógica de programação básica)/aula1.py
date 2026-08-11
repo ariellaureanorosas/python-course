@@ -2,13 +2,13 @@ print("Hello word!")
 # comentário simples
 
 """
-comentário 
-com 
+comentário
+com
 linhas
 """
 
 """
-comentário 
-com 
+comentário
+com
 linhas
 """
