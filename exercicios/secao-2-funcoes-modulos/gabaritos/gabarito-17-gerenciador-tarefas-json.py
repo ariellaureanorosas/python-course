@@ -1,35 +1,45 @@
+"""
+Gabarito EXERCÍCIO 17 - Gerenciador de Tarefas com JSON
+
+Raciocínio sênior
+-----------------
+O JSON é o "banco de dados de uma tarefa": carregar, salvar,
+adicionar, remover e renomear são as 5 operações de persistência.
+carregar_tarefas é a "leitura tolerante" — arquivo inexistente
+devolve lista vazia (primeiro uso do programa). remover_tarefa
+devolve str | None: None sinaliza índice inválido em vez de
+levantar IndexError — contrato explícito e sem surpresa para
+quem chama. O salvar usa indent=2 e ensure_ascii=False para o
+arquivo ficar legível e conservar acentos.
+Alternativas descartadas: listas em memória sem persistência
+(o cliente pede JSON), exceção em índice inválido (None é o
+contrato do enunciado).
+"""
+
 import json
 import os
 
 
-def _validar_arquivo_json(nome_arquivo: str, /) -> None:
-    """Valida se arquivo existe e contem JSON valido; levanta excecao caso contrario."""
-    try:
-        with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
-            json.load(arquivo)
-    except FileNotFoundError:
-        raise FileNotFoundError(f'Arquivo nao encontrado: {nome_arquivo}')
-    except json.JSONDecodeError:
-        raise ValueError(f'Arquivo nao contem JSON valido: {nome_arquivo}')
-
-
 def carregar_tarefas(
     nome_arquivo: str,
-    /,
 ) -> list[str]:
-    """Retorna lista de tarefas do arquivo JSON ou lista vazia se nao existir.
+    """Retorna lista de tarefas do arquivo JSON ou lista vazia.
 
-    Parametros:
-        nome_arquivo: Caminho do arquivo JSON.
+    Se o arquivo nao existir, retorna lista vazia.
 
-    Returns:
+    Parametros
+    ----------
+    nome_arquivo : str
+        Caminho do arquivo JSON.
+
+    Returns
+    -------
+    list[str]
         Lista de tarefas.
 
-    Raises:
-        ValueError: Se arquivo existir mas nao contiver JSON valido.
-
-    Exemplos:
-    >>> import tempfile, os, json
+    Exemplos
+    --------
+    >>> import tempfile, os
     >>> tmp = tempfile.mktemp(suffix='.json')
     >>> with open(tmp, 'w') as f:
     ...     json.dump({'tarefas': ['Estudar', 'Trabalhar']}, f)
@@ -50,15 +60,18 @@ def carregar_tarefas(
 def salvar_tarefas(
     nome_arquivo: str,
     tarefas: list[str],
-    /,
 ) -> None:
     """Salva lista de tarefas em arquivo JSON com indentacao.
 
-    Parametros:
-        nome_arquivo: Caminho do arquivo JSON.
-        tarefas: Lista de tarefas a salvar.
+    Parametros
+    ----------
+    nome_arquivo : str
+        Caminho do arquivo JSON.
+    tarefas : list[str]
+        Lista de tarefas a salvar.
 
-    Exemplos:
+    Exemplos
+    --------
     >>> import tempfile, os
     >>> tmp = tempfile.mktemp(suffix='.json')
     >>> salvar_tarefas(tmp, ['Comprar pao'])
@@ -78,18 +91,18 @@ def salvar_tarefas(
 def adicionar_tarefa(
     nome_arquivo: str,
     tarefa: str,
-    /,
 ) -> None:
     """Adiciona uma nova tarefa ao final da lista no arquivo JSON.
 
-    Parametros:
-        nome_arquivo: Caminho do arquivo JSON.
-        tarefa: Descricao da nova tarefa.
+    Parametros
+    ----------
+    nome_arquivo : str
+        Caminho do arquivo JSON.
+    tarefa : str
+        Descricao da nova tarefa.
 
-    Raises:
-        ValueError: Se arquivo existir mas tiver JSON invalido.
-
-    Exemplos:
+    Exemplos
+    --------
     >>> import tempfile, os
     >>> tmp = tempfile.mktemp(suffix='.json')
     >>> adicionar_tarefa(tmp, 'Tarefa 1')
@@ -105,22 +118,25 @@ def adicionar_tarefa(
 def remover_tarefa(
     nome_arquivo: str,
     indice: int,
-    /,
-) -> str:
+) -> str | None:
     """Remove tarefa pelo indice e retorna a tarefa removida.
 
-    Parametros:
-        nome_arquivo: Caminho do arquivo JSON.
-        indice: Indice (0-based) da tarefa a remover.
+    Se o indice for invalido, retorna None sem modificar o arquivo.
 
-    Returns:
-        A tarefa removida.
+    Parametros
+    ----------
+    nome_arquivo : str
+        Caminho do arquivo JSON.
+    indice : int
+        Indice (0-based) da tarefa a remover.
 
-    Raises:
-        IndexError: Se o indice for invalido.
-        ValueError: Se arquivo existir mas tiver JSON invalido.
+    Returns
+    -------
+    str | None
+        A tarefa removida, ou None se o indice for invalido.
 
-    Exemplos:
+    Exemplos
+    --------
     >>> import tempfile, os
     >>> tmp = tempfile.mktemp(suffix='.json')
     >>> adicionar_tarefa(tmp, 'A')
@@ -129,29 +145,37 @@ def remover_tarefa(
     'B'
     >>> carregar_tarefas(tmp)
     ['A']
+    >>> remover_tarefa(tmp, 99)
     >>> os.remove(tmp)
     """
     tarefas = carregar_tarefas(nome_arquivo)
-    tarefa_removida = tarefas.pop(indice)
-    salvar_tarefas(nome_arquivo, tarefas)
-    return tarefa_removida
+    if 0 <= indice < len(tarefas):
+        tarefa_removida = tarefas.pop(indice)
+        salvar_tarefas(nome_arquivo, tarefas)
+        return tarefa_removida
+    return None
 
 
 def renomear_arquivo_json(
     origem: str,
     destino: str,
-    /,
 ) -> None:
     """Renomeia o arquivo JSON de tarefas.
 
-    Parametros:
-        origem: Caminho atual do arquivo.
-        destino: Novo caminho do arquivo.
+    Parametros
+    ----------
+    origem : str
+        Caminho atual do arquivo.
+    destino : str
+        Novo caminho do arquivo.
 
-    Raises:
-        FileNotFoundError: Se o arquivo de origem nao existir.
+    Raises
+    ------
+    FileNotFoundError
+        Se o arquivo de origem nao existir.
 
-    Exemplos:
+    Exemplos
+    --------
     >>> import tempfile, os
     >>> tmp_orig = tempfile.mktemp(suffix='.json')
     >>> tmp_dest = tempfile.mktemp(suffix='.json')
@@ -170,3 +194,13 @@ def renomear_arquivo_json(
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
+
+# Onde você provavelmente divergiu:
+# - deixou remover_tarefa levantar IndexError quando o índice é
+#   inválido (o contrato do enunciado é retornar None — quem chama
+#   pode decidir o que fazer sem try/except)
+# - usou os.rename sem tratar FileNotFoundError (o erro bruto
+#   "No such file or directory" não informa o caminho do usuário)
+# - salvou com ensure_ascii=True (o padrão) — "Tarefa de #compras"
+#   virava \uXXXX no arquivo; ensure_ascii=False preserva o texto
+# - esqueceu indent=2 — o arquivo virava uma linha única ilegível

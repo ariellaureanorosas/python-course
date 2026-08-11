@@ -1,5 +1,7 @@
 """
-Exercício 02 — Calculadora de Média Escolar
+EXERCÍCIO 02 — Calculadora de Média Escolar
+
+Tópicos: input(), float, f-string, if/else
 
 Escreva um programa que receba 4 notas de um aluno via input(),
 calcule a média aritmética e exiba o resultado.
@@ -16,23 +18,9 @@ Exemplo:
   Nota 3: 9.2
   Nota 4: 6.8
   Média: 7.88 — Aprovado
+
+Use seu próprio raciocínio — o gabarito não precisa ser igual,
+apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
-
-MEDIA = 7.0
-QNTD_NOTAS = 4
-
-try:
-    LISTA_NOTAS: list[float] = [
-        float(input(f"Digite a nota {i}: "))
-        for i, _ in enumerate(range(0, QNTD_NOTAS, 1), 1)
-    ]
-except ValueError:
-    print("A nota deve ser um número válido")
-else:
-    media_somada = sum(LISTA_NOTAS) / QNTD_NOTAS
-    print(f"Sua média final foi de: {media_somada:.2f}")
-    print(f"Seu status é: {'APROVADO' if media_somada >= MEDIA else 'REPROVADO'}")
-finally:
-    print("Deus seja Louvado")

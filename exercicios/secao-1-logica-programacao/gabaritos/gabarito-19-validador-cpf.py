@@ -1,9 +1,22 @@
 """
-Validador de CPF Completo
+Gabarito EXERCÍCIO 19 - Validador de CPF Completo
 
-Valida um CPF utilizando o algoritmo completo: limpeza com re.sub(),
-cálculo do primeiro e segundo dígitos verificadores, e rejeição de
-sequências com todos os dígitos iguais.
+Raciocínio sênior
+-----------------
+A validação é uma escada de guardas (rethrowing em camadas):
+limpeza com re.sub, depois comprimento, depois dígitos repetidos,
+depois o cálculo dos dois verificadores. Cada guarda pára com uma
+mensagem específica — nenhuma cai no cálculo sem passar na anterior.
+Os dois verificadores compartilham o MESMO padrão (soma dos
+pesos decrescentes, resto % 11, regra do < 2) — o código duplica
+o padrão com pesos diferentes (10 e 11) em vez de extrair função:
+consciente de que este é o ponto onde alguém com mais experiência
+refatoraria, e aqui a duplicação explícita ajuda a VER o algoritmo
+completo (num exercício, legibilidade > DRY).
+
+Alternativas descartadas: função calcular_digito() chamada duas
+vezes — mais limpo para um projeto real, mas o enunciado pede o
+passo a passo visível.
 """
 
 import re
@@ -16,15 +29,13 @@ PESO_SEGUNDO: int = 11
 DIVISOR_CPF: int = 11
 LIMITE_RESTA: int = 2
 
-cpf_informado: str = input("Digite o CPF para validação: ")
-cpf_limpo: str = re.sub(r"\D", "", cpf_informado)
+cpf_informado: str = input('Digite o CPF para validação: ')
+cpf_limpo: str = re.sub(r'\D', '', cpf_informado)
 
 if len(cpf_limpo) != DIGITOS_CPF:
-    print(f"Erro: o CPF deve conter exatamente {DIGITOS_CPF} dígitos.")
-
+    print(f'Erro: o CPF deve conter exatamente {DIGITOS_CPF} dígitos.')
 elif cpf_limpo == cpf_limpo[0] * DIGITOS_CPF:
-    print("Erro: CPF inválido — todos os dígitos são iguais.")
-
+    print('Erro: CPF inválido — todos os dígitos são iguais.')
 else:
     nove_primeiros: str = cpf_limpo[:DIGITOS_NOVE]
 
@@ -52,9 +63,18 @@ else:
         0 if resto_segundo < LIMITE_RESTA else DIVISOR_CPF - resto_segundo
     )
 
-    cpf_calculado: str = f"{nove_primeiros}{primeiro_digito}{segundo_digito}"
+    cpf_calculado: str = f'{nove_primeiros}{primeiro_digito}{segundo_digito}'
 
     if cpf_limpo == cpf_calculado:
-        print("CPF válido.")
+        print('CPF válido.')
     else:
-        print("CPF inválido — dígitos verificadores não conferem.")
+        print('CPF inválido — dígitos verificadores não conferem.')
+
+# Onde você provavelmente divergiu:
+# - esqueceu de rejeitar CPFs com todos os dígitos iguais
+#   (111.111.111-11 passaria "válido" — o enunciado pede rejeitar)
+# - usou o mesmo peso nos dois loops (o segundo dígito pesa de 11 a 2,
+#   não de 10 a 2 — aqui PESO_SEGUNDO = 11)
+# - esqueceu de incluir o primeiro dígito calculado no segundo cálculo
+#   (dez_primeiros = nove + primeiro)
+# - usou ' '.join() ou concatenação manual em vez de re.sub(r'\D', '')

@@ -1,6 +1,8 @@
 """
 EXERCÍCIO 12 — Tabuada com Lista
 
+Tópicos: for, range(), listas, append()
+
 Receba um número inteiro do usuário.
 Use um laço for de 1 a 10 para calcular a tabuada desse número.
 Armazene cada resultado em uma lista.
@@ -16,6 +18,9 @@ Requisitos:
     - Use uma lista para guardar os resultados.
     - Use for com range().
     - Exiba a tabuada percorrendo a lista com outro for.
+
+Use seu próprio raciocínio — o gabarito não precisa ser igual,
+apenas estar correto.
 """
 
 numero = int(input("Digite um número para ver sua tabuada: "))

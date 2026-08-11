@@ -59,7 +59,7 @@ for linha in linhas_arquivo("dados.csv"):
 
 # ← Comparação de memória
 import sys
-lista = [n for n in range(1000000)]  # ← ~8 MB — aloca tudo
+lista = [n for n in range(1000000)]  # ← ~36 MB — aloca todos os ints
 gen = (n for n in range(1000000))    # ← ~200 bytes — não aloca nada
 ```
 
@@ -81,7 +81,7 @@ list(gen)  # ← [] — vazio, generator já consumido
 Funções com `yield` viram generators porque Python transforma o frame da função num objeto iterator. Quando encontra `yield`, congela o estado local (variáveis, ponteiro de execução) e retorna o valor. Na próxima chamada de `next()`, restaura o frame e continua de onde parou. `yield from` é syntactic sugar que expande `for item in subgen: yield item` — otimizado em C. A economia de memória vem de não alocar o iterável inteiro: cada item é produzido, processado e descartado.
 
 ## Conexões
-- Você já usou esse padrão quando: usou `range()` — que é um generator, não uma lista
+- Você já usou esse padrão quando: usou `range()` — que é preguiçoso (lazy) como um generator, mas não é um generator: é uma sequência imutável reutilizável
 - Aparece também em: `open()` retorna um iterator de linhas, `csv.reader` também é lazy
 - Diferente de: List Comprehension `[x for x]` — aloca tudo na hora, eager
 

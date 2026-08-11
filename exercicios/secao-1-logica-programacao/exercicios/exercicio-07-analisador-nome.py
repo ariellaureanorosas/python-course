@@ -1,5 +1,7 @@
 """
-Exercício 07 — Analisador de Nome com Slicing
+EXERCÍCIO 07 — Analisador de Nome com Slicing
+
+Tópicos: input(), strings, slicing, métodos de string
 
 Receba um nome completo do usuário e exiba as seguintes informações:
 
@@ -24,6 +26,9 @@ Exemplo:
   Primeiro nome: Maria (5 letras)
   Último sobrenome: Santos
   Nome invertido: sotnaS aralC airaM
+
+Use seu próprio raciocínio — o gabarito não precisa ser igual,
+apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========

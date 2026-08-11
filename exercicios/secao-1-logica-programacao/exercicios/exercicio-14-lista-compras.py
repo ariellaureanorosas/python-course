@@ -1,6 +1,8 @@
 """
 EXERCÍCIO 14 — Lista de Compras com Menu
 
+Tópicos: listas, while, if/elif/else, enumerate(), try/except
+
 Implemente um CRUD completo de lista de compras com as seguintes opções:
 
     [i] Inserir item
@@ -34,6 +36,9 @@ Exemplo de interação:
     0 - Feijão
     Operação [i/a/l/s]: s
     Saindo...
+
+Use seu próprio raciocínio — o gabarito não precisa ser igual,
+apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========

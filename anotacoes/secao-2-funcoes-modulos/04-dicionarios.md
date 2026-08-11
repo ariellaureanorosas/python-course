@@ -72,7 +72,7 @@ Internamente, `dict` usa uma tabela hash (sparse array). A chave passa por `hash
 
 ## Teste de recuperação — responda sem olhar para cima
 
-1. Por que listas podem ser chave de dict, mas tuplas sim? Qual propriedade está por trás disso?
+1. Por que tuplas podem ser chave de dict, mas listas não? Qual propriedade está por trás disso?
 2. Escreva o código que acessa `"cargo"` do dict `usuario` e retorna `"não definido"` se a chave não existir.
 3. Qual a diferença entre `d["chave"]` e `d.get("chave")`?
 

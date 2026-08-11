@@ -15,7 +15,8 @@ produtos = [
 Crie as funções:
 
 1. `aumentar_preco_10(produtos: list[dict]) -> list[dict]`
-   - Usa list comprehension com deepcopy para não modificar a original
+   - Usa list comprehension com dict unpacking ({**produto}) para
+     retornar uma nova lista, sem modificar a original
    - Aumenta cada preço em 10% (preco * 1.1)
    - Arredonda o preço para 2 casas decimais
 
@@ -26,9 +27,8 @@ Crie as funções:
 3. `ordenar_por_preco(produtos: list[dict], reverso: bool) -> list[dict]`
    - Usa sorted() com key=lambda para ordenar por preço
 
-Tópicos da aula: list comprehension, deepcopy, lambda, sorted(), valores padrão
+Tópicos da aula: list comprehension, dict unpacking, lambda, sorted(), valores padrão
 """
-from copy import deepcopy
 
 
 produtos = [

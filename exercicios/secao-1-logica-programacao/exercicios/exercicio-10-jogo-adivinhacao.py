@@ -1,5 +1,7 @@
 """
-Exercício 10 — Jogo de Adivinhação com Número Secreto
+EXERCÍCIO 10 — Jogo de Adivinhação com Número Secreto
+
+Tópicos: constantes, while, break, try/except, contadores
 
 Crie um jogo onde o computador "pensa" em um número secreto (fixo,
 definido como constante no código) e o usuário tenta adivinhar.
@@ -24,6 +26,9 @@ Exemplo:
   Maior!
   Palpite: 42
   Parabéns! Você acertou em 4 tentativa(s).
+
+Use seu próprio raciocínio — o gabarito não precisa ser igual,
+apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========

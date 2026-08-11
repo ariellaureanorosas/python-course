@@ -75,12 +75,12 @@ r = "A" if a else "B" if b else "C" if c else "D"  # ← confuso e frágil
 ```
 
 ## Por que Python funciona assim?
-O ternário `X if cond else Y` é syntactic sugar: o compilador gera o mesmo bytecode de um `if/else`, mas como *expressão* (produz um valor que pode ser atribuído). `Decimal` sobrecarrega operadores aritméticos com math decimal de precisão arbitrária usando inteiros internos — não usa IEEE 754 como `float`. O `round()` implementa ROUND_HALF_EVEN para evitar viés estatístico: em .5, arredonda para o dígito par mais próximo (se 2.5 vai para 2, 3.5 vai para 4), o que estatisticamente tende a zero ao longo de muitas operações.
+O ternário `X if cond else Y` é syntactic sugar: o compilador gera um bytecode de *expressão condicional* (avaliação curto-circuito) em vez de saltos de bloco `if/else`. Importante: Python avalia **somente a branch escolhida** — se `cond` é True, `X` é avaliado e `Y` nunca chega a rodar (e vice-versa). Isso permite seguranças do tipo `resultado = dados["preco"] if dados else 0`. `Decimal` sobrecarrega operadores aritméticos com math decimal de precisão arbitrária usando inteiros internos — não usa IEEE 754 como `float`. O `round()` implementa ROUND_HALF_EVEN para evitar viés estatístico: em .5, arredonda para o dígito par mais próximo (se 2.5 vai para 2, 3.5 vai para 4), o que estatisticamente tende a zero ao longo de muitas operações.
 
 ## Conexões
 - Você já usou esse padrão quando: escreveu `if cond: x = a else: x = b` — ternário encurta exatamente isso
 - Aparece também em: compreensão de listas (`[x if cond else y for ...]`), `numpy.where()`, pandas `apply()`
-- Diferente de: `or` / `and` — eles retornam *um dos operandos* sem avaliar ambos; ternário sempre avalia as duas branches
+- Diferente de: `or` / `and` — eles retornam *um dos operandos*; ternário é como eles nesse ponto: também avalia só a branch escolhida (curto-circuito)
 
 ---
 

@@ -39,7 +39,7 @@ f"{nome:>10}"   # ← alinhamento à direita em campo de 10 caracteres
 f"{nome:^10}"   # ← centralizado em campo de 10 caracteres
 f"{nome!r}"     # ← representação: retorna a versão "crua" com aspas (útil pra debug)
 f"{nome!s}"     # ← string: o padrão, retorna str() do valor
-f"{nome!a}"     # ← ASCII: escapa caracteres não-ASCII pra \x, \u, \U
+f"{nome!a}"     # ← ascii(): escapa caracteres não-ASCII pra \x, \u, \U
 ```
 
 ## O que NÃO fazer
@@ -51,7 +51,7 @@ print("Olá, %s!" % nome + f" {idade}")  # ← funciona, mas é feio e inconsist
 ```
 
 ## Por que Python funciona assim?
-Python herdou o `%` do C (por isso a sintaxe estranha). O `.format()` veio no Python 2.6 pra resolver limitações do `%`. As f-strings (3.6+) são a evolução final: mais rápidas, mais legíveis, e resolvem tudo que os anteriores faziam. A `!r`/`!s`/`!a` usam os métodos `__repr__`, `__str__` e `__ascii__` dos objetos — cada classe pode definir como quer ser representada.
+Python herdou o `%` do C (por isso a sintaxe estranha). O `.format()` veio no Python 2.6 pra resolver limitações do `%`. As f-strings (3.6+) são a evolução final: mais rápidas, mais legíveis, e resolvem tudo que os anteriores faziam. A `!r` usa o método `__repr__` e o `!s` o `__str__` dos objetos — cada classe pode definir como quer ser representada. Já o `!a` usa a função embutida `ascii()` (não existe um dunder `__ascii__`): ela aplica `repr()` e transforma caracteres não-ASCII em escapes `\u`/`\x`.
 
 ## Conexões
 - Você já usou esse padrão quando: escreveu `print(f"Resultado: {valor}")` na seção anterior — f-string é o padrão moderno

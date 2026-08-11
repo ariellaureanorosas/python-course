@@ -32,7 +32,8 @@ O arquivo JSON terá o formato:
 
 5. Função `renomear_arquivo_json(origem: str, destino: str) -> None`
    - Usa os.rename para renomear o arquivo
-   - Trata FileNotFoundError
+   - Levanta FileNotFoundError com mensagem clara se a origem
+     não existir
 """
 
 import json

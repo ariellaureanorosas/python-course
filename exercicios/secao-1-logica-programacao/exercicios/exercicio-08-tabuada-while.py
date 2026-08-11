@@ -1,5 +1,7 @@
 """
-Exercício 08 — Calculadora de Tabuada com while
+EXERCÍCIO 08 — Calculadora de Tabuada com while
+
+Tópicos: input(), int, try/except, while, f-string, alinhamento
 
 Receba um número inteiro e exiba a tabuada dele de 1 a 10.
 
@@ -27,6 +29,9 @@ Exemplo:
    8 x  5 =  40
    9 x  5 =  45
   10 x  5 =  50
+
+Use seu próprio raciocínio — o gabarito não precisa ser igual,
+apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========

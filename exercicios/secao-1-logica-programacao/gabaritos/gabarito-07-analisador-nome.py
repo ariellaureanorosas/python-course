@@ -1,7 +1,16 @@
 """
-Analisa um nome completo informado pelo usuário e exibe informações
-como versão maiúscula, minúscula, total de letras, primeiro nome,
-último sobrenome e o nome invertido.
+Gabarito EXERCÍCIO 07 - Analisador de Nome com Slicing
+
+Raciocínio sênior
+-----------------
+Cada informação é calculada uma única vez e guardada em variável
+nomeada (total_letras, primeiro_nome, ...) — nada de repetir
+expressões longas dentro dos prints.
+O caso de nome sem espaço (nome único) é tratado com ternário:
+.find() devolve -1 e o código cai no valor completo. Isso mostra
+que "dados de borda" fazem parte do problema, não é frescura.
+Alternativas descartadas: .split() direto — mais curto, mas o
+exercício pede explicitamente slicing + find/rfind.
 """
 
 nome_completo: str = input('Nome completo: ')
@@ -29,3 +38,12 @@ ultimo_sobrenome: str = (
 print(f'Último sobrenome: {ultimo_sobrenome}')
 
 print(f'Nome invertido: {nome_completo[::-1]}')
+
+# Onde você provavelmente divergiu:
+# - usou split() em todo lugar (resolve, mas o enunciado pede
+#   slicing + find/rfind)
+# - calculou len(nome_completo.split()[0]) várias vezes dentro dos
+#   prints (aqui o primeiro_nome é calculado uma vez só)
+# - tratou apenas o caso comum e quebrou com nome de uma palavra só
+#   (aqui o ternário com primeiro_espaco != -1 cobre esse caso)
+# - usou replace(' ', '') em vez de len - count(' ')

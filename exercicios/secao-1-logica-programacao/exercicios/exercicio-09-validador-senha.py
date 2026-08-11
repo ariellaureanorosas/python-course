@@ -1,5 +1,7 @@
 """
-Exercício 09 — Validador de Senha com Critérios
+EXERCÍCIO 09 — Validador de Senha com Critérios
+
+Tópicos: input(), for, in, métodos de string, if/else
 
 Crie um validador de senhas. O programa deve receber uma senha
 e verificar os seguintes critérios:
@@ -30,6 +32,9 @@ Exemplo:
   [OK] Contém maiúscula.
   [OK] Contém minúscula.
   Senha válida!
+
+Use seu próprio raciocínio — o gabarito não precisa ser igual,
+apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========

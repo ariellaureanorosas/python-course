@@ -1,5 +1,7 @@
 """
-Exercício 03 — Par ou Ímpar com Validação
+EXERCÍCIO 03 — Par ou Ímpar com Validação
+
+Tópicos: input(), int, try/except, operador %
 
 Receba um número inteiro do usuário e informe se ele é par ou ímpar.
 
@@ -20,17 +22,9 @@ Exemplos:
 
   Digite um número: abc
   Erro: digite um número inteiro válido.
+
+Use seu próprio raciocínio — o gabarito não precisa ser igual,
+apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
-
-try:
-    numero: int = int(input("Digite um valor: "))
-except TypeError:
-    print("Digite um Número")
-else:
-    paridade: str = "par" if numero % 2 == 0 else "impar"
-    print(f"{numero} é {paridade}")
-finally:
-    print("-" * 15)
-    print("Deus seja Louvado")

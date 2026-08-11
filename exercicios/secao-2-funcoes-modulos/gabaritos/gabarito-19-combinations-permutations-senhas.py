@@ -1,25 +1,51 @@
+"""
+Gabarito EXERCÍCIO 19 - combinations/permutations em Senhas
+
+Raciocínio sênior
+-----------------
+combinations ignora ordem (['A','B'] == ['B','A']), permutations
+considera — a comparação final (razao = permutações/combinacoes)
+deixa o conceito visível: com n elementos e tamanho k, há k!
+permutações para cada combinação.
+gerar_senhas_com_fixas resolve com um filtro de subset: das
+combinações totais, só as que CONTÊM todos os obrigatórios. Isso é
+mais enxuto e mais correto que combinar manualmente obrigatórios +
+escolhas — evita duplicação e cobre casos em que o conjunto
+obrigatório interage com os opcionais.
+A validação de tamanho é fail-fast: garante que combinations não
+receba tamanho maior que o conjunto.
+Alternativas descartadas: product() (com repetição — aqui a
+semântica é sem repetição), loop manual de agrupamento.
+"""
+
 from itertools import combinations, permutations
-from copy import deepcopy
 
 
 def gerar_combinacoes(
     caracteres: list[str],
     tamanho: int,
-    /,
 ) -> list[tuple[str, ...]]:
     """Retorna combinacoes dos caracteres (ordem nao importa).
 
-    Parametros:
-        caracteres: Lista de caracteres disponiveis.
-        tamanho: Comprimento de cada combinacao.
+    Parametros
+    ----------
+    caracteres : list[str]
+        Lista de caracteres disponiveis.
+    tamanho : int
+        Comprimento de cada combinacao.
 
-    Returns:
+    Returns
+    -------
+    list[tuple[str, ...]]
         Lista de tuplas com combinacoes.
 
-    Raises:
-        ValueError: Se tamanho maior que numero de caracteres.
+    Raises
+    ------
+    ValueError
+        Se tamanho maior que numero de caracteres.
 
-    Exemplos:
+    Exemplos
+    --------
     >>> gerar_combinacoes(['A', 'B', 'C'], 2)
     [('A', 'B'), ('A', 'C'), ('B', 'C')]
     >>> gerar_combinacoes(['A', 'B'], 3)
@@ -37,21 +63,28 @@ def gerar_combinacoes(
 def gerar_permutacoes(
     caracteres: list[str],
     tamanho: int,
-    /,
 ) -> list[tuple[str, ...]]:
     """Retorna permutacoes dos caracteres (ordem importa).
 
-    Parametros:
-        caracteres: Lista de caracteres disponiveis.
-        tamanho: Comprimento de cada permutacao.
+    Parametros
+    ----------
+    caracteres : list[str]
+        Lista de caracteres disponiveis.
+    tamanho : int
+        Comprimento de cada permutacao.
 
-    Returns:
+    Returns
+    -------
+    list[tuple[str, ...]]
         Lista de tuplas com permutacoes.
 
-    Raises:
-        ValueError: Se tamanho maior que numero de caracteres.
+    Raises
+    ------
+    ValueError
+        Se tamanho maior que numero de caracteres.
 
-    Exemplos:
+    Exemplos
+    --------
     >>> gerar_permutacoes(['A', 'B'], 2)
     [('A', 'B'), ('B', 'A')]
     >>> gerar_permutacoes(['A', 'B', 'C'], 2)
@@ -67,20 +100,26 @@ def gerar_permutacoes(
 def comparar_possibilidades(
     caracteres: list[str],
     tamanho: int,
-    /,
 ) -> dict[str, int | float]:
     """Retorna dicionario comparativo entre combinacoes e permutacoes.
 
-    Usa generator expressions para contar sem materializar listas intermediarias.
+    Usa generator expressions para contar sem materializar listas
+    intermediarias.
 
-    Parametros:
-        caracteres: Lista de caracteres disponiveis.
-        tamanho: Comprimento das senhas.
+    Parametros
+    ----------
+    caracteres : list[str]
+        Lista de caracteres disponiveis.
+    tamanho : int
+        Comprimento das senhas.
 
-    Returns:
+    Returns
+    -------
+    dict[str, int | float]
         Dicionario com estatisticas.
 
-    Exemplos:
+    Exemplos
+    --------
     >>> resultado = comparar_possibilidades(['A', 'B', 'C'], 2)
     >>> resultado['combinacoes']
     3
@@ -110,23 +149,34 @@ def gerar_senhas_com_fixas(
     obrigatorios: list[str],
     opcionais: list[str],
     tamanho: int,
-    /,
 ) -> list[str]:
     """Retorna combinacoes que incluem todos os caracteres obrigatorios.
 
-    Parametros:
-        obrigatorios: Caracteres obrigatorios em todas as senhas.
-        opcionais: Caracteres opcionais.
-        tamanho: Comprimento total de cada senha.
+    Gera todas as combinacoes de `tamanho` a partir do conjunto
+    (obrigatorios + opcionais) e filtra as que contêm todos os
+    obrigatorios.
 
-    Returns:
-        Lista de strings com senhas geradas (combinacoes sem repeticoes).
+    Parametros
+    ----------
+    obrigatorios : list[str]
+        Caracteres que devem aparecer em todas as senhas.
+    opcionais : list[str]
+        Caracteres opcionais.
+    tamanho : int
+        Comprimento total de cada senha.
 
-    Raises:
-        ValueError: Se tamanho < len(obrigatorios) ou se houver caracteres
-                    duplicados entre obrigatorios e opcionais.
+    Returns
+    -------
+    list[str]
+        Lista de strings com senhas geradas (sem repeticao).
 
-    Exemplos:
+    Raises
+    ------
+    ValueError
+        Se tamanho for menor que o numero de obrigatorios.
+
+    Exemplos
+    --------
     >>> gerar_senhas_com_fixas(['A'], ['B', 'C'], 2)
     ['AB', 'AC']
     >>> gerar_senhas_com_fixas(['A', 'B'], ['C', 'D'], 3)
@@ -151,3 +201,15 @@ def gerar_senhas_com_fixas(
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
+
+# Onde você provavelmente divergiu:
+# - usou product() — isso PERMITE repetição de caracteres
+#   ('AA'), que não faz sentido numa senha gerada por
+#   combinações; aqui combinations/permutations são sem repetição
+# - esqueceu a validação de tamanho (combinations(['A','B'], 3)
+#   devolvia lista vazia em silêncio em vez de avisar)
+# - em gerar_senhas_com_fixas, montou combinações de obrigatórios +
+#   opcionais manualmente (o subset filter é mais à prova de erro:
+#   cobre automaticamente o caso tamanho == len(obrigatorios))
+# - não chamou doctest.testmod() — o pattern dos gabaritos sem ele
+#   não roda a bateria automática

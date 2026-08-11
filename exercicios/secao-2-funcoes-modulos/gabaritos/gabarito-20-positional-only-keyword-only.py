@@ -1,3 +1,21 @@
+"""
+Gabarito EXERCÍCIO 20 - Positional-Only e Keyword-Only
+
+Raciocínio sênior
+-----------------
+Os três mecanismos de assinatura aparecem com papéis reais:
+`/` (positional-only) impede que alguém trave o código passando o
+nome do parâmetro errado (ex.: valor=... num cálculo abreviado);
+`*` (keyword-only) força clareza em configs com vários defaults
+(idade/ativo em criar_usuario; pares/expoente em pipelines);
+e combinados, `/`, `*` garantem uma "faca de dois gumes": quem
+chama REDUZ a ambiguidade para o programador que lê depois.
+O gabarito documenta o contrato em cada docstring e demonstra
+que a posição do argumento é parte da API — reverter a chamada
+com erro de API buga a assinatura, não a lógica.
+"""
+
+
 def calcular(
     valor: float,
     /,
@@ -7,15 +25,22 @@ def calcular(
 ) -> float:
     """Retorna resultado de valor * taxa - desconto.
 
-    Parametros:
-        valor: Posicional apenas (nao pode ser nomeado).
-        taxa: Posicional ou nomeado.
-        desconto: Nomeado apenas, padrao 0.0.
+    Parametros
+    ----------
+    valor : float
+        Posicional apenas (nao pode ser nomeado).
+    taxa : float
+        Posicional ou nomeado.
+    desconto : float, opcional
+        Nomeado apenas, padrao 0.0.
 
-    Returns:
+    Returns
+    -------
+    float
         Resultado do calculo.
 
-    Exemplos:
+    Exemplos
+    --------
     >>> calcular(100.0, 0.1, desconto=5.0)
     5.0
     >>> calcular(200.0, 0.05)
@@ -36,16 +61,24 @@ def criar_usuario(
 ) -> dict[str, str | int | bool]:
     """Retorna dicionario representando um usuario.
 
-    Parametros:
-        nome: Posicional apenas.
-        email: Posicional ou nomeado.
-        idade: Nomeado apenas, padrao 0.
-        ativo: Nomeado apenas, padrao True.
+    Parametros
+    ----------
+    nome : str
+        Posicional apenas.
+    email : str
+        Posicional ou nomeado.
+    idade : int, opcional
+        Nomeado apenas, padrao 0.
+    ativo : bool, opcional
+        Nomeado apenas, padrao True.
 
-    Returns:
+    Returns
+    -------
+    dict[str, str | int | bool]
         Dicionario com dados do usuario.
 
-    Exemplos:
+    Exemplos
+    --------
     >>> criar_usuario('Ana', 'ana@email.com')
     {'nome': 'Ana', 'email': 'ana@email.com', 'idade': 0, 'ativo': True}
     >>> criar_usuario('Joao', 'joao@email.com', idade=25, ativo=False)
@@ -67,17 +100,25 @@ def registrar_venda(
 ) -> dict[str, str | int | float]:
     """Retorna dicionario com dados da venda e total calculado.
 
-    Todos os parametros sao nomeados apenas (keyword-only).
+    Todos os parametros sao nomeados apenas (keyword-only): não há
+    argumentos posicionais nesta assinatura.
 
-    Parametros:
-        produto: Nome do produto.
-        quantidade: Quantidade vendida.
-        preco_unitario: Preco unitario.
+    Parametros
+    ----------
+    produto : str
+        Nome do produto.
+    quantidade : int
+        Quantidade vendida.
+    preco_unitario : float
+        Preco unitario.
 
-    Returns:
+    Returns
+    -------
+    dict[str, str | int | float]
         Dicionario com produto, quantidade, preco_unitario e total.
 
-    Exemplos:
+    Exemplos
+    --------
     >>> registrar_venda(produto='Caneta', quantidade=10, preco_unitario=1.5)
     {'produto': 'Caneta', 'quantidade': 10, 'preco_unitario': 1.5, 'total': 15.0}
     """
@@ -92,3 +133,13 @@ def registrar_venda(
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
+
+# Onde você provavelmente divergiu:
+# - confundiu positional-only (`/`) com keyword-only (`*`) — `/` está
+#   ANTES na assinatura e proíbe nomear; `*` está depois e exige nomear
+# - tentou chamar registrar_venda('Caneta', 2, 1.5) — vai falhar com
+#   TypeError: precisa de kwargs; a assinatura é o contrato
+# - colocou `/` no MEIO da assinatura sem motivo (aqui cada uso tem
+#   um propósito: proteger o nome do parâmetro ou forçar clareza)
+# - esqueceu que `*` no início (registrar_venda) zera as posições
+#   livres: TUDO vira keyword-only

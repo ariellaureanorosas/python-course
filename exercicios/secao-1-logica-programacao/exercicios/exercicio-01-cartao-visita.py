@@ -1,5 +1,7 @@
 """
-Exercício 01 — Cartão de Visita com print()
+EXERCÍCIO 01 — Cartão de Visita com print()
+
+Tópicos: print(), sep, end, variáveis, input()
 
 Use a função print() com os parâmetros sep e end para exibir um
 cartão de visita no formato abaixo.
@@ -9,8 +11,7 @@ Regras:
   - Use sep para separar as seções do cartão com uma linha de
     caracteres "=" (ex.: ==========).
   - Use end para controlar a quebra de linha entre os blocos.
-  - A saída final deve ocupar EXATAMENTE 6 linhas (incluindo a linha
-    vazia entre o telefone e o email).
+  - A saída final deve ocupar EXATAMENTE 5 linhas.
 
 Exemplo de saída esperada:
 ====================
@@ -19,17 +20,11 @@ Telefone: (11) 99999-0000
 Email: maria@email.com
 ====================
 
-Dica: você pode usar print com sep="\n" e end="\n\n" para controlar
-as quebras. Ou pode simplesmente chamar print() vazio para pular linha.
+Dica: você pode usar print() vazio para pular linha, ou sep e end
+para controlar as quebras sem chamadas extras.
+
+Use seu próprio raciocínio — o gabarito não precisa ser igual,
+apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
-SEPARADOR = "=" * 30
-
-nome: str = input("Digite seu nome: ")
-telefone: int = input("Digite seu telefone: ")
-email: str = input("Digite seu email: ")
-
-print(SEPARADOR)
-print(nome, telefone, email, sep="\n")
-print(SEPARADOR)

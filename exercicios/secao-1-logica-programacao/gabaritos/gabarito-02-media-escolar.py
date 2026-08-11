@@ -1,6 +1,15 @@
 """
-Calcula a média aritmética de quatro notas e informa se o aluno foi
-aprovado ou reprovado.
+Gabarito EXERCÍCIO 02 - Calculadora de Média Escolar
+
+Raciocínio sênior
+-----------------
+A média é um cálculo puro; a leitura das notas e o tratamento de
+erro ficam isolados no try/except para o fluxo principal não se
+misturar com a validação. A regra de aprovação usa uma constante
+(MEDIA_MINIMA_APROVACAO) em vez de um "número mágico" pelo código.
+Alternativas descartadas: list comprehension com sum() — legível
+para quem está além deste ponto, mas aqui o objetivo é dominar
+variáveis e if/else passo a passo.
 """
 
 MEDIA_MINIMA_APROVACAO: float = 7.0
@@ -17,3 +26,11 @@ else:
     media: float = (nota_1 + nota_2 + nota_3 + nota_4) / QUANTIDADE_NOTAS
     status: str = 'Aprovado' if media >= MEDIA_MINIMA_APROVACAO else 'Reprovado'
     print(f'Média: {media:.2f} — {status}')
+
+# Onde você provavelmente divergiu:
+# - separou a leitura em try/except e a média no else (o except captura
+#   só a conversão; o cálculo não roda se a leitura falhar)
+# - usou "APROVADO"/"REPROVADO" em maiúsculas (o enunciado pede
+#   "Aprovado"/"Reprovado")
+# - somou as notas sem QUANTIDADE_NOTAS como constante (4 espalhado)
+# - usou .2f na média, não no status — a formatação é só do número
