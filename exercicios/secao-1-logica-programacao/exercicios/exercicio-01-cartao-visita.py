@@ -28,3 +28,15 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+SEPARADOR: str = "=" * 30
+
+nome: str = input("Digite seu nome: ")
+telefone: int = int(input("Digite seu número: "))
+email: str = input("Digite seu email: ")
+
+print(SEPARADOR)
+print(f"Nome: {nome}")
+print(f"Telefone: {telefone}")
+print(f"Email: {email}")
+print(SEPARADOR)
