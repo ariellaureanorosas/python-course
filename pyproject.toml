@@ -1,0 +1,108 @@
+# ============================
+# Configuração das ferramentas:
+#   - Ruff (lint e formatação)
+#   - Pyright (tipagem estática)
+#   - Pytest (testes e doctests)
+#
+# Baseado no ambiente moderno do professor (Luiz Otávio Miranda),
+# adaptado para este repositório de curso (sem pacote src/).
+#
+# Atenção: As versões do Python devem ser consistentes entre:
+#   - tool.ruff.target-version
+#   - tool.pyright.pythonVersion
+#   - .python-version
+# ============================
+
+# ============================
+# Lint e formatação (Ruff)
+# ============================
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+indent-width = 4
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "env",
+    ".env",
+    "node_modules",
+    "__pycache__",
+]
+
+[tool.ruff.lint]
+select = [
+    "ASYNC",
+    "A",
+    "ANN",
+    "B",
+    "BLE",
+    "C4",
+    "C90",
+    "COM",
+    "E",
+    "EM",
+    "ERA",
+    "EXE",
+    "F",
+    "FBT",
+    "FIX",
+    "I",
+    "ICN",
+    "ISC",
+    "Q",
+    "RET",
+    "RSE",
+    "S",
+    "SIM",
+    "SLF",
+    "T10",
+    "T20",
+    "TC",
+    "TD",
+    "TRY",
+    "UP",
+    "W",
+    "YTT",
+    "RUF",
+    "N",
+]
+ignore = ["T201", "COM812"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ANN201", "S101"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+
+# ============================
+# Tipagem (Pyright)
+# ============================
+[tool.pyright]
+typeCheckingMode = "strict"
+pythonVersion = "3.14"
+include = ["."]
+exclude = [
+    ".git",
+    ".venv",
+    "**/venv",
+    "**/env",
+    "**/.env",
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.mypy_cache",
+    "**/.ruff_cache",
+    "**/.pytest_cache",
+]
+venv = ".venv"
+venvPath = "."
+
+
+# ============================
+# Testes (Pytest)
+# ============================
+[tool.pytest.ini_options]
+addopts = "-s --color=yes --tb=short"
