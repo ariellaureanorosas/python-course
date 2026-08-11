@@ -14,6 +14,11 @@ Notas sobre as adições feitas ao ambiente deste repositório (padrão do curso
 | 07 | [07-dotenv-variaveis-ambiente.md](07-dotenv-variaveis-ambiente.md) | `python-dotenv`, `.env` vs `.env-example`, segredos fora do Git |
 | 08 | [08-vscode-configuracao.md](08-vscode-configuracao.md) | `.vscode/`: settings.json, extensions.json, launch.json |
 
+> **Guia de Git:** o `git-guia/` (pasta irmã desta) reúne os guias de Git:
+> `guia-rapido.md`, `guia-fluxo-trabalho.md`, `guia-mensagens-commit.md`,
+> `guia-criar-repositorio-github.md`, `erros-comuns-e-solucoes.md` e
+> `glossario-git.md`.
+
 ---
 
 ## Como este ambiente foi montado

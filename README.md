@@ -83,10 +83,12 @@ python -m doctest -v exercicios/secao-2-funcoes-modulos/gabaritos/gabarito-09-de
 ```
 PYTHON-COURSE/
 ├── .vscode/
-├── anotacoes/                        ← resumo e revisão do conteúdo
+├── anotacoes/                       ← resumo e revisão do conteúdo
 │   ├── secao-1-logica-programacao/
 │   ├── secao-2-funcoes-modulos/
-│   └── secao-3-orientacao-objetos/
+│   ├── secao-3-orientacao-objetos/
+│   ├── ambiente-desenvolvimento/    ← notas do ambiente (venv, uv, Ruff, Pyright, etc.)
+│   └── git-guia/                    ← guias de Git (comandos, erros, fluxo)
 ├── exercicios/                       ← exercícios práticos + gabaritos
 │   ├── secao-1-logica-programacao/
 │   │   ├── exercicios/
@@ -102,7 +104,6 @@ PYTHON-COURSE/
 ├── Seção 3 - Introdução à Programação Orientada a Objetos em Python - POO (Classes)/
 ├── Type Hints - Youtube/
 ├── ... (mais seções em andamento)
-├── git-guia/                         ← guias de Git (comandos, erros, fluxo)
 ├── .gitignore
 ├── README.md
 └── .venv/
@@ -208,8 +209,12 @@ docstrings e conformidade com PEP 8).
       <td>25 resumos de POO em markdown para revisão rápida</td>
     </tr>
     <tr>
-      <td><code>git-guia/</code></td>
+      <td><code>anotacoes/git-guia/</code></td>
       <td>Guias de Git: comandos, erros, fluxo, mensagens de commit e glossário</td>
+    </tr>
+    <tr>
+      <td><code>anotacoes/ambiente-desenvolvimento/</code></td>
+      <td>Notas do ambiente: venv, uv, pyproject.toml, Ruff, Pyright, Pytest, dotenv e VS Code</td>
     </tr>
   </tbody>
 </table>
