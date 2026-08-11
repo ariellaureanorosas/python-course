@@ -28,3 +28,14 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+while True:
+    try:
+        numero = int(input("Digite o número: "))
+    except ValueError:
+        print("ERRO: Digite o valor correto")
+    else:
+        print(f"{numero} é par" if numero % 2 == 0 else f"{numero} é impar")
+        pergunta = input("Deseja continuar: [S]-[N] ").lower()
+        if pergunta.__contains__("n"):
+            break
