@@ -28,21 +28,21 @@ como os argumentos podem ser passados.
    - Retorna dicionário com todos os dados
 
 3. Função `registrar_venda(
-       /,
        *,
        produto: str,
        quantidade: int,
        preco_unitario: float,
    ) -> dict`
-   - TODOS os parâmetros são positional-only ANTES de /
-   - TODOS os parâmetros DEPOIS de * são keyword-only
+   - TODOS os parâmetros estão DEPOIS de `*` — portanto TODOS são
+     keyword-only (não há nenhum parâmetro posicional)
    - Retorna dicionário com produto, quantidade, preco_unitario, total
    - total = quantidade * preco_unitario
 
 Desafio extra (opcional dentro da função 3):
-   Como / está antes de *, não há parâmetros posicionais. Teste chamar a função
-   sem argumentos posicionais para entender o comportamento.
-   Exemplo de chamada válida: registrar_venda(produto="Caneta", quantidade=10, preco_unitario=1.50)
+   Não há argumentos posicionais nesta assinatura: chamar
+   registrar_venda("Caneta", 10, 1.5) levanta TypeError. A única
+   forma válida é passando os argumentos por nome:
+   registrar_venda(produto="Caneta", quantidade=10, preco_unitario=1.50)
 """
 
 
@@ -68,7 +68,6 @@ def criar_usuario(
 
 
 def registrar_venda(
-    /,
     *,
     produto: str,
     quantidade: int,

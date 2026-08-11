@@ -59,18 +59,18 @@ git clone https://github.com/<seu-usuario>/python-course.git
 cd python-course
 
 # 2. Criar e ativar o ambiente virtual
-python -m venv venv
-source venv/bin/activate        # Linux/macOS
-venv\Scripts\activate           # Windows
+python -m venv .venv
+source .venv/bin/activate       # Linux/macOS
+.venv\Scripts\activate          # Windows
 
 # 3. Instalar dependências (quando aplicável — seções com Django, Selenium, PySide6 etc.)
 pip install -r requirements.txt
 
 # 4. Rodar os exercícios da Seção 1 (input no terminal)
-python exercicios/secao-1-logica-programacao/exercicios/01-cartao-visita.py
+python exercicios/secao-1-logica-programacao/exercicios/exercicio-01-cartao-visita.py
 
 # 5. Validar um gabarito das Seções 2 e 3 (doctest)
-python -m doctest -v exercicios/secao-2-funcoes-modulos/gabaritos/09-decorator-log.py
+python -m doctest -v exercicios/secao-2-funcoes-modulos/gabaritos/gabarito-09-decorator-log.py
 ```
 
 > Requer **Python 3.13+**. Cada seção com dependências extras (Django, Selenium, PySide6, MySQL)
@@ -100,11 +100,12 @@ PYTHON-COURSE/
 ├── Seção 1 - Iniciando na programação com Python (Lógica de programação básica)/
 ├── Seção 2 - Python Intermediário - Funções - Dicionários - Módulos - Programação Funcional/
 ├── Seção 3 - Introdução à Programação Orientada a Objetos em Python - POO (Classes)/
+├── Type Hints - Youtube/
 ├── ... (mais seções em andamento)
 ├── git-guia/                         ← guias de Git (comandos, erros, fluxo)
 ├── .gitignore
 ├── README.md
-└── venv/
+└── .venv/
 ```
 
 ---
@@ -172,39 +173,39 @@ docstrings e conformidade com PEP 8).
   <tbody>
     <tr>
       <td><code>exercicios/secao-1-logica-programacao/exercicios/</code></td>
-      <td>20 exercícios de lógica (print a CPF)</td>
+      <td>31 exercícios de lógica (print a gerador de CPF)</td>
     </tr>
     <tr>
       <td><code>exercicios/secao-1-logica-programacao/gabaritos/</code></td>
-      <td>20 gabaritos profissionais (seção 1)</td>
+      <td>31 gabaritos profissionais (seção 1)</td>
     </tr>
     <tr>
       <td><code>exercicios/secao-2-funcoes-modulos/exercicios/</code></td>
-      <td>20 exercícios de funções/dicts/módulos</td>
+      <td>31 exercícios de funções/dicts/módulos</td>
     </tr>
     <tr>
       <td><code>exercicios/secao-2-funcoes-modulos/gabaritos/</code></td>
-      <td>20 gabaritos profissionais (seção 2)</td>
+      <td>31 gabaritos profissionais (seção 2)</td>
     </tr>
     <tr>
       <td><code>anotacoes/secao-1-logica-programacao/</code></td>
-      <td>15 resumos em markdown para revisão rápida</td>
+      <td>22 resumos em markdown para revisão rápida</td>
     </tr>
     <tr>
       <td><code>anotacoes/secao-2-funcoes-modulos/</code></td>
-      <td>18 resumos em markdown para revisão rápida</td>
+      <td>25 resumos em markdown para revisão rápida</td>
     </tr>
     <tr>
       <td><code>exercicios/secao-3-orientacao-objetos/exercicios/</code></td>
-      <td>20 exercícios de POO e classes</td>
+      <td>33 exercícios de POO e classes</td>
     </tr>
     <tr>
       <td><code>exercicios/secao-3-orientacao-objetos/gabaritos/</code></td>
-      <td>20 gabaritos profissionais (seção 3)</td>
+      <td>33 gabaritos profissionais (seção 3)</td>
     </tr>
     <tr>
       <td><code>anotacoes/secao-3-orientacao-objetos/</code></td>
-      <td>16 resumos de POO em markdown para revisão rápida</td>
+      <td>25 resumos de POO em markdown para revisão rápida</td>
     </tr>
     <tr>
       <td><code>git-guia/</code></td>
@@ -246,8 +247,19 @@ Base: `anotacoes/secao-1-logica-programacao/` · Exercícios: `exercicios/secao-
 | 18 | primeiro-digito-cpf | 13-logica-cpf | funções, cálculo |
 | 19 | validador-cpf | 13-logica-cpf | funções, modularização |
 | 20 | jogo-palavra-secreta | 09-listas, 07-while | loops + listas |
+| 21 | tuplas-escalacao | 10-tuplas-enumerate-split-join | tuplas, imutabilidade |
+| 22 | calculadora-while | 07-while, 17-operadores-atribuicao | menu, laço |
+| 23 | caixa-decimal | 12-ternario-decimal-round | `Decimal`, `round()` |
+| 24 | else-loops | 07-while, 08-for-range | while/else, for/else |
+| 25 | iterador-manual | 08-for-range | `iter()`, `next()`, `StopIteration` |
+| 26 | copias-listas | 09-listas | mutabilidade, `.copy()`, `id()` |
+| 27 | contato-none | 06-slicing-none-constantes | `None`, `is`/`is not` |
+| 28 | formatacao-classica | 03-strings-formatacao | `%`, `.format()` |
+| 29 | curto-circuito-input | 05-operadores-logicos | curto-circuito, fallback `or` |
+| 30 | gerador-cpf | 19-modulos-random-os-sys, 13-logica-cpf | `random`, módulo 11 |
+| 31 | analisador-metodos-string | 16-metodos-string | find, count, zfill |
 
-> Extra útil: `14-projetos-secao1`, `15-zen-python`.
+> Extra útil: `14-projetos-secao1`, `15-zen-python`, `16-metodos-string`, `19-modulos-random-os-sys`, `21-comandos-interpretador`, `22-debugger-breakpoint`.
 
 ### Seção 2 — Funções e Módulos
 
@@ -275,6 +287,19 @@ Base: `anotacoes/secao-2-funcoes-modulos/` · Exercícios: `exercicios/secao-2-f
 | 18 | pipeline-map-filter-reduce | 12-map-filter-reduce | pipeline funcional |
 | 19 | combinations-permutations-senhas | 11-zip-itertools | combinations/permutations |
 | 20 | positional-only-keyword-only | 16-positional-keyword | `/` e `*` |
+| 21 | primeiro-duplicado-set | 05-sets | set, primeiro duplicado |
+| 22 | funcoes-geradoras | 07-generators | yield, yield from |
+| 23 | modulos-pacotes | 09-modulos-pacotes | __name__, __main__, __all__ |
+| 24 | try-except-else-finally | 08-try-except-raise | try/except/else/finally |
+| 25 | itertools-count-product | 11-zip-itertools | count, islice, product |
+| 26 | collections-counter-deque | 18-collections-functools | Counter, defaultdict, deque |
+| 27 | agenda-datetime | 17-datetime | datetime, timedelta |
+| 28 | escopo-global | 23-escopo-global | global, escopo |
+| 29 | copy-rasa-profunda | 22-copy-rasa-profunda | shallow/deep copy |
+| 30 | gerenciador-desfazer-refazer | 03-closures, 18-collections-functools | closures, pilhas |
+| 31 | cache-functools | 18-collections-functools | lru_cache |
+
+> Extra útil: `19-truthy-falsy`, `20-dir-hasattr-getattr`, `21-parametro-padrao-mutavel`, `22-copy-rasa-profunda`, `23-escopo-global`, `24-importlib-reload`, `25-organizacao-projetos`.
 
 ### Seção 3 — Orientação a Objetos
 
@@ -302,6 +327,19 @@ Base: `anotacoes/secao-3-orientacao-objetos/` · Exercícios: `exercicios/secao-
 | 18 | context-manager | 14-context-managers | `with`, `__exit__` |
 | 19 | dataclasses | 15-dataclasses | `dataclass`, `field` |
 | 20 | sistema-biblioteca | 16-enum-metaclasses + todas as anteriores | capstone (composição) |
+| 21 | slots-funcionario | 17-slots | `__slots__`, memória |
+| 22 | new-singleton | 18-new-singleton | `__new__`, singleton |
+| 23 | descritores-campo | 19-descriptores | descritores (`__get__`/`__set__`) |
+| 24 | callable-contador | 20-callable-objeto | `__call__` |
+| 25 | ordenacao-jogadores | 21-comparacao-rica | `__lt__`, `total_ordering` |
+| 26 | cached-property-relatorio | 22-cached-property | `cached_property` |
+| 27 | singledispatch-descrever | 23-singledispatch | `singledispatch` |
+| 28 | iteraveis-tabuada | 24-iteraveis-poo | `__iter__`, `__next__` |
+| 29 | hotel-reservas | 05-property-getter-setter, 06-encapsulamento-name-mangling, 07-associacao-agregacao-composicao | associação + validação |
+| 30 | loja-estoque | 04-classmethod-staticmethod, 10-classes-abstratas-abc, 11-polimorfismo-liskov | ABC + composição |
+| 31 | jogo-cartas | 17-slots até 24-iteraveis-poo (avançados) | capstone (slots + dunders) |
+| 32 | documentando-codigo | 25-docstrings-documentacao, 13-metodos-magicos-dunder | docstrings, doctest |
+| 33 | enum-status | 16-enum-metaclasses | Enum, `auto()`, máquina de estados |
 
 ---
 
@@ -320,7 +358,7 @@ Base: `anotacoes/secao-3-orientacao-objetos/` · Exercícios: `exercicios/secao-
 | Validação | Exercícios da **Seção 1** rodam via `input()` no terminal; **Seções 2 e 3** validam por `doctest` |
 | Testes | Todo gabarito executa com `python -m doctest -v arquivo.py` ou `doctest.testmod()` embutido |
 | Estilo | Gabaritos seguem **PEP 8**, com type hints e docstrings no padrão Google/NumPy |
-| Ambiente | `venv/` local — não versionado; recriar com `python -m venv venv` |
+| Ambiente | `.venv/` local — não versionado; recriar com `python -m venv .venv` |
 
 ---
 
@@ -348,6 +386,7 @@ Base: `anotacoes/secao-3-orientacao-objetos/` · Exercícios: `exercicios/secao-
 
 | # | Seção |
 |:-:|:------|
+| BÔNUS | Type Hints — Type Checkers, Tipagem para Variáveis, Constantes, Funções, Classes, Decoradores, Coleções, Generics, protocols, TypeVar e ParamSpec |
 | 06 | Módulos Python — `os`, `datetime`, `sys`, `json`, `csv`, Selenium, Pillow e mais |
 
 **Interfaces e Banco de Dados**
