@@ -1,13 +1,25 @@
 # ============================
+# Projeto
+# ============================
+[project]
+name = "curso-python"
+version = "0.0.1"
+description = "Estudos do curso Python 3 do Zero ao Avancado (Luiz Otavio Miranda)"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = ["python-dotenv>=1.2.0"]
+
+[dependency-groups]
+dev = ["ruff", "pyright", "pytest", "pytest-xdist"]
+
+# ============================
 # Configuração das ferramentas:
 #   - Ruff (lint e formatação)
 #   - Pyright (tipagem estática)
 #   - Pytest (testes e doctests)
 #
-# Baseado no ambiente moderno do professor (Luiz Otávio Miranda),
-# adaptado para este repositório de curso (sem pacote src/).
-#
 # Atenção: As versões do Python devem ser consistentes entre:
+#   - project.requires-python
 #   - tool.ruff.target-version
 #   - tool.pyright.pythonVersion
 #   - .python-version
