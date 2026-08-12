@@ -24,3 +24,28 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+lados_triangulo: list[int] = []
+try:
+    for lado in range(1, 4):
+        while True:
+            lado = int(input(f"Digite o lado {lado} do triangulo: "))
+            if lado > 0:
+                lados_triangulo.append(lado)
+                break
+except ValueError:
+    print("ERRO: Digite o valor correto")
+else:
+    lado_1, lado_2, lado_3 = lados_triangulo
+    if (
+        (lado_1 + lado_2 > lado_3)
+        and (lado_1 + lado_3 > lado_2)
+        and (lado_2 + lado_3 > lado_1)
+    ):
+        if lado_1 == lado_2 == lado_3:
+            print("Equilátero")
+        elif lado_1 != lado_2 and lado_2 != lado_3 and lado_1 != lado_3:
+            print("Escaleno")
+        else:
+            print("Isósceles")
+    else:
+        print("Triângulo Inválido")

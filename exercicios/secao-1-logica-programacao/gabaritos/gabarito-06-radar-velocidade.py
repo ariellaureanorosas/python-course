@@ -18,22 +18,22 @@ VELOCIDADE_MAXIMA: int = 80
 PERCENTUAL_MULTA_LEVE: float = 10.0
 
 try:
-    velocidade_carro: float = float(input('Velocidade do carro (km/h): '))
+    velocidade_carro: float = float(input("Velocidade do carro (km/h): "))
 except ValueError:
-    print('Erro: digite um número válido para a velocidade.')
+    print("Erro: digite um número válido para a velocidade.")
 else:
     if velocidade_carro < 0:
-        print('Erro: a velocidade não pode ser negativa.')
+        print("Erro: a velocidade não pode ser negativa.")
     elif velocidade_carro <= VELOCIDADE_MAXIMA:
-        print('Dentro do limite. Sem multa.')
+        print("Dentro do limite. Sem multa.")
     else:
         porcentagem_excedida: float = (
             (velocidade_carro - VELOCIDADE_MAXIMA) / VELOCIDADE_MAXIMA * 100
         )
         if porcentagem_excedida <= PERCENTUAL_MULTA_LEVE:
-            print('Multa leve — até 10% acima do limite.')
+            print("Multa leve — até 10% acima do limite.")
         else:
-            print('Multa grave — acima de 10% do limite.')
+            print("Multa grave — acima de 10% do limite.")
 
 # Onde você provavelmente divergiu:
 # - testou diferenca == 10.0 (fraco: 5% de excesso virava multa grave;

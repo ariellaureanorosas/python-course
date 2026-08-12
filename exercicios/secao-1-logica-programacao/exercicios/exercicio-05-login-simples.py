@@ -20,3 +20,19 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+USUARIO = "Ariel"
+SENHA = "12345"
+tentativas: int = 3
+
+while tentativas > 0:
+    input_usuario: str = input("Digite seu nome de Usuario: ")
+    input_senha: str = input("Digite sua senha: ")
+    if input_usuario == USUARIO and input_senha == SENHA:
+        print("Acesso concedido")
+    else:
+        tentativas -= 1
+        if tentativas > 0:
+            print(f"Acesso negado, agora você tem {tentativas} tentativas")
+        else:
+            print("Acesso Bloqueado")

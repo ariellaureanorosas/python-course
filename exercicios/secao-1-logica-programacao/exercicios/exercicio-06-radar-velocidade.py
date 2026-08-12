@@ -24,3 +24,26 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+VELOCIDADE_MAXIMA = 100
+PERCENTUAL_MULTA_LEVE = 10.0
+
+while True:
+    try:
+        velocidade_carro: float = float(input("Digite a velocidade do carro: "))
+    except ValueError:
+        print("ERRO: digite corretamente a velocidade")
+    else:
+        if velocidade_carro < 0:
+            print("velocidade inválida")
+        elif velocidade_carro < VELOCIDADE_MAXIMA:
+            print("Dentro do limite. Sem multa.")
+        else:
+            diff: float = (
+                (velocidade_carro - VELOCIDADE_MAXIMA) / VELOCIDADE_MAXIMA * 100
+            )
+            if diff <= PERCENTUAL_MULTA_LEVE:
+                print("Multa leve — até 10% acima do limite.")
+            else:
+                print("Multa grave — acima de 10% do limite.")
+        break
