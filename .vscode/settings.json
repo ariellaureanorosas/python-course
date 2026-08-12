@@ -7,7 +7,7 @@
   "window.commandCenter": false,
 
   "editor.fontFamily": "'JetBrains Mono', monospace",
-  "editor.fontSize": 17,
+  "editor.fontSize": 14,
   "editor.fontLigatures": true,
   "editor.lineHeight": 1.6,
   "editor.minimap.enabled": false,

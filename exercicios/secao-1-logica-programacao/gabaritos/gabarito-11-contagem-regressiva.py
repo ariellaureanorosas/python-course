@@ -19,14 +19,14 @@ VALOR_FINAL: int = 0
 PASSO_REGRESSIVO: int = -1
 
 try:
-    numero_limite: int = int(input('Digite um número para contagem regressiva: '))
+    numero_limite: int = int(input("Digite um número para contagem regressiva: "))
 except ValueError:
-    print('Erro: digite um número inteiro válido.')
+    print("Erro: digite um número inteiro válido.")
 else:
     for contador in range(numero_limite, VALOR_FINAL - 1, PASSO_REGRESSIVO):
         print(contador)
 
-    print('Fogo!')
+    print("Fogo!")
 
 # Onde você provavelmente divergiu:
 # - escreveu range(n, -1, -1) direto — funciona, mas VALOR_FINAL - 1

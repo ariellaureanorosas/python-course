@@ -38,3 +38,40 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+# def senha_forte(senha: str) -> bool:
+#     return (
+#         len(senha) >= 8
+#         and any(letra.isdigit() for letra in senha)
+#         and any(letra.isupper() for letra in senha)
+#         and any(letra.islower() for letra in senha)
+#     )
+
+TAMANHO_MINIMO = 8
+
+numero: bool = False
+maiusculo: bool = False
+minuscula: bool = False
+
+
+senha: str = input("Digite sua senha: ")
+
+for letra in senha:
+    if letra.isdigit():
+        numero = True
+    if letra.isupper():
+        maiusculo = True
+    if letra.lower():
+        minuscula = True
+
+print(
+    f"[OK] Mínimo de {TAMANHO_MINIMO} caracteres."
+    if len(senha) >= TAMANHO_MINIMO
+    else f"[FALHOU] Mínimo de {TAMANHO_MINIMO} caracteres."
+)
+print("[OK] Contém número." if numero else "[FALHOU] Contém número.")
+print("[OK] Contém maiúscula." if maiusculo else "[FALHOU] Contém maiúscula.")
+print("[OK] Contém minúscula." if minuscula else "[FALHOU] Contém minúscula.")
+
+if (len(senha) >= TAMANHO_MINIMO) and numero and maiusculo and minuscula:
+    print("Senha válida")

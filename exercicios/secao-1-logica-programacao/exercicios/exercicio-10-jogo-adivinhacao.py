@@ -32,3 +32,24 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+NUMERO_SECRETO = 10
+LIMITE_MENOR = 0
+LIMITE_MAIOR = 50
+contador_tentativas = 0
+
+print(f"Tente adivinha um número entre {LIMITE_MENOR} e {LIMITE_MAIOR}")
+while True:
+    try:
+        palpite = int(input("Digite o Número: "))
+    except ValueError:
+        print("Digite o valor correto")
+        continue
+
+    if palpite == NUMERO_SECRETO:
+        print(f"ACERTOU!!! Números de tentativas - {contador_tentativas}")
+        break
+    else:
+        contador_tentativas += 1
+        print(f"ERROU, Número da tentativa {contador_tentativas}")
+        print("Maior!" if palpite < NUMERO_SECRETO else "Menor!")

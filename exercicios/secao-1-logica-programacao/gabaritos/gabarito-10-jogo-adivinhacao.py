@@ -18,23 +18,23 @@ LIMITE_SUPERIOR: int = 100
 
 tentativas: int = 0
 
-print(f'Tente adivinhar o número secreto ({LIMITE_INFERIOR}-{LIMITE_SUPERIOR}).')
+print(f"Tente adivinhar o número secreto ({LIMITE_INFERIOR}-{LIMITE_SUPERIOR}).")
 
 while True:
     try:
-        palpite: int = int(input('Palpite: '))
+        palpite: int = int(input("Palpite: "))
     except ValueError:
-        print('Erro: digite um número inteiro válido.')
+        print("Erro: digite um número inteiro válido.")
         continue
 
     tentativas += 1
 
     if palpite < NUMERO_SECRETO:
-        print('Maior!')
+        print("Maior!")
     elif palpite > NUMERO_SECRETO:
-        print('Menor!')
+        print("Menor!")
     else:
-        print(f'Parabéns! Você acertou em {tentativas} tentativa(s).')
+        print(f"Parabéns! Você acertou em {tentativas} tentativa(s).")
         break
 
 # Onde você provavelmente divergiu:

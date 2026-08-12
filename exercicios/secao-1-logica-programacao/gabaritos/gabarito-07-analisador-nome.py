@@ -13,31 +13,27 @@ Alternativas descartadas: .split() direto — mais curto, mas o
 exercício pede explicitamente slicing + find/rfind.
 """
 
-nome_completo: str = input('Nome completo: ')
+nome_completo: str = input("Nome completo: ")
 
-print(f'Maiúsculas: {nome_completo.upper()}')
-print(f'Minúsculas: {nome_completo.lower()}')
+print(f"Maiúsculas: {nome_completo.upper()}")
+print(f"Minúsculas: {nome_completo.lower()}")
 
-total_letras: int = len(nome_completo) - nome_completo.count(' ')
-print(f'Total de letras: {total_letras}')
+total_letras: int = len(nome_completo) - nome_completo.count(" ")
+print(f"Total de letras: {total_letras}")
 
-primeiro_espaco: int = nome_completo.find(' ')
+primeiro_espaco: int = nome_completo.find(" ")
 primeiro_nome: str = (
-    nome_completo[:primeiro_espaco]
-    if primeiro_espaco != -1
-    else nome_completo
+    nome_completo[:primeiro_espaco] if primeiro_espaco != -1 else nome_completo
 )
-print(f'Primeiro nome: {primeiro_nome} ({len(primeiro_nome)} letras)')
+print(f"Primeiro nome: {primeiro_nome} ({len(primeiro_nome)} letras)")
 
-ultimo_espaco: int = nome_completo.rfind(' ')
+ultimo_espaco: int = nome_completo.rfind(" ")
 ultimo_sobrenome: str = (
-    nome_completo[ultimo_espaco + 1:]
-    if ultimo_espaco != -1
-    else ''
+    nome_completo[ultimo_espaco + 1 :] if ultimo_espaco != -1 else ""
 )
-print(f'Último sobrenome: {ultimo_sobrenome}')
+print(f"Último sobrenome: {ultimo_sobrenome}")
 
-print(f'Nome invertido: {nome_completo[::-1]}')
+print(f"Nome invertido: {nome_completo[::-1]}")
 
 # Onde você provavelmente divergiu:
 # - usou split() em todo lugar (resolve, mas o enunciado pede

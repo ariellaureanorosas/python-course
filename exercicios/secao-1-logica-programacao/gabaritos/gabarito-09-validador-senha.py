@@ -15,7 +15,7 @@ porém menos didático nesta etapa do curso.
 
 TAMANHO_MINIMO: int = 8
 
-senha: str = input('Digite a senha: ')
+senha: str = input("Digite a senha: ")
 
 tem_tamanho_minimo: bool = len(senha) >= TAMANHO_MINIMO
 tem_digito: bool = False
@@ -31,16 +31,16 @@ for caractere in senha:
         tem_minuscula = True
 
 print(
-    f'[OK] Mínimo de {TAMANHO_MINIMO} caracteres.'
+    f"[OK] Mínimo de {TAMANHO_MINIMO} caracteres."
     if tem_tamanho_minimo
-    else f'[FALHOU] Mínimo de {TAMANHO_MINIMO} caracteres.'
+    else f"[FALHOU] Mínimo de {TAMANHO_MINIMO} caracteres."
 )
-print('[OK] Contém número.' if tem_digito else '[FALHOU] Contém número.')
-print('[OK] Contém maiúscula.' if tem_maiuscula else '[FALHOU] Contém maiúscula.')
-print('[OK] Contém minúscula.' if tem_minuscula else '[FALHOU] Contém minúscula.')
+print("[OK] Contém número." if tem_digito else "[FALHOU] Contém número.")
+print("[OK] Contém maiúscula." if tem_maiuscula else "[FALHOU] Contém maiúscula.")
+print("[OK] Contém minúscula." if tem_minuscula else "[FALHOU] Contém minúscula.")
 
 if tem_tamanho_minimo and tem_digito and tem_maiuscula and tem_minuscula:
-    print('Senha válida!')
+    print("Senha válida!")
 
 # Onde você provavelmente divergiu:
 # - usou expressões regulares ou any()/all() (funcionam, mas o

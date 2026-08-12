@@ -32,3 +32,12 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+nome: str = input("Digite seu nome: ")
+print(f"Nome completo: {nome}")
+print(f"Maiúsculas: {nome.upper()}")
+print(f"Minúsculas: {nome.lower()}")
+print(f"Total de letras: {len(nome.replace(' ', ''))}")
+print(f"Primeiro nome: {nome.split()[0]} - {len(nome.split()[0])} Letras")
+print(f"Último sobrenome: {nome.split()[-1]}")
+print(f"Nome invertido: {nome[::-1]}")

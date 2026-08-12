@@ -23,6 +23,17 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
-numero = int(input("Digite um número para ver sua tabuada: "))
-
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+TABUADA = 10
+while True:
+    try:
+        numero = int(input("Digite um número para ver sua tabuada: "))
+    except ValueError:
+        print("ERRO: Digite um número corretamente")
+    else:
+        resultados_tabuada: list[int] = []
+        for multiplicador in range(0, TABUADA + 1):
+            resultados_tabuada.append(numero * multiplicador)
+        for indice, valor in enumerate(resultados_tabuada):
+            print(f"{numero} x {indice} = {valor}")
+        break

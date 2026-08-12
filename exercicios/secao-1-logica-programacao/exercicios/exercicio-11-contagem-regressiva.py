@@ -23,6 +23,14 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
-N = int(input("Digite um número: "))
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+try:
+    N = int(input("Digite um número: "))
+except ValueError:
+    print("ERRO: Digite um Número")
+else:
+    for numero in range(N, -1, -1):
+        print(numero)
+    print("Fogo!")

@@ -35,3 +35,15 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+TABUADA = 10
+while True:
+    try:
+        numero = int(input("Digite um número: "))
+    except ValueError:
+        print("ERRO: Digite o valor correto no input")
+    else:
+        contador = 1
+        while contador <= TABUADA:
+            print(f"{contador} X {numero} = {contador * numero}")
+            contador += 1
+        break

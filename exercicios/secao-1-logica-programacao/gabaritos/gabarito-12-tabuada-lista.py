@@ -19,19 +19,19 @@ INICIO_TABUADA: int = 1
 FIM_TABUADA: int = 10
 
 try:
-    numero_tabuada: int = int(input('Digite um número para ver sua tabuada: '))
+    numero_tabuada: int = int(input("Digite um número para ver sua tabuada: "))
 except ValueError:
-    print('Erro: digite um número inteiro válido.')
+    print("Erro: digite um número inteiro válido.")
 else:
     resultados_tabuada: list[int] = []
 
     for multiplicador in range(INICIO_TABUADA, FIM_TABUADA + 1):
         resultados_tabuada.append(numero_tabuada * multiplicador)
 
-    print(f'\nTabuada do {numero_tabuada}:')
+    print(f"\nTabuada do {numero_tabuada}:")
 
     for indice, resultado in enumerate(resultados_tabuada, start=INICIO_TABUADA):
-        print(f'{numero_tabuada} x {indice} = {resultado}')
+        print(f"{numero_tabuada} x {indice} = {resultado}")
 
 # Onde você provavelmente divergiu:
 # - digitou `list` sem o parâmetro de tipo (list[int] documenta o
