@@ -42,3 +42,65 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+import os
+import time
+
+TEXTO = """[i] Inserir item
+[a] Apagar item (pelo índice)
+[l] Listar itens (com índices)
+[s] Sair
+
+Digite sua opção: """
+
+
+def limpar_tela() -> None:
+    time.sleep(2)
+    os.system("cls" if os.name == "nt" else "clear")
+
+
+lista_compras: list[str] = []
+while True:
+    input_lista: str = input(TEXTO).lower().strip()
+
+    if not input_lista:  # INPUT
+        print("ERRO: O input não pode ser enviado vazio")
+        continue
+
+    elif input_lista == "i":  # INSERIR
+        adicionar: str = input("Digite o que você quer adicionar: ")
+        if adicionar:
+            lista_compras.append(adicionar)
+            print(f"Adicionado na lista: {adicionar}")
+        else:
+            print("Item não pode estar vazio")
+
+        limpar_tela()
+
+    elif input_lista == "l":  # LISTAR
+        if not lista_compras:
+            print("A lista está vazia")
+        else:
+            for i, item in enumerate(lista_compras, start=1):
+                print(f"{i} - {item}")
+
+        limpar_tela()
+
+    elif input_lista == "a":  # APAGAR
+        try:
+            for i, item in enumerate(lista_compras, start=1):
+                print(f"{i} - {item}")
+            indice_apagar = int(input("Digite o número do indice para apagar: "))
+            removido: str = lista_compras.pop(indice_apagar - 1)
+            print(f"Item: {removido} - Foi removido")
+
+            limpar_tela()
+        except ValueError, IndexError:
+            print("ERRO: Indíce Inválido")
+
+    elif input_lista == "s":
+        print("Você decidiu sair...")
+        break
+
+    else:
+        print("Digite as opções corretamente")
+        limpar_tela()

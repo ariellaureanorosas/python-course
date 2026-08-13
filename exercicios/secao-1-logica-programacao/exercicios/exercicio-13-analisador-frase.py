@@ -20,6 +20,15 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
-frase = input("Digite uma frase: ")
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+frase: str = input("Digite uma frase: ")
+if not frase:
+    print("ERRO: A frase não deve ser enviada vazia")
+else:
+    frase_repartida: list[str] = frase.split()
+    frase_com_hifen = "-".join(frase_repartida)
+    print(f"Frase: {frase}")
+    print(f"palavras: {len(frase_repartida)}")
+    print(f"Frase com hífen: {frase_com_hifen}")
