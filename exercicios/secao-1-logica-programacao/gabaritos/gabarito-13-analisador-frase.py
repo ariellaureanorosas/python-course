@@ -15,18 +15,18 @@ Alternativas descartadas: split(" ") com espaço explícito — trataria
 "Python  é  legal" (dois espaços) como palavra vazia no meio.
 """
 
-SEPARADOR_HIFEN: str = '-'
+SEPARADOR_HIFEN: str = "-"
 
-frase_original: str = input('Digite uma frase: ').strip()
+frase_original: str = input("Digite uma frase: ").strip()
 
 if not frase_original:
-    print('Erro: a frase não pode estar vazia.')
+    print("Erro: a frase não pode estar vazia.")
 else:
     lista_palavras: list[str] = frase_original.split()
     quantidade_palavras: int = len(lista_palavras)
     frase_hifenizada: str = SEPARADOR_HIFEN.join(lista_palavras)
 
-    print(f'Palavras: {quantidade_palavras}')
+    print(f"Palavras: {quantidade_palavras}")
     print(f'Frase com hífen: "{frase_hifenizada}"')
 
 # Onde você provavelmente divergiu:

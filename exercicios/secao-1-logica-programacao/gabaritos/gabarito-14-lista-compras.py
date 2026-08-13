@@ -17,57 +17,57 @@ Alternativas descartadas: função para cada operação — mais
 organizado em projeto grande, aqui sem dar o assunto antes da aula.
 """
 
-OPCOES_VALIDAS: str = 'ials'
+OPCOES_VALIDAS: str = "ials"
 
 lista_compras: list[str] = []
 
 while True:
-    print('\n=== LISTA DE COMPRAS ===')
-    print('[i] Inserir item')
-    print('[a] Apagar item')
-    print('[l] Listar itens')
-    print('[s] Sair')
+    print("\n=== LISTA DE COMPRAS ===")
+    print("[i] Inserir item")
+    print("[a] Apagar item")
+    print("[l] Listar itens")
+    print("[s] Sair")
 
-    opcao_usuario: str = input('\nOperação [i/a/l/s]: ').strip().lower()
+    opcao_usuario: str = input("\nOperação [i/a/l/s]: ").strip().lower()
 
     if opcao_usuario not in OPCOES_VALIDAS:
-        print('Opção inválida. Escolha i, a, l ou s.')
+        print("Opção inválida. Escolha i, a, l ou s.")
         continue
 
-    if opcao_usuario == 'i':
-        novo_item: str = input('Item: ').strip()
+    if opcao_usuario == "i":
+        novo_item: str = input("Item: ").strip()
         if not novo_item:
-            print('Erro: o nome do item não pode estar vazio.')
+            print("Erro: o nome do item não pode estar vazio.")
             continue
         lista_compras.append(novo_item)
-        print(f'Item {novo_item} adicionado.')
+        print(f"Item {novo_item} adicionado.")
 
-    elif opcao_usuario == 'a':
+    elif opcao_usuario == "a":
         if not lista_compras:
-            print('A lista está vazia. Nada para apagar.')
+            print("A lista está vazia. Nada para apagar.")
             continue
 
-        print('\nItens cadastrados:')
+        print("\nItens cadastrados:")
         for indice, item_atual in enumerate(lista_compras):
-            print(f'  [{indice}] {item_atual}')
+            print(f"  [{indice}] {item_atual}")
 
         try:
-            indice_apagar: int = int(input('\nÍndice para apagar: '))
+            indice_apagar: int = int(input("\nÍndice para apagar: "))
             item_removido: str = lista_compras.pop(indice_apagar)
-            print(f'Item {item_removido} apagado.')
-        except (ValueError, IndexError):
-            print('Índice inválido.')
+            print(f"Item {item_removido} apagado.")
+        except ValueError, IndexError:
+            print("Índice inválido.")
 
-    elif opcao_usuario == 'l':
+    elif opcao_usuario == "l":
         if not lista_compras:
-            print('A lista está vazia.')
+            print("A lista está vazia.")
         else:
-            print('\nItens cadastrados:')
+            print("\nItens cadastrados:")
             for indice, item_atual in enumerate(lista_compras):
-                print(f'  [{indice}] {item_atual}')
+                print(f"  [{indice}] {item_atual}")
 
-    elif opcao_usuario == 's':
-        print('Saindo...')
+    elif opcao_usuario == "s":
+        print("Saindo...")
         break
 
 # Onde você provavelmente divergiu:
