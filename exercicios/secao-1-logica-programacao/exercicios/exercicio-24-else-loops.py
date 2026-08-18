@@ -29,3 +29,26 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+SENHA = "python123"
+tentativas = 0
+
+while tentativas < 3:
+    input_senha = input("Digite a senha: ")
+    if input_senha == SENHA:
+        print("Acesso Concedido")
+        break
+    else:
+        print("Acesso Negado")
+    tentativas += 1
+else:
+    print("Acesso bloqueado")
+
+
+NOMES: list[str] = ["ana", "carlos", "maria", "joao"]
+input_nomes = input("Digite o nome que quer procurar: ").strip().lower()
+for posicao, nome in enumerate(NOMES):
+    if input_nomes == nome:
+        print(f"Nome encontrado na posição {posicao}")
+        break
+else:
+    print("nome não encontrado")
