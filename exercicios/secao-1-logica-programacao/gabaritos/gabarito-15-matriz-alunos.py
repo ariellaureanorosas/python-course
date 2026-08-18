@@ -28,17 +28,17 @@ for aluno_atual in range(1, QUANTIDADE_ALUNOS + 1):
         while True:
             try:
                 valor_nota: float = float(
-                    input(f'Nota {nota_atual} do Aluno {aluno_atual}: ')
+                    input(f"Nota {nota_atual} do Aluno {aluno_atual}: ")
                 )
                 break
             except ValueError:
-                print('Erro: digite um número válido (use ponto para decimais).')
+                print("Erro: digite um número válido (use ponto para decimais).")
         notas_aluno.append(valor_nota)
     matriz_notas.append(notas_aluno)
 
-print(f'\n{"=" * LARGURA_LINHA}')
-print('BOLETIM'.center(LARGURA_LINHA))
-print(f'{"=" * LARGURA_LINHA}')
+print(f"\n{'=' * LARGURA_LINHA}")
+print("BOLETIM".center(LARGURA_LINHA))
+print(f"{'=' * LARGURA_LINHA}")
 
 for indice_aluno, notas in enumerate(matriz_notas, start=1):
     soma_notas: float = 0
@@ -49,10 +49,10 @@ for indice_aluno, notas in enumerate(matriz_notas, start=1):
 
     notas_formatadas: list[str] = []
     for nota in notas:
-        notas_formatadas.append(f'{nota:5.1f}')
-    notas_linha: str = '  '.join(notas_formatadas)
+        notas_formatadas.append(f"{nota:5.1f}")
+    notas_linha: str = "  ".join(notas_formatadas)
 
-    print(f'Aluno {indice_aluno}:  {notas_linha}  |  Média: {media_aluno:.2f}')
+    print(f"Aluno {indice_aluno}:  {notas_linha}  |  Média: {media_aluno:.2f}")
 
 # Onde você provavelmente divergiu:
 # - digitou `list` sem tipos (aqui list[list[float]] e list[float])
