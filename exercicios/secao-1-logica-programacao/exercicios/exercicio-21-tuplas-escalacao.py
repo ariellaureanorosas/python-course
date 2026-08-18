@@ -28,3 +28,19 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+ESCALACAO: tuple[str, ...] = ("João", "Maria", "Carlos", "Ana", "Pedro")
+nome = input("Digite o nome: ")
+try:
+    posicao: int = ESCALACAO.index(nome)
+    print(f"O jogador: {nome} está na posição {posicao}")
+except ValueError:
+    print(f"O jogador {nome} não existe na escalação")
+
+try:
+    ESCALACAO[1] = "Novato"
+except TypeError:
+    print("A escalação é imutável")
+
+titular1, titular2, *restantes = ESCALACAO
+print(f"Principais: {titular1} e {titular2}")
+print(f"Reservas: {restantes}")
