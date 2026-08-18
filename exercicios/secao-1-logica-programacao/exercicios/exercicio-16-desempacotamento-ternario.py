@@ -21,8 +21,15 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
-n1 = int(input("Digite o 1º número: "))
-n2 = int(input("Digite o 2º número: "))
-n3 = int(input("Digite o 3º número: "))
-
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+lista: list[int] = []
+try:
+    n1 = int(input("Digite o 1º número: "))
+    n2 = int(input("Digite o 2º número: "))
+    n3 = int(input("Digite o 3º número: "))
+except ValueError:
+    print("ERRO: Digite os valores corretamente")
+else:
+    lista.extend([n1, n2, n3])
+    ordenados: list[int] = sorted(lista)
+    print(f"Menor: {ordenados[0]}, Meio: {ordenados[1]}, Maior: {ordenados[2]}")

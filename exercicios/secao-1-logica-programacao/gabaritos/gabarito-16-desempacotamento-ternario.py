@@ -20,16 +20,16 @@ numeros_digitados: list[int] = []
 for posicao in range(1, QUANTIDADE_NUMEROS + 1):
     while True:
         try:
-            valor_atual: int = int(input(f'Digite o {posicao}º número: '))
+            valor_atual: int = int(input(f"Digite o {posicao}º número: "))
             break
         except ValueError:
-            print('Erro: digite um número inteiro válido.')
+            print("Erro: digite um número inteiro válido.")
     numeros_digitados.append(valor_atual)
 
 numeros_ordenados: list[int] = sorted(numeros_digitados)
 menor, meio, maior = numeros_ordenados
 
-print(f'Menor: {menor}  |  Meio: {meio}  |  Maior: {maior}')
+print(f"Menor: {menor}  |  Meio: {meio}  |  Maior: {maior}")
 
 # Onde você provavelmente divergiu:
 # - comparou "na mão" com ternários encadeados (a > b and a > c ...)
