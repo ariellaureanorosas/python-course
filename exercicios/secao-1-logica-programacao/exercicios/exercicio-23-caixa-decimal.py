@@ -25,3 +25,20 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+from decimal import Decimal
+
+PORCENTAGEM = Decimal("0.10")
+precos: list[Decimal] = []
+
+for indice in range(1, 4):
+    input_preco: str = input(f"Digite o {indice} preço: ")
+    precos.append(Decimal(input_preco))
+
+total = sum(Decimal(p) for p in precos)
+desconto: Decimal = round((total * PORCENTAGEM), 2)
+total_final: Decimal = total - desconto
+
+numeros_formatados: str = ", ".join(str(decimais) for decimais in precos)
+print(
+    f"Entradas: {numeros_formatados} | Total: {total:.2f} | Desconto 10%: {desconto:.2f} | Total final: {total_final:.2f}"
+)

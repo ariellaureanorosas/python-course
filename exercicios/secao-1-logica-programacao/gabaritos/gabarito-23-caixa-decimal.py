@@ -25,7 +25,9 @@ total: Decimal = preco1 + preco2 + preco3
 desconto: Decimal = round(total * Decimal("0.10"), 2)
 total_final: Decimal = round(total - desconto, 2)
 
-print(f"Total: {total:.2f} | Desconto 10%: {desconto:.2f} | Total final: {total_final:.2f}")
+print(
+    f"Total: {total:.2f} | Desconto 10%: {desconto:.2f} | Total final: {total_final:.2f}"
+)
 
 # Onde você provavelmente divergiu:
 # - converteu o input com float() primeiro (traz o erro de precisão
