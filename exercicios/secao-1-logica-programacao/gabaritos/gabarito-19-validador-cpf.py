@@ -29,13 +29,13 @@ PESO_SEGUNDO: int = 11
 DIVISOR_CPF: int = 11
 LIMITE_RESTA: int = 2
 
-cpf_informado: str = input('Digite o CPF para validação: ')
-cpf_limpo: str = re.sub(r'\D', '', cpf_informado)
+cpf_informado: str = input("Digite o CPF para validação: ")
+cpf_limpo: str = re.sub(r"\D", "", cpf_informado)
 
 if len(cpf_limpo) != DIGITOS_CPF:
-    print(f'Erro: o CPF deve conter exatamente {DIGITOS_CPF} dígitos.')
+    print(f"Erro: o CPF deve conter exatamente {DIGITOS_CPF} dígitos.")
 elif cpf_limpo == cpf_limpo[0] * DIGITOS_CPF:
-    print('Erro: CPF inválido — todos os dígitos são iguais.')
+    print("Erro: CPF inválido — todos os dígitos são iguais.")
 else:
     nove_primeiros: str = cpf_limpo[:DIGITOS_NOVE]
 
@@ -63,12 +63,12 @@ else:
         0 if resto_segundo < LIMITE_RESTA else DIVISOR_CPF - resto_segundo
     )
 
-    cpf_calculado: str = f'{nove_primeiros}{primeiro_digito}{segundo_digito}'
+    cpf_calculado: str = f"{nove_primeiros}{primeiro_digito}{segundo_digito}"
 
     if cpf_limpo == cpf_calculado:
-        print('CPF válido.')
+        print("CPF válido.")
     else:
-        print('CPF inválido — dígitos verificadores não conferem.')
+        print("CPF inválido — dígitos verificadores não conferem.")
 
 # Onde você provavelmente divergiu:
 # - esqueceu de rejeitar CPFs com todos os dígitos iguais

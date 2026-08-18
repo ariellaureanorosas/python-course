@@ -29,9 +29,9 @@ numeros_ordenados: list[int] = sorted(numeros_sorteados)
 
 numeros_formatados: list[str] = []
 for numero in numeros_ordenados:
-    numeros_formatados.append(f'{numero:02d}')
+    numeros_formatados.append(f"{numero:02d}")
 
-print(f'Números sorteados: [{", ".join(numeros_formatados)}]')
+print(f"Números sorteados: [{', '.join(numeros_formatados)}]")
 
 # Onde você provavelmente divergiu:
 # - usou random.sample() ou set() — resolve a unicidade em uma linha,

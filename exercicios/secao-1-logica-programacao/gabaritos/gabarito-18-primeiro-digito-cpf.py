@@ -23,12 +23,12 @@ PESO_INICIAL: int = 10
 DIVISOR_CPF: int = 11
 LIMITE_RESTA: int = 2
 
-cpf_digitado: str = input('Digite os 9 primeiros dígitos do CPF: ')
+cpf_digitado: str = input("Digite os 9 primeiros dígitos do CPF: ")
 
 if not cpf_digitado.isdigit():
-    print('Erro: digite apenas números.')
+    print("Erro: digite apenas números.")
 elif len(cpf_digitado) != DIGITOS_NOVE:
-    print(f'Erro: digite exatamente {DIGITOS_NOVE} números.')
+    print(f"Erro: digite exatamente {DIGITOS_NOVE} números.")
 else:
     soma_produtos: int = 0
     peso_atual: int = PESO_INICIAL
@@ -43,10 +43,10 @@ else:
     )
 
     cpf_parcial: str = (
-        f'{cpf_digitado[:3]}.{cpf_digitado[3:6]}.'
-        f'{cpf_digitado[6:DIGITOS_NOVE]}-{primeiro_digito}'
+        f"{cpf_digitado[:3]}.{cpf_digitado[3:6]}."
+        f"{cpf_digitado[6:DIGITOS_NOVE]}-{primeiro_digito}"
     )
-    print(f'CPF parcial: {cpf_parcial}')
+    print(f"CPF parcial: {cpf_parcial}")
 
 # Onde você provavelmente divergiu:
 # - não validou entrada (isdigit + len) e quebrou com "12ab34" ou

@@ -1,4 +1,4 @@
-"""
+r"""
 EXERCÍCIO 19 — Validador de CPF Completo
 
 Receba um CPF do usuário (pode vir formatado ou só os números).
@@ -22,6 +22,41 @@ Dica: import re e use re.sub(r'\D', '', cpf) para limpar.
 
 import re
 
-cpf = input("Digite o CPF: ")
-
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+while True:
+    cpf_input: str = input("Digite o CPF: ")
+    cpf_limpo: str = re.sub(r"\D", "", cpf_input)
+
+    if len(cpf_limpo) != 11:
+        print("Digite 11 digitos")
+        continue
+    elif cpf_limpo == cpf_limpo[0] * 11:
+        print("ERRO: Todos os digitos são iguais")
+        continue
+    else:
+        nove_primeiros: str = cpf_limpo[:9]
+        resultado_digito_10 = sum(
+            int(digito) * (10 - indice) for indice, digito in enumerate(nove_primeiros)
+        )
+
+        digito_10: int = (
+            0 if (resultado_digito_10 % 11) < 2 else 11 - (resultado_digito_10 % 11)
+        )
+
+        dez_primeiros: str = nove_primeiros + str(digito_10)
+
+        resultado_digito_11 = sum(
+            int(digito) * (11 - indice) for indice, digito in enumerate(dez_primeiros)
+        )
+
+        digito_11: int = (
+            0 if (resultado_digito_11 % 11) < 2 else 11 - (resultado_digito_11 % 11)
+        )
+
+        cpf_calculado: str = f"{nove_primeiros}{digito_10}{digito_11}"
+
+        if cpf_limpo == cpf_calculado:
+            print("CPF válido")
+        else:
+            print("CPF inválido")
+        break

@@ -17,6 +17,25 @@ Exemplo:
     CPF parcial: 123.456.789-0   (formato opcional)
 """
 
-cpf = input("Digite os 9 primeiros dígitos do CPF: ")
-
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+
+contador_regressivo = 10
+while True:
+    cpf = input("Digite os 9 digitos do seu cpf: ")
+    if not cpf.isdigit():
+        print("Digite apenas Números")
+        continue
+    elif len(cpf) != 9:
+        print("Digite apenas 9")
+        continue
+    else:
+        resultado_digitos = sum(
+            int(digito) * (10 - indice) for indice, digito in enumerate(cpf)
+        )
+
+        digito: int = (
+            0 if (resultado_digitos % 11) < 2 else 11 - (resultado_digitos % 11)
+        )
+
+        print(f"CPF Parcial: {cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{digito}")
+        break
