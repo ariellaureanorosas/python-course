@@ -17,41 +17,41 @@ em um set() para revelar — conceito de set ainda não visto nessa
 altura do curso.
 """
 
-import random
 import os
+import random
 
 PALAVRAS_DISPONIVEIS: list[str] = [
-    'python',
-    'programacao',
-    'computador',
-    'algoritmo',
-    'variavel',
-    'estrutura',
+    "python",
+    "programacao",
+    "computador",
+    "algoritmo",
+    "variavel",
+    "estrutura",
 ]
-SIMBOLO_OCULTO: str = '*'
-COMANDO_SAIDA: str = 'sair'
+SIMBOLO_OCULTO: str = "*"
+COMANDO_SAIDA: str = "sair"
 
 palavra_secreta: str = random.choice(PALAVRAS_DISPONIVEIS)
 letras_reveladas: list[str] = [SIMBOLO_OCULTO] * len(palavra_secreta)
 quantidade_tentativas: int = 0
 palavra_revelada: bool = False
 
-os.system('cls')
+os.system("cls")
 
-print('=== JOGO DA PALAVRA SECRETA ===')
+print("=== JOGO DA PALAVRA SECRETA ===")
 print(f"Digite '{COMANDO_SAIDA}' a qualquer momento para encerrar.\n")
 
 while not palavra_revelada:
-    print('Palavra:', ' '.join(letras_reveladas))
+    print("Palavra:", " ".join(letras_reveladas))
 
-    chute: str = input('Digite uma letra: ').strip().lower()
+    chute: str = input("Digite uma letra: ").strip().lower()
 
     if chute == COMANDO_SAIDA:
-        print(f'\nVocê desistiu! A palavra era: {palavra_secreta}')
+        print(f"\nVocê desistiu! A palavra era: {palavra_secreta}")
         break
 
     if len(chute) != 1:
-        print('Digite apenas uma letra.\n')
+        print("Digite apenas uma letra.\n")
         continue
 
     quantidade_tentativas += 1
@@ -65,10 +65,10 @@ while not palavra_revelada:
 
     if SIMBOLO_OCULTO not in letras_reveladas:
         palavra_revelada = True
-        os.system('cls')
-        print('Palavra:', ' '.join(letras_reveladas))
+        os.system("cls")
+        print("Palavra:", " ".join(letras_reveladas))
         print(f"\nParabéns! Você acertou a palavra '{palavra_secreta}'!")
-        print(f'Total de tentativas: {quantidade_tentativas}')
+        print(f"Total de tentativas: {quantidade_tentativas}")
 
     print()
 

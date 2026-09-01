@@ -19,7 +19,6 @@ import os
 import random
 
 lista_de_nomes = [
-    "Isadora",
     "Lucas",
     "Mariana",
     "João",
@@ -47,7 +46,6 @@ letras_acertadas = ""
 quantidade_de_acertos = 0
 
 while True:
-
     letra_digitada = input("Digite uma letra: ")
     tentativas += 1
 

@@ -22,6 +22,39 @@ Dica: crie uma variável com "*" * len(palavra_secreta) para começar
 """
 
 import random
-import os
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+PALAVRAS: list[str] = ["python", "lista", "palavras", "exemplo", "Ariel"]
+palavra_escolhida: str = random.choice(PALAVRAS)
+tentativas = 0
+letras_acertadas = ""
+
+while True:
+    entrada_letra: str = input("Digite apenas uma letra: ")
+    tentativas += 1
+
+    if len(entrada_letra) > 1:
+        print("Digite apenas uma letra")
+        continue
+
+    if entrada_letra in palavra_escolhida:
+        letras_acertadas += entrada_letra
+
+    palavra_formada = ""
+    quantidade_acertos = 0
+    for letra in palavra_escolhida:
+        if letra in letras_acertadas:
+            palavra_formada += letra
+            quantidade_acertos += 1
+        else:
+            palavra_formada += "*"
+    print(
+        f"Palavra Formada: {palavra_formada} | quantidade de acertos: {quantidade_acertos}"
+    )
+    print("------------------------------------")
+
+    if palavra_formada == palavra_escolhida:
+        print(f"Você Acertou!, a palavra certa era: {palavra_escolhida}".upper())
+        print(f"numeros de tentativas: {tentativas}".upper())
+        print("------------------------------------")
+        break
