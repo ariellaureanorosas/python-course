@@ -25,7 +25,11 @@ if TYPE_CHECKING:
     from collections.abc import Callable
 
 
-def criar_saudacao(saudacao: str) -> Callable[[str], str]: ...
+def criar_saudacao(saudacao: str) -> Callable[[str], str]:
+    def nome_saudacao(nome: str) -> str:
+        return f"{saudacao}, {nome}"
+
+    return nome_saudacao
 
 
 if __name__ == "__main__":
