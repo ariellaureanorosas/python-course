@@ -13,8 +13,10 @@ Considere a seguinte estrutura de produto:
    - Usa filter() para selecionar produtos com preco > 0 e quantidade > 0
    - Retorna lista
 
-2. Função `produtos_por_faixa_de_preco(produtos: list[dict], minimo: float, maximo: float) -> list[dict]`
-   - Usa filter() com lambda para selecionar produtos dentro da faixa de preço [minimo, maximo]
+2. Função `produtos_por_faixa_de_preco(produtos: list[dict], minimo: float,
+   maximo: float) -> list[dict]`
+   - Usa filter() com lambda para selecionar produtos dentro da faixa
+     de preço [minimo, maximo]
    - Retorna lista
 
 3. Função `filtrar_por_nome(produtos: list[dict], termo: str) -> list[dict]`
@@ -23,17 +25,18 @@ Considere a seguinte estrutura de produto:
 """
 
 
-def produtos_disponiveis(produtos: list[dict]) -> list[dict]:
-    ...
+def produtos_disponiveis(
+    produtos: list[dict[str, str | float | int]],
+) -> list[dict[str, str | float | int]]: ...
 
 
 def produtos_por_faixa_de_preco(
-    produtos: list[dict],
+    produtos: list[dict[str, str | float | int]],
     minimo: float,
     maximo: float,
-) -> list[dict]:
-    ...
+) -> list[dict[str, str | float | int]]: ...
 
 
-def filtrar_por_nome(produtos: list[dict], termo: str) -> list[dict]:
-    ...
+def filtrar_por_nome(
+    produtos: list[dict[str, str | float | int]], termo: str
+) -> list[dict[str, str | float | int]]: ...

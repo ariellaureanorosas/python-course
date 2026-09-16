@@ -52,7 +52,8 @@ def fatorial(
     3628800
     """
     if n < 0:
-        raise ValueError('Fatorial nao definido para numeros negativos')
+        msg = "Fatorial nao definido para numeros negativos"
+        raise ValueError(msg)
     if n <= 1:
         return 1
     return n * fatorial(n - 1)
@@ -88,7 +89,8 @@ def fatorial_iterativo(
     3628800
     """
     if n < 0:
-        raise ValueError('Fatorial nao definido para numeros negativos')
+        msg = "Fatorial nao definido para numeros negativos"
+        raise ValueError(msg)
     resultado = 1
     for i in range(2, n + 1):
         resultado *= i
@@ -131,7 +133,8 @@ def calcular_fatorial_com_limite(
     1
     """
     if n < 0:
-        raise ValueError('Fatorial nao definido para numeros negativos')
+        msg = "Fatorial nao definido para numeros negativos"
+        raise ValueError(msg)
 
     limite_original = sys.getrecursionlimit()
     try:
@@ -141,8 +144,9 @@ def calcular_fatorial_com_limite(
         sys.setrecursionlimit(limite_original)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

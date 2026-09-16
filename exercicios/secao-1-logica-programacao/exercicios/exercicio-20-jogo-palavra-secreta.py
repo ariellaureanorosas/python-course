@@ -25,7 +25,8 @@ import random
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
 PALAVRAS: list[str] = ["python", "lista", "palavras", "exemplo", "Ariel"]
-palavra_escolhida: str = random.choice(PALAVRAS)
+sorteio_aleatorio: random.SystemRandom = random.SystemRandom()
+palavra_escolhida: str = sorteio_aleatorio.choice(PALAVRAS)
 tentativas = 0
 letras_acertadas = ""
 
@@ -49,7 +50,8 @@ while True:
         else:
             palavra_formada += "*"
     print(
-        f"Palavra Formada: {palavra_formada} | quantidade de acertos: {quantidade_acertos}"
+        f"Palavra Formada: {palavra_formada} "
+        f"| quantidade de acertos: {quantidade_acertos}"
     )
     print("------------------------------------")
 

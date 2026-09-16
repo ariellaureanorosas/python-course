@@ -17,9 +17,15 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
+from __future__ import annotations
 
-def criar_multiplicador(multiplicador: int):
-    ...
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
+
+def criar_multiplicador(multiplicador: int) -> Callable[[int], int]: ...
 
 
 if __name__ == "__main__":

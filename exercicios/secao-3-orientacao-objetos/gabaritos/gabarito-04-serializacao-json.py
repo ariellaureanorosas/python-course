@@ -15,10 +15,13 @@ Alternativas descartadas: pickle (binário, não legível — o
 enunciado pede JSON); json.dumps manual com append de linhas.
 """
 
+from __future__ import annotations
+
 import json
-import os
-import tempfile
-from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 class Pessoa:
@@ -44,7 +47,7 @@ class Pessoa:
         >>> Pessoa('Maria', 30)
         Pessoa(nome='Maria', idade=30)
         """
-        return f'Pessoa(nome={self.nome!r}, idade={self.idade})'
+        return f"Pessoa(nome={self.nome!r}, idade={self.idade})"
 
 
 def salvar_pessoas(caminho: str | Path, pessoas: list[Pessoa]) -> None:
@@ -61,7 +64,7 @@ def salvar_pessoas(caminho: str | Path, pessoas: list[Pessoa]) -> None:
     [Pessoa(nome='Maria', idade=30), Pessoa(nome='João', idade=25)]
     >>> os.remove(tmp)
     """
-    with open(caminho, 'w', encoding='utf-8') as arquivo:
+    with open(caminho, "w", encoding="utf-8") as arquivo:
         json.dump(
             [pessoa.para_dicionario() for pessoa in pessoas],
             arquivo,
@@ -87,14 +90,15 @@ def carregar_pessoas(caminho: str | Path) -> list[Pessoa]:
     [Pessoa(nome='Ana', idade=40)]
     >>> os.remove(tmp)
     """
-    with open(caminho, 'r', encoding='utf-8') as arquivo:
+    with open(caminho, encoding="utf-8") as arquivo:
         dados = json.load(arquivo)
 
     return [Pessoa(**pessoa) for pessoa in dados]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

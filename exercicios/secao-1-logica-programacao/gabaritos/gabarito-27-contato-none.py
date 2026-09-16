@@ -7,8 +7,8 @@ None é o sentinela do "dado ausente": deixar o telefone como string
 vazia misturaria "não informado" com "informado mas em branco". A
 comparação é `telefone is None` — identidade, não igualdade: None é
 um único objeto canônico, então `is` é correto E mais rápido. O
-ternário `None if not telefone_digitado else telefone_digitado` lê
-como frase: nenhum dado → None, senão o próprio texto. A flag
+ternário `telefone_digitado if telefone_digitado else None` lê
+como frase: dado existe → mantém, caso contrário None. A flag
 contato_completo deriva de is not None — um booleano nomeado usado
 uma vez, em vez de comparar de novo nos dois pontos de decisão.
 
@@ -19,7 +19,7 @@ convenção; `is` é o padrão aceito); manter "" e comparar `if telefone`
 
 nome: str = input("Nome: ").strip()
 telefone_digitado: str = input("Telefone (opcional): ").strip()
-telefone = None if not telefone_digitado else telefone_digitado
+telefone: str | None = telefone_digitado if telefone_digitado else None
 
 print(f"Nome: {nome}")
 

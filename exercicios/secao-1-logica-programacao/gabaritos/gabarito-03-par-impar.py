@@ -12,12 +12,12 @@ funcionou — validação e cálculo nunca se misturam.
 """
 
 try:
-    numero: int = int(input('Digite um número: '))
+    numero: int = int(input("Digite um número: "))
 except ValueError:
-    print('Erro: digite um número inteiro válido.')
+    print("Erro: digite um número inteiro válido.")
 else:
-    paridade: str = 'par' if numero % 2 == 0 else 'ímpar'
-    print(f'{numero} é {paridade}.')
+    paridade: str = "par" if numero % 2 == 0 else "ímpar"
+    print(f"{numero} é {paridade}.")
 
 # Onde você provavelmente divergiu:
 # - capturou TypeError ou exceção genérica (a conversão falha com

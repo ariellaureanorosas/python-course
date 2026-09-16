@@ -19,7 +19,7 @@ intenção explícita e lida com N iteráveis); range(start, stop)
 from itertools import count, islice, product
 
 
-def gerar_sequencia(start: int, step: int, quantidade: int) -> list:
+def gerar_sequencia(start: int, step: int, quantidade: int) -> list[int]:
     """Devolve os `quantidade` primeiros números da sequência infinita.
 
     Parâmetros
@@ -46,7 +46,7 @@ def gerar_sequencia(start: int, step: int, quantidade: int) -> list:
     return list(islice(count(start, step), quantidade))
 
 
-def combinar_opcoes(cores: list, tamanhos: list) -> list:
+def combinar_opcoes(cores: list[str], tamanhos: list[str]) -> list[tuple[str, str]]:
     """Devolve todas as combinações (cor, tamanho).
 
     Parâmetros

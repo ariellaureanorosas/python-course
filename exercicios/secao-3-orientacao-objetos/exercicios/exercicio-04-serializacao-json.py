@@ -32,23 +32,23 @@ Formato do arquivo:
 Dica: use open() ou Path.read_text()/write_text() com json.loads/json.dumps.
 """
 
-from pathlib import Path
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 class Pessoa:
-    def __init__(self, nome: str, idade: int) -> None:
-        ...
+    def __init__(self, nome: str, idade: int) -> None: ...
 
-    def para_dicionario(self) -> dict[str, str | int]:
-        ...
+    def para_dicionario(self) -> dict[str, str | int]: ...
 
-    def __repr__(self) -> str:
-        ...
+    def __repr__(self) -> str: ...
 
 
-def salvar_pessoas(caminho: str | Path, pessoas: list[Pessoa]) -> None:
-    ...
+def salvar_pessoas(caminho: str | Path, pessoas: list[Pessoa]) -> None: ...
 
 
-def carregar_pessoas(caminho: str | Path) -> list[Pessoa]:
-    ...
+def carregar_pessoas(caminho: str | Path) -> list[Pessoa]: ...

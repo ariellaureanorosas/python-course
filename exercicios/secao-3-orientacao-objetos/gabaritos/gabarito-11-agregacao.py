@@ -29,7 +29,7 @@ class Produto:
         >>> Produto('Camiseta', 49.90)
         Produto(nome='Camiseta', preco=49.9)
         """
-        return f'Produto(nome={self.nome!r}, preco={self.preco})'
+        return f"Produto(nome={self.nome!r}, preco={self.preco})"
 
 
 class CarrinhoDeCompras:
@@ -99,8 +99,9 @@ class CarrinhoDeCompras:
         return sum(produto.preco for produto in self._produtos)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

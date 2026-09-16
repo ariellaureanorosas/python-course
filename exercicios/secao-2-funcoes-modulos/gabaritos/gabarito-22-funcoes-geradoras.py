@@ -16,7 +16,12 @@ Alternativas descartadas: listas retornadas (perde a preguiça);
 comprehension em pares_ate (o estilo com yield mostra o protocolo).
 """
 
-from typing import Iterator
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
 def pares_ate(limite: int) -> Iterator[int]:
@@ -44,7 +49,7 @@ def pares_ate(limite: int) -> Iterator[int]:
             yield n
 
 
-def ao_quadrado(fonte: list) -> Iterator[int]:
+def ao_quadrado(fonte: list[int]) -> Iterator[int]:
     """Gera n ** 2 para cada n da fonte, na ordem.
 
     Parâmetros
@@ -63,10 +68,10 @@ def ao_quadrado(fonte: list) -> Iterator[int]:
     [1, 4, 9]
     """
     for n in fonte:
-        yield n ** 2
+        yield n**2
 
 
-def concatenar(geradores: list) -> Iterator[int]:
+def concatenar(geradores: list[Iterator[int]]) -> Iterator[int]:
     """Repassa, um a um, os itens de cada gerador da lista.
 
     Parâmetros

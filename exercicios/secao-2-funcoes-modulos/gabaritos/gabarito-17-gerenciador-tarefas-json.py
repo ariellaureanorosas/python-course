@@ -50,9 +50,9 @@ def carregar_tarefas(
     []
     """
     try:
-        with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
+        with open(nome_arquivo, encoding="utf-8") as arquivo:
             dados = json.load(arquivo)
-            return dados.get('tarefas', [])
+            return dados.get("tarefas", [])
     except FileNotFoundError:
         return []
 
@@ -79,9 +79,9 @@ def salvar_tarefas(
     ['Comprar pao']
     >>> os.remove(tmp)
     """
-    with open(nome_arquivo, 'w', encoding='utf-8') as arquivo:
+    with open(nome_arquivo, "w", encoding="utf-8") as arquivo:
         json.dump(
-            {'tarefas': tarefas},
+            {"tarefas": tarefas},
             arquivo,
             indent=2,
             ensure_ascii=False,
@@ -187,12 +187,14 @@ def renomear_arquivo_json(
     """
     try:
         os.rename(origem, destino)
-    except FileNotFoundError:
-        raise FileNotFoundError(f'Arquivo de origem nao encontrado: {origem}')
+    except FileNotFoundError as err:
+        msg = f"Arquivo de origem nao encontrado: {origem}"
+        raise FileNotFoundError(msg) from err
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

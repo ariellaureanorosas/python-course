@@ -32,16 +32,13 @@ apenas estar correto.
 """
 
 
-def converter_numero(texto: str) -> int | None:
-    ...
+def converter_numero(texto: str) -> int | None: ...
 
 
-def divisao_segura(a: float, b: float) -> str:
-    ...
+def divisao_segura(a: float, b: float) -> str: ...
 
 
-def analisar_numero(texto: str) -> tuple:
-    ...
+def analisar_numero(texto: str) -> tuple[int, bool]: ...
 
 
 if __name__ == "__main__":

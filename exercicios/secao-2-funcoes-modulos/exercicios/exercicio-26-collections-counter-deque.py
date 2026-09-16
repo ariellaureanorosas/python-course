@@ -33,23 +33,24 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
-from collections import Counter, defaultdict, deque
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections import Counter
 
 
-def contar_palavras(texto: str) -> Counter:
-    ...
+def contar_palavras(texto: str) -> Counter[str]: ...
 
 
-def top_palavras(texto: str, n: int) -> list:
-    ...
+def top_palavras(texto: str, n: int) -> list[tuple[str, int]]: ...
 
 
-def agrupar_por_inicial(palavras: list) -> dict:
-    ...
+def agrupar_por_inicial(palavras: list[str]) -> dict[str, list[str]]: ...
 
 
-def ultimos_itens(itens: list, n: int) -> list:
-    ...
+def ultimos_itens(itens: list[int], n: int) -> list[int]: ...
 
 
 if __name__ == "__main__":

@@ -3,8 +3,8 @@ Gabarito EXERCÍCIO 28 - Escopo Global
 
 Raciocínio sênior
 -----------------
-incrementar/zerar precisam de `global`: sem ela, `CONTADOR += 1`
-criaria um CONTADOR LOCAL e levantaria UnboundLocalError (a variável
+incrementar/zerar precisam de `global`: sem ela, `contador += 1`
+criaria um contador LOCAL e levantaria UnboundLocalError (a variável
 foi "usada antes de declará-la local"). consultar NÃO precisa da
 palavra: LER global é livre — a resolução de nomes busca local,
 envolvente, global e builtins (LEGB). somar_local mostra o caminho
@@ -15,15 +15,15 @@ O global só se justifica quando o estado compartilhado É o objetivo
 
 Atenção ao doctest: cada docstring roda com uma CÓPIA do globals,
 mas `global` altera o MÓDULO real — por isso os exemplos usam apenas
-as funções (incrementar/zerar/consultar) e nunca leem `CONTADOR`
+as funções (incrementar/zerar/consultar) e nunca leem `contador`
 direto (ler direto leria a cópia, não o global).
 """
 
-CONTADOR = 0
+contador = 0
 
 
 def incrementar() -> int:
-    """Soma 1 à variável global CONTADOR e devolve o novo valor.
+    """Soma 1 à variável global contador e devolve o novo valor.
 
     Parâmetros
     ----------
@@ -41,13 +41,13 @@ def incrementar() -> int:
     >>> incrementar()
     2
     """
-    global CONTADOR
-    CONTADOR += 1
-    return CONTADOR
+    global contador
+    contador += 1
+    return contador
 
 
 def zerar() -> None:
-    """Zera a variável global CONTADOR.
+    """Zera a variável global contador.
 
     Parâmetros
     ----------
@@ -63,12 +63,12 @@ def zerar() -> None:
     >>> consultar()
     0
     """
-    global CONTADOR
-    CONTADOR = 0
+    global contador
+    contador = 0
 
 
 def consultar() -> int:
-    """Lê a variável global CONTADOR (ler não exige `global`).
+    """Lê a variável global contador (ler não exige `global`).
 
     Parâmetros
     ----------
@@ -84,7 +84,7 @@ def consultar() -> int:
     >>> consultar()
     0
     """
-    return CONTADOR
+    return contador
 
 
 def somar_local(a: int, b: int) -> int:
@@ -107,8 +107,7 @@ def somar_local(a: int, b: int) -> int:
     >>> somar_local(2, 3)
     5
     """
-    resultado = a + b
-    return resultado
+    return a + b
 
 
 if __name__ == "__main__":
@@ -123,10 +122,10 @@ if __name__ == "__main__":
     print(consultar())
 
 # Onde você provavelmente divergiu:
-# - esqueceu o `global CONTADOR` em incrementar: UnboundLocalError
+# - esqueceu o `global contador` em incrementar: UnboundLocalError
 # - declarou `global` em consultar (compila, mas é ruído — ler é livre)
 # - reconstruiu o contador devolvendo um valor novo e reatribuindo
 #   fora (funciona, mas o exercício pede o estado global)
 # - nos doctests, assumiu que o valor do contador continua entre
 #   docstrings (cada docstring roda em namespace copiado — por isso
-#   os resets explícitos `CONTADOR = 0`)
+#   os resets explícitos `contador = 0`)

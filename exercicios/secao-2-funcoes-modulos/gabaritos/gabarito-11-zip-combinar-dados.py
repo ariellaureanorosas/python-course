@@ -43,8 +43,7 @@ def combinar_listas(
     ['Maria tem 40 anos']
     """
     return [
-        f'{nome} tem {idade} anos'
-        for nome, idade in zip(nomes, idades)
+        f"{nome} tem {idade} anos" for nome, idade in zip(nomes, idades, strict=True)
     ]
 
 
@@ -80,10 +79,8 @@ def combinar_listas_desiguais(
     ['Ana tem 25 anos', 'Joao tem 18 anos']
     """
     return [
-        f'{nome} tem {idade} anos'
-        for nome, idade in zip_longest(
-            nomes, idades, fillvalue=preenchimento
-        )
+        f"{nome} tem {idade} anos"
+        for nome, idade in zip_longest(nomes, idades, fillvalue=preenchimento)
     ]
 
 
@@ -114,13 +111,14 @@ def combinar_tres_listas(
     ['Ana tem 25 anos e mora em SP']
     """
     return [
-        f'{nome} tem {idade} anos e mora em {cidade}'
-        for nome, idade, cidade in zip(nomes, idades, cidades)
+        f"{nome} tem {idade} anos e mora em {cidade}"
+        for nome, idade, cidade in zip(nomes, idades, cidades, strict=True)
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

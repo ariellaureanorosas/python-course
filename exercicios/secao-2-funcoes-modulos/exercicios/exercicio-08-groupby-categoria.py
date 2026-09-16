@@ -24,7 +24,6 @@ A função deve:
 Tópicos da aula: itertools.groupby, sorted(), lambda, dict comprehension
 """
 
-
 produtos = [
     {"nome": "Arroz", "preco": 25.90, "categoria": "Alimento"},
     {"nome": "Feijão", "preco": 12.90, "categoria": "Alimento"},
@@ -35,5 +34,6 @@ produtos = [
 ]
 
 
-def agrupar_por_categoria(produtos: list[dict]) -> dict:
-    ...
+def agrupar_por_categoria(
+    produtos: list[dict[str, str | float]],
+) -> dict[str, list[dict[str, str | float]]]: ...

@@ -54,7 +54,7 @@ class ItemBiblioteca(ABC):
         >>> Livro('O Cortiço')
         Livro(titulo='O Cortiço')
         """
-        return f'{self.__class__.__name__}(titulo={self.titulo!r})'
+        return f"{self.__class__.__name__}(titulo={self.titulo!r})"
 
 
 class Livro(ItemBiblioteca):
@@ -68,7 +68,7 @@ class Livro(ItemBiblioteca):
         >>> Livro('O Cortiço').tipo
         'Livro'
         """
-        return 'Livro'
+        return "Livro"
 
     def calcular_multa(self, dias_atraso: int) -> float:
         """Multiplica dias de atraso por 2.
@@ -91,7 +91,7 @@ class Revista(ItemBiblioteca):
         >>> Revista('Superinteressante').tipo
         'Revista'
         """
-        return 'Revista'
+        return "Revista"
 
     def calcular_multa(self, dias_atraso: int) -> float:
         """Multiplica dias de atraso por 1.
@@ -126,7 +126,7 @@ class Pessoa:
         >>> Pessoa('Ana')
         Pessoa(nome='Ana')
         """
-        return f'{self.__class__.__name__}(nome={self.nome!r})'
+        return f"{self.__class__.__name__}(nome={self.nome!r})"
 
 
 class Cliente(Pessoa):
@@ -205,7 +205,7 @@ class Emprestimo:
         >>> Emprestimo(Livro('O Cortiço'))
         Emprestimo(item=Livro(titulo='O Cortiço'))
         """
-        return f'Emprestimo(item={self.__item!r})'
+        return f"Emprestimo(item={self.__item!r})"
 
 
 class Biblioteca:
@@ -263,8 +263,9 @@ class Biblioteca:
         return emprestimo
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

@@ -14,21 +14,25 @@ Alternativas descartadas: fechar na mão no corpo do programa
 (repetia close() em todo caminho; com with é automático).
 """
 
-import os
-import tempfile
+from __future__ import annotations
+
 from contextlib import contextmanager
-from types import TracebackType
+from typing import TYPE_CHECKING, TextIO, cast
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
+    from types import TracebackType
 
 
 class ArquivoSeguro:
     """Context manager que garante o fechamento do arquivo."""
 
-    def __init__(self, caminho: str, modo: str = 'r') -> None:
+    def __init__(self, caminho: str, modo: str = "r") -> None:
         self.caminho = caminho
         self.modo = modo
         self.arquivo = None
 
-    def __enter__(self) -> 'ArquivoSeguro':
+    def __enter__(self) -> ArquivoSeguro:
         """Abre o arquivo ao entrar no bloco with.
 
         Exemplos:
@@ -36,7 +40,7 @@ class ArquivoSeguro:
         >>> with ArquivoSeguro(tmp, 'w') as arquivo:
         ...     arquivo.escrever('Olá mundo')
         """
-        self.arquivo = open(self.caminho, self.modo, encoding='utf-8')
+        self.arquivo = open(self.caminho, self.modo, encoding="utf-8")
         return self
 
     def __exit__(
@@ -62,15 +66,21 @@ class ArquivoSeguro:
         'Olá mundo'
         >>> os.remove(tmp)
         """
+        if self.arquivo is None:
+            msg = "Arquivo não está aberto"
+            raise RuntimeError(msg)
         return self.arquivo.read()
 
     def escrever(self, texto: str) -> None:
         """Grava o texto no arquivo aberto."""
+        if self.arquivo is None:
+            msg = "Arquivo não está aberto"
+            raise RuntimeError(msg)
         self.arquivo.write(texto)
 
 
 @contextmanager
-def abrir_arquivo(caminho: str, modo: str = 'r'):
+def abrir_arquivo(caminho: str, modo: str = "r") -> Generator[TextIO]:
     """Context manager equivalente, feito com funcao geradora.
 
     Exemplos:
@@ -83,15 +93,13 @@ def abrir_arquivo(caminho: str, modo: str = 'r'):
     'Olá mundo'
     >>> os.remove(tmp)
     """
-    arquivo = open(caminho, modo, encoding='utf-8')
-    try:
-        yield arquivo
-    finally:
-        arquivo.close()
+    with open(caminho, modo, encoding="utf-8") as arquivo:
+        yield cast("TextIO", arquivo)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

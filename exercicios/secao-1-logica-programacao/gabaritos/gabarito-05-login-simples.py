@@ -13,28 +13,28 @@ Alternativas descartadas: break dentro do if de acerto (mais curto,
 mas o enunciado exige controle pelo próprio while).
 """
 
-USUARIO: str = 'Ariel'
-SENHA: str = 'Ariel@2007'
+USUARIO: str = "Ariel"
+SENHA: str = "Ariel@2007"
 TENTATIVAS_MAXIMAS: int = 3
 
 tentativas_restantes: int = TENTATIVAS_MAXIMAS
 
 while tentativas_restantes > 0:
-    usuario_input: str = input('Usuário: ')
-    senha_input: str = input('Senha: ')
+    usuario_input: str = input("Usuário: ")
+    senha_input: str = input("Senha: ")
 
     if usuario_input == USUARIO and senha_input == SENHA:
-        print('Acesso concedido!')
+        print("Acesso concedido!")
         tentativas_restantes = 0
     else:
         tentativas_restantes -= 1
         if tentativas_restantes == 0:
-            print('Acesso bloqueado!')
+            print("Acesso bloqueado!")
         else:
-            plural: str = '' if tentativas_restantes == 1 else 's'
+            plural: str = "" if tentativas_restantes == 1 else "s"
             print(
-                'Usuário ou senha incorretos. '
-                f'{tentativas_restantes} tentativa{plural} restante{plural}.'
+                "Usuário ou senha incorretos. "
+                f"{tentativas_restantes} tentativa{plural} restante{plural}."
             )
 
 # Onde você provavelmente divergiu:

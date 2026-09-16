@@ -48,7 +48,7 @@ class Jogador:
         self.nome = nome
         self.pontos = pontos
 
-    def __eq__(self, outro) -> bool:
+    def __eq__(self, outro: object) -> bool:
         """True se o outro jogador tiver nome e pontos iguais.
 
         Exemplos:
@@ -61,7 +61,7 @@ class Jogador:
             return False
         return self.nome == outro.nome and self.pontos == outro.pontos
 
-    def __lt__(self, outro) -> bool:
+    def __lt__(self, outro: object) -> bool:
         """True se este jogador tiver menos pontos; empate por nome.
 
         Exemplos:
@@ -83,11 +83,12 @@ class Jogador:
         >>> Jogador('Ana', 50)
         Jogador('Ana', 50)
         """
-        return f'Jogador({self.nome!r}, {self.pontos!r})'
+        return f"Jogador({self.nome!r}, {self.pontos!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

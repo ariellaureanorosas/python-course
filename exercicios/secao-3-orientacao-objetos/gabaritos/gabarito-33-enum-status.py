@@ -117,7 +117,8 @@ class Pedido:
         'ENTREGUE'
         """
         if self.status in (PedidoStatus.ENTREGUE, PedidoStatus.CANCELADO):
-            raise ValueError("pedido nao pode avancar")
+            msg = "pedido nao pode avancar"
+            raise ValueError(msg)
         membros = list(PedidoStatus)
         self.status = membros[list(PedidoStatus).index(self.status) + 1]
 

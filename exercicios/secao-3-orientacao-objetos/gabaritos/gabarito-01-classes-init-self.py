@@ -31,7 +31,7 @@ class Pessoa:
         >>> p.nome_completo()
         'Maria Silva'
         """
-        return f'{self.nome} {self.sobrenome}'
+        return f"{self.nome} {self.sobrenome}"
 
     def __repr__(self) -> str:
         """Representacao facil de ler para depuracao.
@@ -40,11 +40,12 @@ class Pessoa:
         >>> Pessoa('Maria', 'Silva')
         Pessoa(nome='Maria', sobrenome='Silva')
         """
-        return f'Pessoa(nome={self.nome!r}, sobrenome={self.sobrenome!r})'
+        return f"Pessoa(nome={self.nome!r}, sobrenome={self.sobrenome!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

@@ -52,8 +52,7 @@ def calcular(
     taxa: float,
     *,
     desconto: float = 0,
-) -> float:
-    ...
+) -> float: ...
 
 
 def criar_usuario(
@@ -63,8 +62,7 @@ def criar_usuario(
     *,
     idade: int = 0,
     ativo: bool = True,
-) -> dict:
-    ...
+) -> dict[str, str | int | bool]: ...
 
 
 def registrar_venda(
@@ -72,5 +70,4 @@ def registrar_venda(
     produto: str,
     quantidade: int,
     preco_unitario: float,
-) -> dict:
-    ...
+) -> dict[str, str | int | float]: ...

@@ -23,8 +23,7 @@ apenas estar correto.
 """
 
 
-def executar_quiz(perguntas: list[dict]) -> int:
-    ...
+def executar_quiz(perguntas: list[dict[str, str | dict[str, str]]]) -> int: ...
 
 
 if __name__ == "__main__":

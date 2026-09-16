@@ -31,9 +31,15 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
+from __future__ import annotations
 
-def criar_gerenciador() -> dict:
-    ...
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
+
+def criar_gerenciador() -> dict[str, Callable[..., object]]: ...
 
 
 if __name__ == "__main__":

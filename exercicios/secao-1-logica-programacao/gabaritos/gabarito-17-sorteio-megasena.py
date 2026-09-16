@@ -19,9 +19,10 @@ VALOR_MINIMO: int = 1
 VALOR_MAXIMO: int = 60
 
 numeros_sorteados: list[int] = []
+sorteio_aleatorio: random.SystemRandom = random.SystemRandom()
 
 while len(numeros_sorteados) < QUANTIDADE_SORTEIO:
-    numero_sorteado: int = random.randint(VALOR_MINIMO, VALOR_MAXIMO)
+    numero_sorteado: int = sorteio_aleatorio.randint(VALOR_MINIMO, VALOR_MAXIMO)
     if numero_sorteado not in numeros_sorteados:
         numeros_sorteados.append(numero_sorteado)
 

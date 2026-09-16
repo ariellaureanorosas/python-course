@@ -39,14 +39,6 @@ apenas estar correto.
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
 
-# def senha_forte(senha: str) -> bool:
-#     return (
-#         len(senha) >= 8
-#         and any(letra.isdigit() for letra in senha)
-#         and any(letra.isupper() for letra in senha)
-#         and any(letra.islower() for letra in senha)
-#     )
-
 TAMANHO_MINIMO = 8
 
 numero: bool = False

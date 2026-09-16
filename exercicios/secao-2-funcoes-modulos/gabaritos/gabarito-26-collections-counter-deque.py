@@ -21,7 +21,7 @@ justamente matar esse boilerplate); list box de tamanho fixo com pop(0)
 from collections import Counter, defaultdict, deque
 
 
-def contar_palavras(texto: str) -> Counter:
+def contar_palavras(texto: str) -> Counter[str]:
     """Conta as ocorrências de cada palavra do texto.
 
     Parâmetros
@@ -42,7 +42,7 @@ def contar_palavras(texto: str) -> Counter:
     return Counter(texto.split())
 
 
-def top_palavras(texto: str, n: int) -> list:
+def top_palavras(texto: str, n: int) -> list[tuple[str, int]]:
     """Devolve os n pares (palavra, quantidade) mais frequentes.
 
     Parâmetros
@@ -65,7 +65,7 @@ def top_palavras(texto: str, n: int) -> list:
     return contar_palavras(texto).most_common(n)
 
 
-def agrupar_por_inicial(palavras: list) -> dict:
+def agrupar_por_inicial(palavras: list[str]) -> dict[str, list[str]]:
     """Agrupa as palavras pela primeira letra.
 
     Parâmetros
@@ -84,13 +84,13 @@ def agrupar_por_inicial(palavras: list) -> dict:
     >>> agrupar_por_inicial(["bola", "gato", "banana"])
     {'b': ['bola', 'banana'], 'g': ['gato']}
     """
-    grupos: defaultdict = defaultdict(list)
+    grupos: defaultdict[str, list[str]] = defaultdict(list)
     for palavra in palavras:
         grupos[palavra[0]].append(palavra)
     return dict(grupos)
 
 
-def ultimos_itens(itens: list, n: int) -> list:
+def ultimos_itens(itens: list[int], n: int) -> list[int]:
     """Devolve os n últimos itens, descartando os mais antigos.
 
     Parâmetros

@@ -73,7 +73,8 @@ class Quarto:
         ValueError: Quarto já está ocupado
         """
         if not self.__disponivel:
-            raise ValueError('Quarto já está ocupado')
+            msg = "Quarto já está ocupado"
+            raise ValueError(msg)
         self.__disponivel = False
 
     def liberar(self) -> None:
@@ -88,9 +89,9 @@ class Quarto:
         Quarto(numero=101, preco_diaria=100.0, disponivel=True)
         """
         return (
-            f'Quarto(numero={self.numero}, '
-            f'preco_diaria={self.preco_diaria}, '
-            f'disponivel={self.disponivel})'
+            f"Quarto(numero={self.numero}, "
+            f"preco_diaria={self.preco_diaria}, "
+            f"disponivel={self.disponivel})"
         )
 
 
@@ -132,7 +133,7 @@ class Cliente:
         >>> Cliente('Ana')
         Cliente(nome='Ana')
         """
-        return f'Cliente(nome={self.__nome!r})'
+        return f"Cliente(nome={self.__nome!r})"
 
 
 class Reserva:
@@ -140,7 +141,8 @@ class Reserva:
 
     def __init__(self, cliente: Cliente, quarto: Quarto, dias: int) -> None:
         if dias <= 0:
-            raise ValueError('dias deve ser positivo')
+            msg = "dias deve ser positivo"
+            raise ValueError(msg)
         quarto.reservar()
         self.__cliente = cliente
         self.__quarto = quarto
@@ -180,21 +182,23 @@ class Reserva:
         >>> ana = Cliente('Ana')
         >>> quarto = Quarto(101, 100.0)
         >>> reserva = Reserva(ana, quarto, 3)
-        >>> ana.reservas
-        [Reserva(cliente=Cliente(nome='Ana'), quarto=Quarto(numero=101, preco_diaria=100.0, disponivel=False), dias=3)]
+        >>> ana.reservas  # doctest: +NORMALIZE_WHITESPACE
+        [Reserva(cliente=Cliente(nome='Ana'), quarto=Quarto(numero=101,
+                  preco_diaria=100.0, disponivel=False), dias=3)]
         >>> Reserva(ana, quarto, 0)
         Traceback (most recent call last):
         ...
         ValueError: dias deve ser positivo
         """
         return (
-            f'Reserva(cliente={self.__cliente!r}, '
-            f'quarto={self.__quarto!r}, dias={self.__dias})'
+            f"Reserva(cliente={self.__cliente!r}, "
+            f"quarto={self.__quarto!r}, dias={self.__dias})"
         )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

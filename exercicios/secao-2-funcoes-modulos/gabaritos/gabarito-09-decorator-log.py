@@ -13,10 +13,16 @@ Alternativas descartadas: embrulhar na mão em cada função (repetia
 o log), modificar a função original (viola o princípio open/closed).
 """
 
+from __future__ import annotations
+
 from functools import wraps
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
-def log_execucao(func):
+def log_execucao(func: Callable[..., object]) -> Callable[..., object]:
     """Decorator que registra a execução de uma função.
 
     Parametros
@@ -39,19 +45,20 @@ def log_execucao(func):
     Resultado: 8
     8
     """
+
     @wraps(func)
-    def wrapper(*args, **kwargs):
-        print(
-            f'Executando {func.__name__} com argumentos ({args}, {kwargs})'
-        )
+    def wrapper(*args: object, **kwargs: object) -> object:
+        print(f"Executando {func.__name__} com argumentos ({args}, {kwargs})")
         resultado = func(*args, **kwargs)
-        print(f'Resultado: {resultado}')
+        print(f"Resultado: {resultado}")
         return resultado
+
     return wrapper
 
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
     @log_execucao

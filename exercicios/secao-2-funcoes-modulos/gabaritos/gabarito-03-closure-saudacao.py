@@ -14,8 +14,15 @@ Alternativas descartadas: f-string — equivalente, mas o enunciado
 pede concatenação com espaço.
 """
 
+from __future__ import annotations
 
-def criar_saudacao(saudacao: str):
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
+
+def criar_saudacao(saudacao: str) -> Callable[[str], str]:
     """Retorna uma função que saúda alguém com a saudação fixada.
 
     Parametros
@@ -37,16 +44,19 @@ def criar_saudacao(saudacao: str):
     >>> ola('Maria')
     'Olá Maria'
     """
+
     def saudar(nome: str) -> str:
-        return saudacao + ' ' + nome
+        return saudacao + " " + nome
+
     return saudar
 
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
-    bom_dia = criar_saudacao('Bom dia')
-    print(bom_dia('Ariel'))
+    bom_dia = criar_saudacao("Bom dia")
+    print(bom_dia("Ariel"))
 
 # Onde você provavelmente divergiu:
 # - usou f"{saudacao}, {nome}" com vírgula (o enunciado pede

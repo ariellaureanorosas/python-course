@@ -14,9 +14,10 @@ o erro de tipo no meio do cálculo.
 """
 
 from functools import reduce
+from typing import cast
 
 
-def multiplicar(*args: float) -> float:
+def multiplicar(*args: object) -> float:
     """Multiplica todos os argumentos recebidos.
 
     Parametros
@@ -46,16 +47,18 @@ def multiplicar(*args: float) -> float:
     """
     for numero in args:
         if not isinstance(numero, (int, float)):
-            raise TypeError(
+            msg = (
                 f"Argumento inválido: {numero!r}. "
                 "Todos os argumentos devem ser int ou float."
             )
+            raise TypeError(msg)
 
-    return reduce(lambda a, b: a * b, args, 1.0)
+    return reduce(lambda a, b: a * b, cast("tuple[float, ...]", args), 1.0)
 
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     print(multiplicar(2, 3, 4))
     print(multiplicar())

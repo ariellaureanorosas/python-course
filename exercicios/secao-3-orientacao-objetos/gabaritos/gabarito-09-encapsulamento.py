@@ -50,7 +50,8 @@ class ContaBancaria:
         ValueError: Valor deve ser positivo
         """
         if valor <= 0:
-            raise ValueError('Valor deve ser positivo')
+            msg = "Valor deve ser positivo"
+            raise ValueError(msg)
 
         self.__saldo += valor
 
@@ -71,15 +72,18 @@ class ContaBancaria:
         ValueError: Saldo insuficiente
         """
         if valor <= 0:
-            raise ValueError('Valor deve ser positivo')
+            msg = "Valor deve ser positivo"
+            raise ValueError(msg)
         if valor > self.__saldo:
-            raise ValueError('Saldo insuficiente')
+            msg = "Saldo insuficiente"
+            raise ValueError(msg)
 
         self.__saldo -= valor
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

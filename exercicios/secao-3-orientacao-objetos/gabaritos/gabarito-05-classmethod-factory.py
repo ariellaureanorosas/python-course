@@ -23,7 +23,7 @@ class Pessoa:
         self.idade = idade
 
     @classmethod
-    def criar_com_50_anos(cls, nome: str) -> 'Pessoa':
+    def criar_com_50_anos(cls, nome: str) -> Pessoa:
         """Fabrica uma pessoa ja com 50 anos.
 
         Exemplos:
@@ -33,7 +33,7 @@ class Pessoa:
         return cls(nome, 50)
 
     @classmethod
-    def criar_sem_nome(cls, idade: int) -> 'Pessoa':
+    def criar_sem_nome(cls, idade: int) -> Pessoa:
         """Fabrica uma pessoa sem nome registrado.
 
         Exemplos:
@@ -49,11 +49,12 @@ class Pessoa:
         >>> Pessoa('Maria', 50)
         Pessoa(nome='Maria', idade=50)
         """
-        return f'Pessoa(nome={self.nome!r}, idade={self.idade})'
+        return f"Pessoa(nome={self.nome!r}, idade={self.idade})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

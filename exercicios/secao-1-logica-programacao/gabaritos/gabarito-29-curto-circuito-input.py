@@ -24,7 +24,7 @@ print(f"Cidade: {cidade}")
 print(f"Profissão: {profissao}")
 
 print(True and "chegou aqui")
-print("" or "fallback")
+print("" or "fallback")  # noqa: SIM222 - demonstra curto-circuito com or
 
 # Onde você provavelmente divergiu:
 # - escreveu if/else para o padrão (funciona, mas o or é a lição)

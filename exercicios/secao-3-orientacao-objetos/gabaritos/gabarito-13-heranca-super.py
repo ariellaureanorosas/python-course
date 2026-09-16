@@ -30,7 +30,7 @@ class Veiculo:
         >>> Veiculo('Fiat', 'Uno').descricao()
         'Fiat Uno'
         """
-        return f'{self.marca} {self.modelo}'
+        return f"{self.marca} {self.modelo}"
 
     def mover(self) -> str:
         """Retorna o comportamento padrao de movimento.
@@ -39,7 +39,7 @@ class Veiculo:
         >>> Veiculo('Fiat', 'Uno').mover()
         'O veículo está se movendo'
         """
-        return 'O veículo está se movendo'
+        return "O veículo está se movendo"
 
     def __repr__(self) -> str:
         """Representacao textual para depuracao.
@@ -48,7 +48,7 @@ class Veiculo:
         >>> Veiculo('Fiat', 'Uno')
         Veiculo(marca='Fiat', modelo='Uno')
         """
-        return f'Veiculo(marca={self.marca!r}, modelo={self.modelo!r})'
+        return f"Veiculo(marca={self.marca!r}, modelo={self.modelo!r})"
 
 
 class Carro(Veiculo):
@@ -67,7 +67,7 @@ class Carro(Veiculo):
         >>> Carro('Fiat', 'Uno', 4).portas
         4
         """
-        return f'{super().mover()} sobre 4 rodas'
+        return f"{super().mover()} sobre 4 rodas"
 
 
 class Moto(Veiculo):
@@ -84,11 +84,12 @@ class Moto(Veiculo):
         >>> Moto('Honda', 'CG', 160).mover()
         'O veículo está se movendo sobre 2 rodas'
         """
-        return f'{super().mover()} sobre 2 rodas'
+        return f"{super().mover()} sobre 2 rodas"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

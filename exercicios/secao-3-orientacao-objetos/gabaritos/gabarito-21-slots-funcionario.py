@@ -32,13 +32,14 @@ class Funcionario:
     3000.0
     >>> hasattr(f, '__dict__')
     False
-    >>> f.cargo = 'x'
+    >>> f.cargo = 'x'  # doctest: +NORMALIZE_WHITESPACE
     Traceback (most recent call last):
     ...
-    AttributeError: 'Funcionario' object has no attribute 'cargo' and no __dict__ for setting new attributes
+    AttributeError: 'Funcionario' object has no attribute 'cargo' and no
+    __dict__ for setting new attributes
     """
 
-    __slots__ = ('nome', 'salario')
+    __slots__ = ("nome", "salario")
 
     def __init__(self, nome: str, salario: float) -> None:
         self.nome = nome
@@ -62,11 +63,12 @@ class Funcionario:
         >>> Funcionario('Ana', 3000.0)
         Funcionario(nome='Ana', salario=3000.0)
         """
-        return f'Funcionario(nome={self.nome!r}, salario={self.salario!r})'
+        return f"Funcionario(nome={self.nome!r}, salario={self.salario!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

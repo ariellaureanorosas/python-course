@@ -14,8 +14,12 @@ Alternativas descartadas: confirmar a resposta dentro do print
 o total de acertos como int).
 """
 
+from typing import cast
 
-def verificar_resposta(pergunta: dict, resposta: str) -> bool:
+
+def verificar_resposta(
+    pergunta: dict[str, str | dict[str, str]], resposta: str
+) -> bool:
     """Confere se a resposta corresponde à resposta correta.
 
     Parametros
@@ -41,7 +45,9 @@ def verificar_resposta(pergunta: dict, resposta: str) -> bool:
     return resposta == pergunta["resposta"]
 
 
-def executar_quiz(perguntas: list[dict]) -> int:
+def executar_quiz(
+    perguntas: list[dict[str, str | dict[str, str]]],
+) -> int:
     """Executa o quiz interativo e retorna o total de acertos.
 
     Parametros
@@ -58,7 +64,8 @@ def executar_quiz(perguntas: list[dict]) -> int:
     acertos = 0
     for pergunta in perguntas:
         print(pergunta["pergunta"])
-        for letra, texto in pergunta["opcoes"].items():
+        opcoes = cast("dict[str, str]", pergunta["opcoes"])
+        for letra, texto in opcoes.items():
             print(f"{letra}) {texto}")
         resposta = input("Sua resposta: ").strip().lower()
         if verificar_resposta(pergunta, resposta):
@@ -72,6 +79,7 @@ def executar_quiz(perguntas: list[dict]) -> int:
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     PERGUNTAS = [
         {

@@ -17,7 +17,7 @@ comprehension com `in` (mais lento e menos legível que &).
 """
 
 
-def primeiro_duplicado(lista: list) -> int | None:
+def primeiro_duplicado(lista: list[int]) -> int | None:
     """Devolve o primeiro elemento repetido da lista, ou None.
 
     Parâmetros
@@ -37,7 +37,7 @@ def primeiro_duplicado(lista: list) -> int | None:
     >>> primeiro_duplicado([1, 2, 3]) is None
     True
     """
-    vistos: set = set()
+    vistos: set[int] = set()
     for item in lista:
         if item in vistos:
             return item
@@ -45,7 +45,7 @@ def primeiro_duplicado(lista: list) -> int | None:
     return None
 
 
-def elementos_duplicados(lista: list) -> set:
+def elementos_duplicados(lista: list[int]) -> set[int]:
     """Devolve o set de TODOS os elementos que aparecem mais de uma vez.
 
     Parâmetros
@@ -65,8 +65,8 @@ def elementos_duplicados(lista: list) -> set:
     >>> elementos_duplicados([1, 2, 3])
     set()
     """
-    vistos: set = set()
-    repetidos: set = set()
+    vistos: set[int] = set()
+    repetidos: set[int] = set()
     for item in lista:
         if item in vistos:
             repetidos.add(item)
@@ -74,7 +74,7 @@ def elementos_duplicados(lista: list) -> set:
     return repetidos
 
 
-def palavras_em_comum(texto1: str, texto2: str) -> set:
+def palavras_em_comum(texto1: str, texto2: str) -> set[str]:
     """Devolve as palavras presentes nos dois textos (interseção).
 
     Parâmetros

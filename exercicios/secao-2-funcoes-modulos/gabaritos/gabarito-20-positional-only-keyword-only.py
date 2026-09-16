@@ -85,10 +85,10 @@ def criar_usuario(
     {'nome': 'Joao', 'email': 'joao@email.com', 'idade': 25, 'ativo': False}
     """
     return {
-        'nome': nome,
-        'email': email,
-        'idade': idade,
-        'ativo': ativo,
+        "nome": nome,
+        "email": email,
+        "idade": idade,
+        "ativo": ativo,
     }
 
 
@@ -123,15 +123,16 @@ def registrar_venda(
     {'produto': 'Caneta', 'quantidade': 10, 'preco_unitario': 1.5, 'total': 15.0}
     """
     return {
-        'produto': produto,
-        'quantidade': quantidade,
-        'preco_unitario': preco_unitario,
-        'total': quantidade * preco_unitario,
+        "produto": produto,
+        "quantidade": quantidade,
+        "preco_unitario": preco_unitario,
+        "total": quantidade * preco_unitario,
     }
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

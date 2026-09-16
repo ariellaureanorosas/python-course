@@ -43,14 +43,13 @@ from dataclasses import dataclass, field
 class Produto:
     nome: str
     preco: float
-    categorias: list[str] = field(default_factory=list, repr=False)
+    categorias: list[str] = field(default_factory=list[str], repr=False)
 
 
 @dataclass(frozen=True)
 class Pedido:
     numero: int
-    produtos: list[Produto] = field(default_factory=list)
+    produtos: list[Produto] = field(default_factory=list[Produto])
 
     @property
-    def total(self) -> float:
-        ...
+    def total(self) -> float: ...

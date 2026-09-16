@@ -40,7 +40,7 @@ class PagamentoCartao(Pagamento):
         >>> PagamentoCartao('Visa').processar()
         'Pagamento com cartão Visa processado'
         """
-        return f'Pagamento com cartão {self.bandeira} processado'
+        return f"Pagamento com cartão {self.bandeira} processado"
 
 
 class PagamentoPix(Pagamento):
@@ -53,7 +53,7 @@ class PagamentoPix(Pagamento):
         >>> PagamentoPix().processar()
         'Pagamento via Pix processado'
         """
-        return 'Pagamento via Pix processado'
+        return "Pagamento via Pix processado"
 
 
 class Produto(ABC):
@@ -83,8 +83,9 @@ class Frutas(Produto):
         return self._preco
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

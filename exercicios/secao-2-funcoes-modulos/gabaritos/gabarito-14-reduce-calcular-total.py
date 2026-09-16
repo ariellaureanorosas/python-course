@@ -17,7 +17,7 @@ from functools import reduce
 
 
 def calcular_total_estoque(
-    produtos: list[dict],
+    produtos: list[dict[str, float]],
 ) -> float:
     """Retorna soma de preco * quantidade de todos os produtos.
 
@@ -43,14 +43,14 @@ def calcular_total_estoque(
     0.0
     """
     return reduce(
-        lambda acc, p: acc + p['preco'] * p['quantidade'],
+        lambda acc, p: acc + p["preco"] * p["quantidade"],
         produtos,
         0.0,
     )
 
 
 def calcular_total_sum(
-    produtos: list[dict],
+    produtos: list[dict[str, float]],
 ) -> float:
     """Retorna soma de preco * quantidade com sum e generator.
 
@@ -73,11 +73,11 @@ def calcular_total_sum(
     >>> calcular_total_sum([])
     0.0
     """
-    return float(sum(p['preco'] * p['quantidade'] for p in produtos))
+    return float(sum(p["preco"] * p["quantidade"] for p in produtos))
 
 
 def calcular_total_com_desconto(
-    produtos: list[dict],
+    produtos: list[dict[str, float]],
     desconto: float,
 ) -> float:
     """Retorna total do estoque aplicando desconto percentual no preco.
@@ -112,17 +112,19 @@ def calcular_total_com_desconto(
     0.0
     """
     if desconto < 0:
-        raise ValueError('Desconto nao pode ser negativo')
+        msg = "Desconto nao pode ser negativo"
+        raise ValueError(msg)
 
     return reduce(
-        lambda acc, p: acc + (p['preco'] * (1 - desconto / 100)) * p['quantidade'],
+        lambda acc, p: acc + (p["preco"] * (1 - desconto / 100)) * p["quantidade"],
         produtos,
         0.0,
     )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

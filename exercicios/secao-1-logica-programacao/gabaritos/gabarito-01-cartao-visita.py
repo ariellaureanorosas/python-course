@@ -12,16 +12,16 @@ com f-string (mistura apresentação com dados e dificulta ajustar
 uma linha isolada).
 """
 
-SEPARADOR: str = '=' * 20
+SEPARADOR: str = "=" * 20
 
-nome: str = 'Maria Silva'
-telefone: str = '(11) 99999-0000'
-email: str = 'maria@email.com'
+nome: str = "Maria Silva"
+telefone: str = "(11) 99999-0000"
+email: str = "maria@email.com"
 
 print(SEPARADOR)
-print(f'Nome: {nome}')
-print(f'Telefone: {telefone}')
-print(f'Email: {email}')
+print(f"Nome: {nome}")
+print(f"Telefone: {telefone}")
+print(f"Email: {email}")
 print(SEPARADOR)
 
 # Onde você provavelmente divergiu:

@@ -45,16 +45,16 @@ class Configuracao:
     _instancia = None
     _inicializada = False
 
-    def __new__(cls, *args, **kwargs) -> Configuracao:
+    def __new__(cls, *args: object, **kwargs: object) -> Configuracao:
         if cls._instancia is None:
             cls._instancia = super().__new__(cls)
         return cls._instancia
 
-    def __init__(self, host: str = 'localhost', porta: int = 8000) -> None:
-        if not type(self)._inicializada:
+    def __init__(self, host: str = "localhost", porta: int = 8000) -> None:  # pyright: ignore[reportInconsistentConstructor]
+        if not type(self)._inicializada:  # noqa: SLF001 - acesso interno ao próprio tipo
             self.host = host
             self.porta = porta
-            type(self)._inicializada = True
+            type(self)._inicializada = True  # noqa: SLF001 - acesso interno ao próprio tipo
 
     def __repr__(self) -> str:
         """Representacao textual para depuracao.
@@ -63,11 +63,12 @@ class Configuracao:
         >>> Configuracao()
         Configuracao(host='localhost', porta=8000)
         """
-        return f'Configuracao(host={self.host!r}, porta={self.porta!r})'
+        return f"Configuracao(host={self.host!r}, porta={self.porta!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

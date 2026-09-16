@@ -104,13 +104,17 @@ def aplicar_descontos(
     >>> aplicar_descontos([])
     []
     """
-    return [round(p * 0.95, 2) if p <= 50 else (
-        round(p * 0.90, 2) if p <= 100 else round(p * 0.85, 2)
-    ) for p in precos]
+    return [
+        round(p * 0.95, 2)
+        if p <= 50
+        else (round(p * 0.90, 2) if p <= 100 else round(p * 0.85, 2))
+        for p in precos
+    ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

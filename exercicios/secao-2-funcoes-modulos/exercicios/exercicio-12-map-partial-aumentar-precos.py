@@ -22,16 +22,11 @@ Crie as funções abaixo usando map() e functools.partial.
      - Preço > 100: 15% de desconto
 """
 
-from functools import partial
+
+def aumentar(preco: float, percentual: float) -> float: ...
 
 
-def aumentar(preco: float, percentual: float) -> float:
-    ...
+def aplicar_aumento(precos: list[float], percentual: float) -> list[float]: ...
 
 
-def aplicar_aumento(precos: list[float], percentual: float) -> list[float]:
-    ...
-
-
-def aplicar_descontos(precos: list[float]) -> list[float]:
-    ...
+def aplicar_descontos(precos: list[float]) -> list[float]: ...

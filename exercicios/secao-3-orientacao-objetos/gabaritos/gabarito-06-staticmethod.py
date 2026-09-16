@@ -44,7 +44,7 @@ class Conexao:
         host: str,
         usuario: str,
         senha: str,
-    ) -> 'Conexao':
+    ) -> Conexao:
         """Cria uma conexao validando as credenciais antes.
 
         Raises:
@@ -59,7 +59,8 @@ class Conexao:
         ValueError: Credenciais inválidas
         """
         if not cls._credenciais_validas(usuario, senha):
-            raise ValueError('Credenciais inválidas')
+            msg = "Credenciais inválidas"
+            raise ValueError(msg)
 
         conexao = cls(host)
         conexao.usuario = usuario
@@ -72,11 +73,12 @@ class Conexao:
         >>> Conexao('localhost')
         Conexao(host='localhost', usuario=None)
         """
-        return f'Conexao(host={self.host!r}, usuario={self.usuario!r})'
+        return f"Conexao(host={self.host!r}, usuario={self.usuario!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

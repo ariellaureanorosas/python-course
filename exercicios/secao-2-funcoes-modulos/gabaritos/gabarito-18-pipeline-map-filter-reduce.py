@@ -17,8 +17,13 @@ composição); lambda anônimo sem nome em cada etapa (aqui o
 predicado é nomeado em filtro para legibilidade).
 """
 
-from collections.abc import Callable
+from __future__ import annotations
+
 from functools import reduce
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
 def processar_numeros(
@@ -49,7 +54,7 @@ def processar_numeros(
     """
     return reduce(
         lambda acc, n: acc + n,
-        map(lambda n: n ** 2, filter(lambda n: n % 2 == 0, numeros)),
+        (n**2 for n in numeros if n % 2 == 0),
         0,
     )
 
@@ -93,17 +98,16 @@ def processar_numeros_flexivel(
     0
     """
     if expoente < 0:
-        raise ValueError('Expoente nao pode ser negativo')
+        msg = "Expoente nao pode ser negativo"
+        raise ValueError(msg)
 
     filtro: Callable[[int], bool] = (
-        lambda n: n % 2 == 0
-    ) if pares else (
-        lambda n: n % 2 != 0
+        (lambda n: n % 2 == 0) if pares else (lambda n: n % 2 != 0)
     )
 
     return reduce(
         lambda acc, n: acc + n,
-        map(lambda n: n ** expoente, filter(filtro, numeros)),
+        (n**expoente for n in numeros if filtro(n)),
         0,
     )
 
@@ -132,18 +136,21 @@ def processar_texto(
     >>> processar_texto([])
     []
     """
-    return list(map(
-        str.upper,
-        filter(lambda p: len(p) >= 3, palavras),
-    ))
+    return list(
+        map(
+            str.upper,
+            filter(lambda p: len(p) >= 3, palavras),
+        )
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     print(processar_numeros([1, 2, 3, 4, 5]))
     print(processar_numeros_flexivel([1, 2, 3, 4], pares=False, expoente=3))
-    print(processar_texto(['oi', 'mundo', 'a', 'Python']))
+    print(processar_texto(["oi", "mundo", "a", "Python"]))
 
 # Onde você provavelmente divergiu:
 # - tipou o predicado como object (perde a informação de que filter

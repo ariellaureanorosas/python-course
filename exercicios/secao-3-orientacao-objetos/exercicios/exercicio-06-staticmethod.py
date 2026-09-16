@@ -14,7 +14,8 @@ Use para validações e cálculos utilitários ligados ao domínio da classe.
    - `@staticmethod _credenciais_validas(usuario: str, senha: str) -> bool`
      - Retorna True se usuario tiver 3+ caracteres E senha tiver 6+
      - É "privada" por convenção (underscore), usada só internamente
-   - `@classmethod criar_com_credenciais(cls, host: str, usuario: str, senha: str) -> 'Conexao'`
+   - `@classmethod criar_com_credenciais(cls, host: str, usuario: str,
+     senha: str) -> 'Conexao'`
      - Usa o método estático para validar
      - Se inválidas, levanta ValueError('Credenciais inválidas')
      - Se válidas, cria a Conexao com cls(host), define o usuário e retorna
@@ -31,12 +32,10 @@ como faria com uma instância normal: conexao.usuario = usuario.
 
 
 class Conexao:
-    def __init__(self, host: str) -> None:
-        ...
+    def __init__(self, host: str) -> None: ...
 
     @staticmethod
-    def _credenciais_validas(usuario: str, senha: str) -> bool:
-        ...
+    def _credenciais_validas(usuario: str, senha: str) -> bool: ...
 
     @classmethod
     def criar_com_credenciais(
@@ -44,8 +43,6 @@ class Conexao:
         host: str,
         usuario: str,
         senha: str,
-    ) -> 'Conexao':
-        ...
+    ) -> Conexao: ...
 
-    def __repr__(self) -> str:
-        ...
+    def __repr__(self) -> str: ...

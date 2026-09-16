@@ -25,7 +25,7 @@ except ValueError:
     print(f"{jogador} não está na escalação.")
 
 try:
-    ESCALACAO[1] = "Novato"
+    ESCALACAO[1] = "Novato"  # pyright: ignore[reportIndexIssue]  # erro proposital para o try/except
 except TypeError:
     print("A escalação é imutável!")
 

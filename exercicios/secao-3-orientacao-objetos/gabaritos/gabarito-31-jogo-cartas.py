@@ -22,23 +22,28 @@ uma colecao de verdade, nao um objeto que "tem" dados.
 from __future__ import annotations
 
 import random
-from collections.abc import Iterator
 from functools import total_ordering
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
 @total_ordering
 class Carta:
     """Carta de baralho com slots e ordem total por numero/naipe."""
 
-    __slots__ = ('numero', 'naipe')
+    __slots__ = ("naipe", "numero")
 
-    NAIPES = ('copas', 'ouros', 'paus', 'espadas')
+    NAIPES = ("copas", "ouros", "paus", "espadas")
 
     def __init__(self, numero: int, naipe: str) -> None:
         if numero not in range(1, 14):
-            raise ValueError(f'numero deve estar entre 1 e 13: {numero}')
+            msg = f"numero deve estar entre 1 e 13: {numero}"
+            raise ValueError(msg)
         if naipe not in self.NAIPES:
-            raise ValueError(f'naipe invalido: {naipe}')
+            msg = f"naipe invalido: {naipe}"
+            raise ValueError(msg)
         self.numero = numero
         self.naipe = naipe
 
@@ -49,7 +54,7 @@ class Carta:
         >>> Carta(7, 'ouros')
         Carta(7, 'ouros')
         """
-        return f'Carta({self.numero}, {self.naipe!r})'
+        return f"Carta({self.numero}, {self.naipe!r})"
 
     def __eq__(self, outro: object) -> bool:
         """Igualdade por numero E naipe (mesma classe).
@@ -99,9 +104,7 @@ class Baralho:
 
     def __init__(self) -> None:
         self.__cartas = [
-            Carta(n, naipe)
-            for n in range(1, 14)
-            for naipe in Carta.NAIPES
+            Carta(n, naipe) for n in range(1, 14) for naipe in Carta.NAIPES
         ]
 
     def __len__(self) -> int:
@@ -171,11 +174,12 @@ class Baralho:
         >>> Baralho()
         Baralho(cartas=52)
         """
-        return f'Baralho(cartas={len(self.__cartas)})'
+        return f"Baralho(cartas={len(self.__cartas)})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

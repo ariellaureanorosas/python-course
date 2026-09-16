@@ -65,8 +65,9 @@ class Tabuada:
         return self.__numero * self.__atual
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

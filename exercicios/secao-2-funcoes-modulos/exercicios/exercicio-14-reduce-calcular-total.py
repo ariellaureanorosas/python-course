@@ -25,16 +25,13 @@ Crie as funções abaixo.
 Dica: Para o reduce, importe functools.reduce
 """
 
-from functools import reduce
+
+def calcular_total_estoque(produtos: list[dict[str, str | float | int]]) -> float: ...
 
 
-def calcular_total_estoque(produtos: list[dict]) -> float:
-    ...
+def calcular_total_sum(produtos: list[dict[str, str | float | int]]) -> float: ...
 
 
-def calcular_total_sum(produtos: list[dict]) -> float:
-    ...
-
-
-def calcular_total_com_desconto(produtos: list[dict], desconto: float) -> float:
-    ...
+def calcular_total_com_desconto(
+    produtos: list[dict[str, str | float | int]], desconto: float
+) -> float: ...

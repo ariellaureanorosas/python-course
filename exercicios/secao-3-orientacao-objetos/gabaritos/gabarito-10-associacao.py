@@ -39,7 +39,7 @@ class FerramentaDeEscrever:
         >>> FerramentaDeEscrever('Caneta Bic').escrever()
         'Caneta Bic está escrevendo'
         """
-        return f'{self.__nome} está escrevendo'
+        return f"{self.__nome} está escrevendo"
 
 
 class Escritor:
@@ -87,13 +87,14 @@ class Escritor:
         'Machado de Assis está escrevendo com Caneta Bic está escrevendo'
         """
         if self.__ferramenta is None:
-            return f'{self.__nome} precisa de uma ferramenta'
+            return f"{self.__nome} precisa de uma ferramenta"
 
-        return f'{self.__nome} está escrevendo com {self.__ferramenta.escrever()}'
+        return f"{self.__nome} está escrevendo com {self.__ferramenta.escrever()}"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

@@ -7,12 +7,14 @@ Aula: 111
 Crie funções que usam combinations e permutations do itertools para
 gerar possibilidades de senhas.
 
-1. Função `gerar_combinacoes(caracteres: list[str], tamanho: int) -> list[tuple[str, ...]]`
+1. Função `gerar_combinacoes(caracteres: list[str],
+   tamanho: int) -> list[tuple[str, ...]]`
    - Usa itertools.combinations para gerar todas as combinações de `caracteres`
      com comprimento `tamanho`
    - Retorna como lista de tuplas
 
-2. Função `gerar_permutacoes(caracteres: list[str], tamanho: int) -> list[tuple[str, ...]]`
+2. Função `gerar_permutacoes(caracteres: list[str],
+   tamanho: int) -> list[tuple[str, ...]]`
    - Usa itertools.permutations para gerar todas as permutações de `caracteres`
      com comprimento `tamanho`
    - Retorna como lista de tuplas
@@ -41,33 +43,27 @@ gerar possibilidades de senhas.
    - Dica: combinação total de todos, depois filtre as que contêm todos os obrigatórios
 """
 
-from itertools import combinations, permutations
-
 
 def gerar_combinacoes(
     caracteres: list[str],
     tamanho: int,
-) -> list[tuple[str, ...]]:
-    ...
+) -> list[tuple[str, ...]]: ...
 
 
 def gerar_permutacoes(
     caracteres: list[str],
     tamanho: int,
-) -> list[tuple[str, ...]]:
-    ...
+) -> list[tuple[str, ...]]: ...
 
 
 def comparar_possibilidades(
     caracteres: list[str],
     tamanho: int,
-) -> dict:
-    ...
+) -> dict[str, int | float]: ...
 
 
 def gerar_senhas_com_fixas(
     obrigatorios: list[str],
     opcionais: list[str],
     tamanho: int,
-) -> list[str]:
-    ...
+) -> list[str]: ...

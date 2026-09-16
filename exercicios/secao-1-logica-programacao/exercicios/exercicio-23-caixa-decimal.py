@@ -40,5 +40,6 @@ total_final: Decimal = total - desconto
 
 numeros_formatados: str = ", ".join(str(decimais) for decimais in precos)
 print(
-    f"Entradas: {numeros_formatados} | Total: {total:.2f} | Desconto 10%: {desconto:.2f} | Total final: {total_final:.2f}"
+    f"Entradas: {numeros_formatados} | Total: {total:.2f} "
+    f"| Desconto 10%: {desconto:.2f} | Total final: {total_final:.2f}"
 )

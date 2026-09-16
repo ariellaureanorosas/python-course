@@ -63,8 +63,8 @@ class Produto(ABC):
         Alimento(nome='Arroz', preco_custo=10.0)
         """
         return (
-            f'{self.__class__.__name__}('
-            f'nome={self.nome!r}, preco_custo={self.preco_custo})'
+            f"{self.__class__.__name__}("
+            f"nome={self.nome!r}, preco_custo={self.preco_custo})"
         )
 
 
@@ -119,7 +119,8 @@ class Estoque:
         ValueError: quantidade deve ser positiva
         """
         if quantidade <= 0:
-            raise ValueError('quantidade deve ser positiva')
+            msg = "quantidade deve ser positiva"
+            raise ValueError(msg)
         self.__itens[produto] = self.__itens.get(produto, 0) + quantidade
 
     def retirar(self, produto: Produto, quantidade: int = 1) -> float:
@@ -147,7 +148,8 @@ class Estoque:
         if produto not in self.__itens:
             raise KeyError(produto)
         if self.__itens[produto] < quantidade:
-            raise ValueError('quantidade indisponível')
+            msg = "quantidade indisponível"
+            raise ValueError(msg)
 
         self.__itens[produto] -= quantidade
         if self.__itens[produto] == 0:
@@ -164,8 +166,9 @@ class Estoque:
         >>> estoque = Estoque()
         >>> estoque.adicionar(mouse, 2)
         >>> estoque.adicionar(arroz, 5)
-        >>> estoque.itens
-        {Eletronico(nome='Mouse', preco_custo=40.0): 2, Alimento(nome='Arroz', preco_custo=10.0): 5}
+        >>> estoque.itens  # doctest: +NORMALIZE_WHITESPACE
+        {Eletronico(nome='Mouse', preco_custo=40.0): 2, Alimento(nome='Arroz',
+         preco_custo=10.0): 5}
         >>> estoque.retirar(mouse, 1)
         60.0
         >>> len(estoque.itens)
@@ -196,11 +199,12 @@ class Estoque:
         >>> Estoque()
         Estoque(quantidade=0)
         """
-        return f'Estoque(quantidade={sum(self.__itens.values())})'
+        return f"Estoque(quantidade={sum(self.__itens.values())})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

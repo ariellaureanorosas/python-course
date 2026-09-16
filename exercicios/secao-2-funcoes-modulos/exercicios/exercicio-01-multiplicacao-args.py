@@ -19,8 +19,7 @@ apenas estar correto.
 """
 
 
-def multiplicar(*args: float) -> float:
-    ...
+def multiplicar(*args: float) -> float: ...
 
 
 if __name__ == "__main__":

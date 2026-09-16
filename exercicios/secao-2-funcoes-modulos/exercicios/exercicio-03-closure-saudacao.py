@@ -17,9 +17,15 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
+from __future__ import annotations
 
-def criar_saudacao(saudacao: str):
-    ...
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
+
+def criar_saudacao(saudacao: str) -> Callable[[str], str]: ...
 
 
 if __name__ == "__main__":

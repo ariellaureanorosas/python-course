@@ -28,12 +28,10 @@ apenas estar correto.
 """
 
 
-def fatorial(n: int) -> int:
-    ...
+def fatorial(n: int) -> int: ...
 
 
-def potencia(base: int, expoente: int) -> int:
-    ...
+def potencia(base: int, expoente: int) -> int: ...
 
 
 if __name__ == "__main__":
@@ -45,4 +43,7 @@ if __name__ == "__main__":
     print(fatorial(5))
     print(potencia(2, 10))
     print(potencia(2, 10))
-    print(fatorial.cache_info())
+    # cache_info só existe porque o aluno decorou fatorial com
+    # @lru_cache — no esqueleto ainda não há decorador, então o
+    # desconhecimento é esperado (strict).
+    print(fatorial.cache_info())  # pyright: ignore[reportFunctionMemberAccess]

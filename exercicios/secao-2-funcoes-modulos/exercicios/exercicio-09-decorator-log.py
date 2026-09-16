@@ -11,6 +11,12 @@ Crie um decorator `@log_execucao` que:
 Tópicos da aula: decorators, @wraps, *args, **kwargs, print
 """
 
+from __future__ import annotations
 
-def log_execucao(func):
-    ...
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
+
+def log_execucao(func: Callable[..., object]) -> Callable[..., object]: ...

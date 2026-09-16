@@ -15,15 +15,20 @@ Alternativas descartadas: list comprehension com if (equivalente
 em resultado, mas o exercício pede filter()).
 """
 
+from typing import cast
 
-def _produto_valido(produto: dict) -> bool:
+
+def _produto_valido(produto: dict[str, str | float | int]) -> bool:
     """Retorna True se produto tem preco e quantidade positivos."""
-    return produto.get('preco', 0) > 0 and produto.get('quantidade', 0) > 0
+    return (
+        cast("float", produto.get("preco", 0)) > 0
+        and cast("float", produto.get("quantidade", 0)) > 0
+    )
 
 
 def produtos_disponiveis(
-    produtos: list[dict],
-) -> list[dict]:
+    produtos: list[dict[str, str | float | int]],
+) -> list[dict[str, str | float | int]]:
     """Retorna nova lista apenas com produtos com preco e quantidade > 0.
 
     Parametros
@@ -49,10 +54,10 @@ def produtos_disponiveis(
 
 
 def produtos_por_faixa_de_preco(
-    produtos: list[dict],
+    produtos: list[dict[str, str | float | int]],
     minimo: float,
     maximo: float,
-) -> list[dict]:
+) -> list[dict[str, str | float | int]]:
     """Retorna nova lista com produtos dentro da faixa de preco.
 
     Faixa inclusiva em ambas as pontas: [minimo, maximo].
@@ -79,16 +84,18 @@ def produtos_por_faixa_de_preco(
     >>> produtos_por_faixa_de_preco([p1, p2, p3], 10.0, 50.0)
     [{'preco': 10.0}, {'preco': 50.0}]
     """
-    return list(filter(
-        lambda p: minimo <= p['preco'] <= maximo,
-        produtos,
-    ))
+    return list(
+        filter(
+            lambda p: minimo <= cast("float", p["preco"]) <= maximo,
+            produtos,
+        )
+    )
 
 
 def filtrar_por_nome(
-    produtos: list[dict],
+    produtos: list[dict[str, str | float | int]],
     termo: str,
-) -> list[dict]:
+) -> list[dict[str, str | float | int]]:
     """Retorna nova lista com produtos cujo nome contenha o termo.
 
     A busca e case insensitive.
@@ -116,14 +123,17 @@ def filtrar_por_nome(
     >>> filtrar_por_nome([p1, p2], 'borracha')
     []
     """
-    return list(filter(
-        lambda p: termo.lower() in p.get('nome', '').lower(),
-        produtos,
-    ))
+    return list(
+        filter(
+            lambda p: termo.lower() in cast("str", p.get("nome", "")).lower(),
+            produtos,
+        )
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

@@ -65,11 +65,12 @@ class Relatorio:
         >>> r.total
         60.0
         """
-        return f'Relatorio(vendas={self.__vendas!r})'
+        return f"Relatorio(vendas={self.__vendas!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

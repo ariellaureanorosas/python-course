@@ -3,7 +3,7 @@ Gabarito EXERCÍCIO 23 - Módulo Próprio com __main__ e __all__
 
 Raciocínio sênior
 -----------------
-A separação "módulo importável × script executável" é o contrato de
+A separação "módulo importável vs script executável" é o contrato de
 qualquer arquivo Python reutilizável: o código de DEMONSTRAÇÃO fica
 atrás do `if __name__ == "__main__":` para que importar não dispare
 prints inesperados (efeito colateral ao importar é anti-contract).
@@ -19,7 +19,7 @@ desta pasta), e nomes com hífen não podem ser alvo de import normal
 renomeie ou use importlib (anotação 24).
 """
 
-__all__ = ["somar", "multiplicar"]
+__all__ = ["multiplicar", "somar"]
 
 
 def somar(a: int, b: int) -> int:

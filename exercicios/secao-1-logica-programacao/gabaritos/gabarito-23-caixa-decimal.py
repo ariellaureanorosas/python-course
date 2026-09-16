@@ -26,7 +26,8 @@ desconto: Decimal = round(total * Decimal("0.10"), 2)
 total_final: Decimal = round(total - desconto, 2)
 
 print(
-    f"Total: {total:.2f} | Desconto 10%: {desconto:.2f} | Total final: {total_final:.2f}"
+    f"Total: {total:.2f} | Desconto 10%: {desconto:.2f} "
+    f"| Total final: {total_final:.2f}"
 )
 
 # Onde você provavelmente divergiu:

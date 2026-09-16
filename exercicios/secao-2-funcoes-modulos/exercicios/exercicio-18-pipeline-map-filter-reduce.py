@@ -30,11 +30,8 @@ Crie funções que combinam filter, map e reduce em um pipeline de processamento
    - Retorna lista (NÃO usa reduce)
 """
 
-from functools import reduce
 
-
-def processar_numeros(numeros: list[int]) -> int:
-    ...
+def processar_numeros(numeros: list[int]) -> int: ...
 
 
 def processar_numeros_flexivel(
@@ -42,9 +39,7 @@ def processar_numeros_flexivel(
     *,
     pares: bool = True,
     expoente: int = 2,
-) -> int:
-    ...
+) -> int: ...
 
 
-def processar_texto(palavras: list[str]) -> list[str]:
-    ...
+def processar_texto(palavras: list[str]) -> list[str]: ...

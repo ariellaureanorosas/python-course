@@ -1,4 +1,4 @@
-CORES_VALIDAS: tuple[str, ...] = ('Azul', 'Vermelha', 'Preta')
+CORES_VALIDAS: tuple[str, ...] = ("Azul", "Vermelha", "Preta")
 
 
 """
@@ -53,7 +53,8 @@ class Caneta:
         ValueError: Cor inválida: Roxa
         """
         if nova_cor not in CORES_VALIDAS:
-            raise ValueError(f'Cor inválida: {nova_cor}')
+            msg = f"Cor inválida: {nova_cor}"
+            raise ValueError(msg)
 
         self._cor = nova_cor
 
@@ -64,11 +65,12 @@ class Caneta:
         >>> Caneta('Azul')
         Caneta(cor='Azul')
         """
-        return f'Caneta(cor={self._cor!r})'
+        return f"Caneta(cor={self._cor!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

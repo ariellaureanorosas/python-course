@@ -16,7 +16,7 @@ Alternativas descartadas: dataclass sem frozen/order (o enunciado
 pede comportamento de imutável e ordenável).
 """
 
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field
 
 
 @dataclass(frozen=True, order=True)
@@ -25,7 +25,7 @@ class Produto:
 
     nome: str
     preco: float
-    categorias: list[str] = field(default_factory=list, repr=False)
+    categorias: list[str] = field(default_factory=list[str], repr=False)
 
 
 @dataclass(frozen=True)
@@ -33,7 +33,7 @@ class Pedido:
     """Pedido imutavel que agrega produtos e calcula o total."""
 
     numero: int
-    produtos: list[Produto] = field(default_factory=list)
+    produtos: list[Produto] = field(default_factory=list[Produto])
 
     @property
     def total(self) -> float:
@@ -47,8 +47,9 @@ class Pedido:
         return sum(produto.preco for produto in self.produtos)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

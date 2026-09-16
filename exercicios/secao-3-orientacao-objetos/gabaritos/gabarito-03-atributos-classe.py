@@ -43,7 +43,7 @@ class Aluno:
         >>> Aluno('Ana', 20)
         Aluno(nome='Ana', idade=20)
         """
-        return f'Aluno(nome={self.nome!r}, idade={self.idade})'
+        return f"Aluno(nome={self.nome!r}, idade={self.idade})"
 
 
 def instancia_do_dicionario(dados: dict[str, str | int]) -> Aluno:
@@ -53,10 +53,10 @@ def instancia_do_dicionario(dados: dict[str, str | int]) -> Aluno:
     >>> instancia_do_dicionario({'nome': 'Ana', 'idade': 20})
     Aluno(nome='Ana', idade=20)
     """
-    return Aluno(**dados)
+    return Aluno(**dados)  # pyright: ignore[reportArgumentType]  # ** espalha o dict; tipos conferem em runtime
 
 
-def atributos_do_objeto(aluno: Aluno) -> dict:
+def atributos_do_objeto(aluno: Aluno) -> dict[str, str | int]:
     """Retorna apenas os atributos de instancia com vars().
 
     Exemplos:
@@ -66,8 +66,9 @@ def atributos_do_objeto(aluno: Aluno) -> dict:
     return vars(aluno)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

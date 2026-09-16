@@ -31,8 +31,7 @@ class Endereco:
         Endereco(rua='Rua das Flores', numero=123, cidade='São Paulo')
         """
         return (
-            f'Endereco(rua={self.rua!r}, numero={self.numero}, '
-            f'cidade={self.cidade!r})'
+            f"Endereco(rua={self.rua!r}, numero={self.numero}, cidade={self.cidade!r})"
         )
 
 
@@ -47,14 +46,17 @@ class Cliente:
         """Representacao textual para depuracao.
 
         Exemplos:
-        >>> Cliente('Maria', 'Rua das Flores', 123, 'São Paulo')
-        Cliente(nome='Maria', endereco=Endereco(rua='Rua das Flores', numero=123, cidade='São Paulo'))
+        >>> c = Cliente('Maria', 'Rua das Flores', 123, 'São Paulo')
+        >>> c  # doctest: +NORMALIZE_WHITESPACE
+        Cliente(nome='Maria', endereco=Endereco(rua='Rua das Flores', numero=123,
+                                                cidade='São Paulo'))
         """
-        return f'Cliente(nome={self.nome!r}, endereco={self.endereco!r})'
+        return f"Cliente(nome={self.nome!r}, endereco={self.endereco!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

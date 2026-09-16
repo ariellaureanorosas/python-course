@@ -10,7 +10,8 @@ Crie as funções abaixo.
    - Retorna o fatorial de n recursivamente
    - n! = n * (n-1)! para n > 1
    - n! = 1 para n <= 1
-   - Se n for negativo, levanta ValueError com mensagem "Fatorial não definido para números negativos"
+   - Se n for negativo, levanta ValueError com mensagem
+     "Fatorial não definido para números negativos"
 
 2. Função `fatorial_iterativo(n: int) -> int`
    - Retorna o fatorial de n de forma iterativa (sem recursão)
@@ -25,16 +26,11 @@ Crie as funções abaixo.
 Dica: import sys e guarde o limite original antes de alterar.
 """
 
-import sys
+
+def fatorial(n: int) -> int: ...
 
 
-def fatorial(n: int) -> int:
-    ...
+def fatorial_iterativo(n: int) -> int: ...
 
 
-def fatorial_iterativo(n: int) -> int:
-    ...
-
-
-def calcular_fatorial_com_limite(n: int, limite: int) -> int:
-    ...
+def calcular_fatorial_com_limite(n: int, limite: int) -> int: ...

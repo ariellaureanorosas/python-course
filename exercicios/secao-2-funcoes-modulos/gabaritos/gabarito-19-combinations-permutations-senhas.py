@@ -54,9 +54,8 @@ def gerar_combinacoes(
     ValueError: Tamanho (3) maior que numero de caracteres (2)
     """
     if tamanho > len(caracteres):
-        raise ValueError(
-            f'Tamanho ({tamanho}) maior que numero de caracteres ({len(caracteres)})'
-        )
+        msg = f"Tamanho ({tamanho}) maior que numero de caracteres ({len(caracteres)})"
+        raise ValueError(msg)
     return list(combinations(caracteres, tamanho))
 
 
@@ -91,9 +90,8 @@ def gerar_permutacoes(
     [('A', 'B'), ('A', 'C'), ('B', 'A'), ('B', 'C'), ('C', 'A'), ('C', 'B')]
     """
     if tamanho > len(caracteres):
-        raise ValueError(
-            f'Tamanho ({tamanho}) maior que numero de caracteres ({len(caracteres)})'
-        )
+        msg = f"Tamanho ({tamanho}) maior que numero de caracteres ({len(caracteres)})"
+        raise ValueError(msg)
     return list(permutations(caracteres, tamanho))
 
 
@@ -129,19 +127,18 @@ def comparar_possibilidades(
     2.0
     """
     if tamanho > len(caracteres):
-        raise ValueError(
-            f'Tamanho ({tamanho}) maior que numero de caracteres ({len(caracteres)})'
-        )
+        msg = f"Tamanho ({tamanho}) maior que numero de caracteres ({len(caracteres)})"
+        raise ValueError(msg)
 
     n_comb: int = sum(1 for _ in combinations(caracteres, tamanho))
     n_perm: int = sum(1 for _ in permutations(caracteres, tamanho))
 
     return {
-        'caracteres': len(caracteres),
-        'tamanho': tamanho,
-        'combinacoes': n_comb,
-        'permutacoes': n_perm,
-        'razao': n_perm / n_comb if n_comb > 0 else 0.0,
+        "caracteres": len(caracteres),
+        "tamanho": tamanho,
+        "combinacoes": n_comb,
+        "permutacoes": n_perm,
+        "razao": n_perm / n_comb if n_comb > 0 else 0.0,
     }
 
 
@@ -183,23 +180,25 @@ def gerar_senhas_com_fixas(
     ['ABC', 'ABD']
     """
     if len(obrigatorios) > tamanho:
-        raise ValueError(
-            f'Numero de caracteres obrigatorios ({len(obrigatorios)}) '
-            f'excede o tamanho total ({tamanho})'
+        msg = (
+            f"Numero de caracteres obrigatorios ({len(obrigatorios)}) "
+            f"excede o tamanho total ({tamanho})"
         )
+        raise ValueError(msg)
 
     conjunto_obrigatorios: set[str] = set(obrigatorios)
     todos: list[str] = obrigatorios + opcionais
 
     return [
-        ''.join(comb)
+        "".join(comb)
         for comb in combinations(todos, tamanho)
         if conjunto_obrigatorios.issubset(comb)
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

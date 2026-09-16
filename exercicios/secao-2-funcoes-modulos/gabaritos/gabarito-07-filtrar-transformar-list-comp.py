@@ -15,6 +15,8 @@ para valores escalares; {**produto} já copia); função única que
 faz tudo (quebra a testabilidade de cada etapa).
 """
 
+from typing import cast
+
 PRODUTOS = [
     {"nome": "Camiseta", "preco": 49.90},
     {"nome": "Calça", "preco": 129.90},
@@ -24,7 +26,9 @@ PRODUTOS = [
 ]
 
 
-def aumentar_preco_10(produtos: list[dict]) -> list[dict]:
+def aumentar_preco_10(
+    produtos: list[dict[str, str | float]],
+) -> list[dict[str, str | float]]:
     """Retorna nova lista com os preços aumentados em 10%.
 
     A lista ORIGINAL não é modificada: cada produto é copiado com
@@ -48,12 +52,14 @@ def aumentar_preco_10(produtos: list[dict]) -> list[dict]:
     []
     """
     return [
-        {**produto, "preco": round(produto["preco"] * 1.1, 2)}
+        {**produto, "preco": round(cast("float", produto["preco"]) * 1.1, 2)}
         for produto in produtos
     ]
 
 
-def filtrar_caros(produtos: list[dict], limite: float = 50.0) -> list[dict]:
+def filtrar_caros(
+    produtos: list[dict[str, str | float]], limite: float = 50.0
+) -> list[dict[str, str | float]]:
     """Retorna nova lista apenas com produtos mais caros que o limite.
 
     Parametros
@@ -75,12 +81,12 @@ def filtrar_caros(produtos: list[dict], limite: float = 50.0) -> list[dict]:
     >>> filtrar_caros([{'preco': 30.0}], limite=10.0)
     [{'preco': 30.0}]
     """
-    return [produto for produto in produtos if produto["preco"] > limite]
+    return [produto for produto in produtos if cast("float", produto["preco"]) > limite]
 
 
 def ordenar_por_preco(
-    produtos: list[dict], reverso: bool = False
-) -> list[dict]:
+    produtos: list[dict[str, str | float]], *, reverso: bool = False
+) -> list[dict[str, str | float]]:
     """Retorna nova lista ordenada pelo preço.
 
     Parametros
@@ -102,11 +108,12 @@ def ordenar_por_preco(
     >>> ordenar_por_preco([{'preco': 80.0}, {'preco': 30.0}], reverso=True)
     [{'preco': 80.0}, {'preco': 30.0}]
     """
-    return sorted(produtos, key=lambda p: p["preco"], reverse=reverso)
+    return sorted(produtos, key=lambda p: cast("float", p["preco"]), reverse=reverso)
 
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     print(aumentar_preco_10(PRODUTOS))
     print(filtrar_caros(PRODUTOS))

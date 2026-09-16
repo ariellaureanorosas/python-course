@@ -29,16 +29,13 @@ apenas estar correto.
 """
 
 
-def formatar_data_hora(iso: str) -> str:
-    ...
+def formatar_data_hora(iso: str) -> str: ...
 
 
-def dias_entre(inicio: str, fim: str) -> int:
-    ...
+def dias_entre(inicio: str, fim: str) -> int: ...
 
 
-def calcular_idade(nascimento: str, hoje: str) -> int:
-    ...
+def calcular_idade(nascimento: str, hoje: str) -> int: ...
 
 
 if __name__ == "__main__":

@@ -52,11 +52,12 @@ class Caneta:
         >>> Caneta('Azul', 'Bic')
         Caneta(cor='Azul', modelo='Bic')
         """
-        return f'Caneta(cor={self._cor!r}, modelo={self._modelo!r})'
+        return f"Caneta(cor={self._cor!r}, modelo={self._modelo!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

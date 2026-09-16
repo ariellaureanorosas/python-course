@@ -28,19 +28,21 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
-from typing import Iterator
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
-def pares_ate(limite: int) -> Iterator[int]:
-    ...
+def pares_ate(limite: int) -> Iterator[int]: ...
 
 
-def ao_quadrado(fonte: list) -> Iterator[int]:
-    ...
+def ao_quadrado(fonte: list[int]) -> Iterator[int]: ...
 
 
-def concatenar(geradores: list) -> Iterator[int]:
-    ...
+def concatenar(geradores: list[Iterator[int]]) -> Iterator[int]: ...
 
 
 if __name__ == "__main__":

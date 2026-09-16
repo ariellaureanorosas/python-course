@@ -17,8 +17,15 @@ classe (a Seção 3 ainda não começou — a closure entrega o mesmo
 encapsulamento com a ferramenta desta seção).
 """
 
+from __future__ import annotations
 
-def criar_gerenciador() -> dict:
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
+
+def criar_gerenciador() -> dict[str, Callable[..., object]]:
     """Cria um gerenciador de tarefas com desfazer/refazer.
 
     Cada chamada cria pilhas independentes (closures).
@@ -51,10 +58,10 @@ def criar_gerenciador() -> dict:
     >>> g["desfazer"]() is None
     True
     """
-    tarefas: list = []
-    refazer_pilha: list = []
+    tarefas: list[str] = []
+    refazer_pilha: list[str] = []
 
-    def adicionar(tarefa: str) -> list:
+    def adicionar(tarefa: str) -> list[str]:
         tarefas.append(tarefa)
         return tarefas
 
@@ -70,7 +77,7 @@ def criar_gerenciador() -> dict:
         tarefas.append(refazer_pilha.pop())
         return tarefas[-1]
 
-    def listar() -> list:
+    def listar() -> list[str]:
         return tarefas
 
     return {

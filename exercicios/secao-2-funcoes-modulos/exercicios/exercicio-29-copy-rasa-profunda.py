@@ -27,16 +27,13 @@ apenas estar correto.
 """
 
 
-def clonar_rasa(origem: list) -> list:
-    ...
+def clonar_rasa(origem: list[object]) -> list[object]: ...
 
 
-def clonar_profunda(origem: list) -> list:
-    ...
+def clonar_profunda(origem: list[object]) -> list[object]: ...
 
 
-def aumentar_filhos(matriz: list, valor: int) -> list:
-    ...
+def aumentar_filhos(matriz: list[list[int]], valor: int) -> list[list[int]]: ...
 
 
 if __name__ == "__main__":

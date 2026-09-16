@@ -29,7 +29,7 @@ class Ponto:
         >>> Ponto(1, 2)
         Ponto(1, 2)
         """
-        return f'Ponto({self.x}, {self.y})'
+        return f"Ponto({self.x}, {self.y})"
 
     def __str__(self) -> str:
         """Representacao amigavel para usuarios (print).
@@ -38,9 +38,9 @@ class Ponto:
         >>> print(Ponto(1, 2))
         (1, 2)
         """
-        return f'({self.x}, {self.y})'
+        return f"({self.x}, {self.y})"
 
-    def __add__(self, outro: 'Ponto') -> 'Ponto':
+    def __add__(self, outro: Ponto) -> Ponto:
         """Soma coordenada a coordenada e retorna um NOVO ponto.
 
         Exemplos:
@@ -49,7 +49,7 @@ class Ponto:
         """
         return Ponto(self.x + outro.x, self.y + outro.y)
 
-    def __gt__(self, outro: 'Ponto') -> bool:
+    def __gt__(self, outro: Ponto) -> bool:
         """True se este ponto estiver mais distante da origem.
 
         Exemplos:
@@ -70,8 +70,9 @@ class Ponto:
         return (self.x**2 + self.y**2) ** 0.5
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

@@ -17,16 +17,14 @@ Alternativas descartadas: herança única com if dentro do log
 (quebra o princípio open/closed); log como função solta importada.
 """
 
-import os
-import tempfile
-
 
 class Log:
     """Contrato dos mixins de log: log() delega para _log()."""
 
     def _log(self, mensagem: str) -> None:
         """Metodo que cada mixin deve implementar."""
-        raise NotImplementedError('Método _log deve ser implementado')
+        msg = "Método _log deve ser implementado"
+        raise NotImplementedError(msg)
 
     def log(self, mensagem: str) -> None:
         """Registra uma mensagem usando o _log do mixin concreto."""
@@ -49,7 +47,7 @@ class LogPrintMixin(Log):
 class LogFileMixin(Log):
     """Mixin que registra em arquivo."""
 
-    def __init__(self, caminho_arquivo: str = 'log.txt') -> None:
+    def __init__(self, caminho_arquivo: str = "log.txt") -> None:
         self.caminho_arquivo = caminho_arquivo
 
     def _log(self, mensagem: str) -> None:
@@ -63,8 +61,8 @@ class LogFileMixin(Log):
         'Registro em arquivo\\n'
         >>> os.remove(tmp)
         """
-        with open(self.caminho_arquivo, 'a', encoding='utf-8') as arquivo:
-            arquivo.write(f'{mensagem}\n')
+        with open(self.caminho_arquivo, "a", encoding="utf-8") as arquivo:
+            arquivo.write(f"{mensagem}\n")
 
 
 class Eletronico:
@@ -80,13 +78,13 @@ class Eletronico:
         >>> Eletronico('TV')
         Eletronico(nome='TV')
         """
-        return f'Eletronico(nome={self.nome!r})'
+        return f"Eletronico(nome={self.nome!r})"
 
 
 class Smartphone(Eletronico, LogFileMixin):
     """Smartphone: heranca multipla (eletronico + mixin de log em arquivo)."""
 
-    def __init__(self, nome: str, caminho_arquivo: str = 'log.txt') -> None:
+    def __init__(self, nome: str, caminho_arquivo: str = "log.txt") -> None:
         super().__init__(nome)
         LogFileMixin.__init__(self, caminho_arquivo)
 
@@ -103,13 +101,14 @@ class Smartphone(Eletronico, LogFileMixin):
         'Smartphone Galaxy ligado\\n'
         >>> os.remove(tmp)
         """
-        mensagem = f'Smartphone {self.nome} ligado'
+        mensagem = f"Smartphone {self.nome} ligado"
         self.log(mensagem)
         return mensagem
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

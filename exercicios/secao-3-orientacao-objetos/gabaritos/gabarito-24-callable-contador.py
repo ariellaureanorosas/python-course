@@ -57,11 +57,12 @@ class Contador:
         >>> Contador(5)
         Contador(valor=5)
         """
-        return f'Contador(valor={self.valor!r})'
+        return f"Contador(valor={self.valor!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

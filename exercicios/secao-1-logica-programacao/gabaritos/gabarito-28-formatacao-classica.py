@@ -23,8 +23,11 @@ produto: str = "Caneca"
 quantidade: int = 12
 preco: float = 19.90
 
-print("Produto: %s | Quantidade: %d | Preço: R$ %.2f" % (produto, quantidade, preco))
-print("Produto: {0} | Quantidade: {1} | Preço: R$ {2:.2f}".format(produto, quantidade, preco))
+print(
+    "Produto: %s | Quantidade: %d | Preço: R$ %.2f"  # noqa: UP031 - formato legado do exercício
+    % (produto, quantidade, preco)
+)
+print(f"Produto: {produto} | Quantidade: {quantidade} | Preço: R$ {preco:.2f}")
 
 print("{:<10}| {:>6}".format("Caneca", 50.0))
 print("{:<10}| {:>6}".format("Garrafa", 100.0))

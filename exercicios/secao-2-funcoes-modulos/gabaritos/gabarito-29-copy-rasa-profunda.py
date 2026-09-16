@@ -20,7 +20,7 @@ quebraria em estruturas mais profundas.
 import copy
 
 
-def clonar_rasa(origem: list) -> list:
+def clonar_rasa(origem: list[int]) -> list[int]:
     """Copia o topo da lista (itens aninhados continuam compartilhados).
 
     Parâmetros
@@ -41,7 +41,7 @@ def clonar_rasa(origem: list) -> list:
     return copy.copy(origem)
 
 
-def clonar_profunda(origem: list) -> list:
+def clonar_profunda(origem: list[list[int]]) -> list[list[int]]:
     """Recria a lista e todos os seus itens aninhados.
 
     Parâmetros
@@ -62,7 +62,7 @@ def clonar_profunda(origem: list) -> list:
     return copy.deepcopy(origem)
 
 
-def aumentar_filhos(matriz: list, valor: int) -> list:
+def aumentar_filhos(matriz: list[list[int]], valor: int) -> list[list[int]]:
     """Devolve cópia profunda com `valor` somado a cada número.
 
     A matriz recebida não é modificada.
@@ -87,7 +87,7 @@ def aumentar_filhos(matriz: list, valor: int) -> list:
     >>> original
     [[1, 2], [3, 4]]
     """
-    nova: list = copy.deepcopy(matriz)
+    nova: list[list[int]] = copy.deepcopy(matriz)
     for linha in nova:
         for indice in range(len(linha)):
             linha[indice] += valor

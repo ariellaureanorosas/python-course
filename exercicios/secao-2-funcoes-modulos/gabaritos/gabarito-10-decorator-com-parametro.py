@@ -13,12 +13,20 @@ O wrapper usa @wraps pelas mesmas razões do exercício 09, e os
 níveis validos são uma tupla constante (imutável por contrato).
 """
 
+from __future__ import annotations
+
 from functools import wraps
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 NIVEIS_VALIDOS = ("INFO", "WARNING", "ERROR")
 
 
-def log(nivel: str):
+def log(
+    nivel: str,
+) -> Callable[[Callable[..., object]], Callable[..., object]]:
     """Cria um decorator de log com o nível fixado.
 
     Parametros
@@ -50,21 +58,25 @@ def log(nivel: str):
     ValueError: Nível inválido: 'DEBUG'. Use um de ('INFO', 'WARNING', 'ERROR')
     """
     if nivel not in NIVEIS_VALIDOS:
-        raise ValueError(
-            f"Nível inválido: '{nivel}'. Use um de {NIVEIS_VALIDOS}"
-        )
+        msg = f"Nível inválido: '{nivel}'. Use um de {NIVEIS_VALIDOS}"
+        raise ValueError(msg)
 
-    def decorador(func):
+    def decorador(
+        func: Callable[..., object],
+    ) -> Callable[..., object]:
         @wraps(func)
-        def wrapper(*args, **kwargs):
-            print(f'[{nivel}] Executando {func.__name__} ({args}, {kwargs})')
+        def wrapper(*args: object, **kwargs: object) -> object:
+            print(f"[{nivel}] Executando {func.__name__} ({args}, {kwargs})")
             return func(*args, **kwargs)
+
         return wrapper
+
     return decorador
 
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
     @log("INFO")

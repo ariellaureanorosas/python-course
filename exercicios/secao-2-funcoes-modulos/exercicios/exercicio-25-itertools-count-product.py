@@ -24,15 +24,11 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
-from itertools import count, islice, product
+
+def gerar_sequencia(start: int, step: int, quantidade: int) -> list[int]: ...
 
 
-def gerar_sequencia(start: int, step: int, quantidade: int) -> list:
-    ...
-
-
-def combinar_opcoes(cores: list, tamanhos: list) -> list:
-    ...
+def combinar_opcoes(cores: list[str], tamanhos: list[str]) -> list[tuple[str, str]]: ...
 
 
 if __name__ == "__main__":

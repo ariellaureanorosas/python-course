@@ -40,7 +40,7 @@ class NotificacaoEmail(Notificacao):
         Enviando e-mail: Bem-vindo!
         True
         """
-        print(f'Enviando e-mail: {self.mensagem}')
+        print(f"Enviando e-mail: {self.mensagem}")
         return True
 
 
@@ -55,7 +55,7 @@ class NotificacaoSMS(Notificacao):
         Enviando SMS: Promoção
         True
         """
-        print(f'Enviando SMS: {self.mensagem}')
+        print(f"Enviando SMS: {self.mensagem}")
         return True
 
 
@@ -77,8 +77,7 @@ class SaldoInsuficienteError(Exception):
         self.saldo = saldo
         self.valor = valor
         super().__init__(
-            f'Saldo insuficiente: R$ {saldo:.2f} '
-            f'(tentativa de R$ {valor:.2f})'
+            f"Saldo insuficiente: R$ {saldo:.2f} (tentativa de R$ {valor:.2f})"
         )
 
 
@@ -126,11 +125,13 @@ def tentar_sacar(conta: Conta, valor: float) -> float | None:
     try:
         return conta.sacar(valor)
     except SaldoInsuficienteError as erro:
-        raise RuntimeError('Falha no saque') from erro
+        msg = "Falha no saque"
+        raise RuntimeError(msg) from erro
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

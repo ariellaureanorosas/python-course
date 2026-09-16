@@ -28,3 +28,18 @@ apenas estar correto.
 """
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
+nome: str = input("Digite seu nome completo: ").strip()
+telefone = input("Digite seu telefone: ").strip()
+
+if telefone == "":
+    telefone = None
+
+if telefone is None:
+    print("Digite o seu telefone")
+else:
+    print("Telefone Cadastrado")
+
+if nome and telefone:
+    print("Cadastro completo")
+else:
+    print("Complete o cadastro corretamente")

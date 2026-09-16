@@ -16,6 +16,8 @@ o exercício rodar sozinho.
 
 import random
 
+sorteio_aleatorio: random.SystemRandom = random.SystemRandom()
+
 
 def validar_cpf(cpf: str) -> bool:
     cpf_limpo: str = cpf.replace(".", "").replace("-", "")
@@ -39,7 +41,7 @@ def validar_cpf(cpf: str) -> bool:
 def gerar_cpf() -> str:
     nove_digitos: str = ""
     for _ in range(9):
-        nove_digitos += str(random.randint(0, 9))
+        nove_digitos += str(sorteio_aleatorio.randint(0, 9))
 
     soma_1 = 0
     for i in range(9):

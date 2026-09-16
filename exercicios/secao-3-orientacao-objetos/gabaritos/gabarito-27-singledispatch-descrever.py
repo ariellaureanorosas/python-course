@@ -20,7 +20,7 @@ from functools import singledispatch
 
 
 @singledispatch
-def descrever(valor) -> str:
+def descrever(valor: object) -> str:
     """Descreve qualquer valor: caso generico quando nao ha registro.
 
     Exemplos:
@@ -29,55 +29,56 @@ def descrever(valor) -> str:
     >>> descrever(True)
     'numero True'
     """
-    return f'generico: {valor}'
+    return f"generico: {valor}"
 
 
 @descrever.register(int)
-def _descrever_int(valor: int) -> str:
+def _descrever_int(valor: int) -> str:  # pyright: ignore[reportUnusedFunction]
     """Descreve um inteiro.
 
     Exemplos:
     >>> descrever(42)
     'numero 42'
     """
-    return f'numero {valor}'
+    return f"numero {valor}"
 
 
 @descrever.register(str)
-def _descrever_str(valor: str) -> str:
+def _descrever_str(valor: str) -> str:  # pyright: ignore[reportUnusedFunction]
     """Descreve um texto.
 
     Exemplos:
     >>> descrever('oi')
     'texto: oi'
     """
-    return f'texto: {valor}'
+    return f"texto: {valor}"
 
 
 @descrever.register(list)
-def _descrever_list(valor: list) -> str:
+def _descrever_list(valor: list[object]) -> str:  # pyright: ignore[reportUnusedFunction]
     """Descreve uma lista pela quantidade de itens.
 
     Exemplos:
     >>> descrever([1, 2, 3])
     'lista com 3 itens'
     """
-    return f'lista com {len(valor)} itens'
+    return f"lista com {len(valor)} itens"
 
 
 @descrever.register(dict)
-def _descrever_dict(valor: dict) -> str:
+def _descrever_dict(valor: dict[object, object]) -> str:  # pyright: ignore[reportUnusedFunction]
     """Descreve um dicionario pela quantidade de chaves.
 
     Exemplos:
     >>> descrever({'a': 1})
     'dict com 1 chaves'
     """
-    return f'dict com {len(valor)} chaves'
+    return f"dict com {len(valor)} chaves"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

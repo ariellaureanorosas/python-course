@@ -34,33 +34,33 @@ Comportamento esperado:
 Import: from contextlib import contextmanager
 """
 
-from contextlib import contextmanager
+from __future__ import annotations
 
-from types import TracebackType
+from contextlib import contextmanager
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
+    from types import TracebackType
+    from typing import TextIO
 
 
 class ArquivoSeguro:
-    def __init__(self, caminho: str, modo: str = 'r') -> None:
-        ...
+    def __init__(self, caminho: str, modo: str = "r") -> None: ...
 
-    def __enter__(self) -> 'ArquivoSeguro':
-        ...
+    def __enter__(self) -> ArquivoSeguro: ...
 
     def __exit__(
         self,
         exc_type: type[BaseException] | None,
         exc_val: BaseException | None,
         exc_tb: TracebackType | None,
-    ) -> bool:
-        ...
+    ) -> bool: ...
 
-    def ler(self) -> str:
-        ...
+    def ler(self) -> str: ...
 
-    def escrever(self, texto: str) -> None:
-        ...
+    def escrever(self, texto: str) -> None: ...
 
 
 @contextmanager
-def abrir_arquivo(caminho: str, modo: str = 'r'):
-    ...
+def abrir_arquivo(caminho: str, modo: str = "r") -> Generator[TextIO]: ...

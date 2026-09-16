@@ -20,8 +20,7 @@ apenas estar correto.
 """
 
 
-def par_ou_impar(numero: int) -> str:
-    ...
+def par_ou_impar(numero: int) -> str: ...
 
 
 if __name__ == "__main__":

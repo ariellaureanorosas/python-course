@@ -18,10 +18,10 @@ já gerencia invalidação e limite); bundas de força como functools
 de memoização implementada à mão.
 """
 
-from functools import lru_cache
+from functools import cache, lru_cache
 
 
-@lru_cache(maxsize=None)
+@cache
 def fatorial(n: int) -> int:
     """Calcula n! com memoização (maxsize ilimitado).
 

@@ -19,6 +19,8 @@ altura do curso.
 
 import os
 import random
+import shutil
+import subprocess
 
 PALAVRAS_DISPONIVEIS: list[str] = [
     "python",
@@ -31,12 +33,19 @@ PALAVRAS_DISPONIVEIS: list[str] = [
 SIMBOLO_OCULTO: str = "*"
 COMANDO_SAIDA: str = "sair"
 
-palavra_secreta: str = random.choice(PALAVRAS_DISPONIVEIS)
+palavra_secreta: str = random.SystemRandom().choice(PALAVRAS_DISPONIVEIS)
 letras_reveladas: list[str] = [SIMBOLO_OCULTO] * len(palavra_secreta)
 quantidade_tentativas: int = 0
 palavra_revelada: bool = False
 
-os.system("cls")
+if os.name == "nt":
+    subprocess.run(  # noqa: S603 - comando fixo, sem input do usuário
+        [os.environ["COMSPEC"], "/c", "cls"], check=False, shell=False
+    )
+else:
+    subprocess.run(  # noqa: S603 - comando fixo, sem input do usuário
+        [shutil.which("clear") or "clear"], check=False, shell=False
+    )
 
 print("=== JOGO DA PALAVRA SECRETA ===")
 print(f"Digite '{COMANDO_SAIDA}' a qualquer momento para encerrar.\n")
@@ -65,7 +74,18 @@ while not palavra_revelada:
 
     if SIMBOLO_OCULTO not in letras_reveladas:
         palavra_revelada = True
-        os.system("cls")
+        if os.name == "nt":
+            subprocess.run(  # noqa: S603 - comando fixo, sem input do usuário
+                [os.environ["COMSPEC"], "/c", "cls"],
+                check=False,
+                shell=False,
+            )
+        else:
+            subprocess.run(  # noqa: S603 - comando fixo, sem input do usuário
+                [shutil.which("clear") or "clear"],
+                check=False,
+                shell=False,
+            )
         print("Palavra:", " ".join(letras_reveladas))
         print(f"\nParabéns! Você acertou a palavra '{palavra_secreta}'!")
         print(f"Total de tentativas: {quantidade_tentativas}")

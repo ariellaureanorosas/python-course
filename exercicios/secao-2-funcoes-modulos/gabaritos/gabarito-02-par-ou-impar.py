@@ -15,7 +15,7 @@ erro e força erro genérico); bool como retorno (o enunciado pede str).
 ERRO_TIPO = "O argumento deve ser um inteiro"
 
 
-def par_ou_impar(numero: int) -> str:
+def par_ou_impar(numero: object) -> str:
     """Retorna 'Par' ou 'Ímpar' conforme o número.
 
     Parametros
@@ -49,6 +49,7 @@ def par_ou_impar(numero: int) -> str:
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     print(par_ou_impar(6))
     print(par_ou_impar(7))

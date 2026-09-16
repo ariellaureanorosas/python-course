@@ -47,14 +47,15 @@ class Campo:
     def __set_name__(self, owner: type, nome: str) -> None:
         self.nome = nome
 
-    def __get__(self, instancia, owner):
+    def __get__(self, instancia: object | None, owner: type) -> object:
         if instancia is None:
             return self
         return instancia.__dict__.get(self.nome)
 
-    def __set__(self, instancia, valor) -> None:
+    def __set__(self, instancia: object | None, valor: object) -> None:
         if not isinstance(valor, self.tipo):
-            raise TypeError(f'{self.nome} deve ser {self.tipo.__name__}')
+            msg = f"{self.nome} deve ser {self.tipo.__name__}"
+            raise TypeError(msg)
         instancia.__dict__[self.nome] = valor
 
 
@@ -81,11 +82,12 @@ class Pessoa:
         >>> Pessoa('Ana', 30)
         Pessoa(nome='Ana', idade=30)
         """
-        return f'Pessoa(nome={self.nome!r}, idade={self.idade!r})'
+        return f"Pessoa(nome={self.nome!r}, idade={self.idade!r})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

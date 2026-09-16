@@ -15,6 +15,7 @@ agrupamento — mais verboso e não exercita o groupby pedido.
 """
 
 from itertools import groupby
+from typing import cast
 
 PRODUTOS = [
     {"nome": "Arroz", "preco": 25.90, "categoria": "Alimento"},
@@ -26,7 +27,9 @@ PRODUTOS = [
 ]
 
 
-def agrupar_por_categoria(produtos: list[dict]) -> dict:
+def agrupar_por_categoria(
+    produtos: list[dict[str, str | float]],
+) -> dict[str, list[dict[str, str | float]]]:
     """Retorna dict agrupando os produtos por categoria.
 
     A lista é ordenada por categoria ANTES do groupby (obrigatório:
@@ -46,22 +49,24 @@ def agrupar_por_categoria(produtos: list[dict]) -> dict:
     --------
     >>> p1 = {'nome': 'Arroz', 'categoria': 'Alimento'}
     >>> p2 = {'nome': 'Detergente', 'categoria': 'Limpeza'}
-    >>> agrupar_por_categoria([p1, p2])
-    {'Alimento': [{'nome': 'Arroz', 'categoria': 'Alimento'}], 'Limpeza': [{'nome': 'Detergente', 'categoria': 'Limpeza'}]}
+    >>> agrupar_por_categoria([p1, p2])  # doctest: +NORMALIZE_WHITESPACE
+    {'Alimento': [{'nome': 'Arroz', 'categoria': 'Alimento'}],
+     'Limpeza': [{'nome': 'Detergente', 'categoria': 'Limpeza'}]}
     >>> agrupar_por_categoria([])
     {}
     """
-    ordenados = sorted(produtos, key=lambda p: p["categoria"])
+    ordenados = sorted(produtos, key=lambda p: cast("str", p["categoria"]))
     return {
         categoria: list(grupo)
         for categoria, grupo in groupby(
-            ordenados, key=lambda p: p["categoria"]
+            ordenados, key=lambda p: cast("str", p["categoria"])
         )
     }
 
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     resultado = agrupar_por_categoria(PRODUTOS)
     for categoria, itens in resultado.items():

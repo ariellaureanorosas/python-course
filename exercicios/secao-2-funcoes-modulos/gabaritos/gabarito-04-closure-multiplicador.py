@@ -12,8 +12,15 @@ Alternativas descartadas: função com dois parâmetros
 que criar_multiplicador RETORNE uma função).
 """
 
+from __future__ import annotations
 
-def criar_multiplicador(multiplicador: int):
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
+
+def criar_multiplicador(multiplicador: int) -> Callable[[int], int]:
     """Retorna uma função que multiplica um número pelo multiplicador.
 
     Parametros
@@ -37,13 +44,16 @@ def criar_multiplicador(multiplicador: int):
     >>> triplo(4)
     12
     """
+
     def multiplicar(numero: int) -> int:
         return numero * multiplicador
+
     return multiplicar
 
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     dobro = criar_multiplicador(2)
     print(dobro(5))

@@ -33,7 +33,8 @@ while True:
     try:
         opcao = int(
             input(
-                "Digite 1 para SOMAR, 2 para SUBTRAIR, 3 para MULTIPLICAR, 4 para DIVIDIR ou 5 para SAIR: "
+                "Digite 1 para SOMAR, 2 para SUBTRAIR, 3 para MULTIPLICAR, "
+                "4 para DIVIDIR ou 5 para SAIR: "
             )
         )
         if opcao not in [1, 2, 3, 4, 5]:
@@ -56,6 +57,8 @@ while True:
                         resultado_divisão: float = numero_1 / numero_2
                     except ZeroDivisionError:
                         print("erro ao dividir por zero")
+                case _:
+                    pass
         except ValueError:
             print("Digite apenas números")
     except ValueError:

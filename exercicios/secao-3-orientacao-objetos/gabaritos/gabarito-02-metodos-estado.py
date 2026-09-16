@@ -33,10 +33,10 @@ class Camera:
         'Nikon já está filmando'
         """
         if self.filmando:
-            return f'{self.marca} já está filmando'
+            return f"{self.marca} já está filmando"
 
         self.filmando = True
-        return f'{self.marca} começou a filmar'
+        return f"{self.marca} começou a filmar"
 
     def parar_de_filmar(self) -> str:
         """Para a filmagem, se a camera estiver filmando.
@@ -51,10 +51,10 @@ class Camera:
         'Nikon parou de filmar'
         """
         if not self.filmando:
-            return f'{self.marca} não está filmando'
+            return f"{self.marca} não está filmando"
 
         self.filmando = False
-        return f'{self.marca} parou de filmar'
+        return f"{self.marca} parou de filmar"
 
     def fotografar(self) -> str:
         """Tira uma foto e incrementa o contador, se nao estiver filmando.
@@ -73,14 +73,15 @@ class Camera:
         'Foto 2 capturada'
         """
         if self.filmando:
-            return 'Não é possível fotografar enquanto filma'
+            return "Não é possível fotografar enquanto filma"
 
         self.fotos_tiradas += 1
-        return f'Foto {self.fotos_tiradas} capturada'
+        return f"Foto {self.fotos_tiradas} capturada"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:

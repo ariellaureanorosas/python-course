@@ -39,5 +39,5 @@ else:
 # - imprimiu dentro do for de construção (a exibição virou parte da
 #   fase de cálculo — aqui as fases são separadas)
 # - usou uma variável extra para o multiplicador em vez de
-#   enumerate(..., start=1)
+#   enumerar a lista com a opção start igual a 1
 # - ficou tentado a usar while (o enunciado pede for)

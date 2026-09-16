@@ -43,6 +43,8 @@ apenas estar correto.
 
 # ========== ESCREVA SEU CÓDIGO A PARTIR DAQUI ==========
 import os
+import shutil
+import subprocess
 import time
 
 TEXTO = """[i] Inserir item
@@ -55,7 +57,18 @@ Digite sua opção: """
 
 def limpar_tela() -> None:
     time.sleep(2)
-    os.system("cls" if os.name == "nt" else "clear")
+    if os.name == "nt":
+        subprocess.run(  # noqa: S603 - comando fixo, sem input do usuário
+            [os.environ["COMSPEC"], "/c", "cls"],
+            check=False,
+            shell=False,
+        )
+    else:
+        subprocess.run(  # noqa: S603 - comando fixo, sem input do usuário
+            [shutil.which("clear") or "clear"],
+            check=False,
+            shell=False,
+        )
 
 
 lista_compras: list[str] = []

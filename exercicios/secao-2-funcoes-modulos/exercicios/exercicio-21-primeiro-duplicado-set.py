@@ -29,16 +29,13 @@ apenas estar correto.
 """
 
 
-def primeiro_duplicado(lista: list) -> int | None:
-    ...
+def primeiro_duplicado(lista: list[int]) -> int | None: ...
 
 
-def elementos_duplicados(lista: list) -> set:
-    ...
+def elementos_duplicados(lista: list[int]) -> set[int]: ...
 
 
-def palavras_em_comum(texto1: str, texto2: str) -> set:
-    ...
+def palavras_em_comum(texto1: str, texto2: str) -> set[str]: ...
 
 
 if __name__ == "__main__":

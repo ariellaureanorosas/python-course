@@ -30,7 +30,6 @@ Crie as funções:
 Tópicos da aula: list comprehension, dict unpacking, lambda, sorted(), valores padrão
 """
 
-
 produtos = [
     {"nome": "Camiseta", "preco": 49.90},
     {"nome": "Calça", "preco": 129.90},
@@ -40,13 +39,16 @@ produtos = [
 ]
 
 
-def aumentar_preco_10(produtos: list[dict]) -> list[dict]:
-    ...
+def aumentar_preco_10(
+    produtos: list[dict[str, str | float]],
+) -> list[dict[str, str | float]]: ...
 
 
-def filtrar_caros(produtos: list[dict], limite: float = 50.0) -> list[dict]:
-    ...
+def filtrar_caros(
+    produtos: list[dict[str, str | float]], limite: float = 50.0
+) -> list[dict[str, str | float]]: ...
 
 
-def ordenar_por_preco(produtos: list[dict], reverso: bool = False) -> list[dict]:
-    ...
+def ordenar_por_preco(
+    produtos: list[dict[str, str | float]], *, reverso: bool = False
+) -> list[dict[str, str | float]]: ...

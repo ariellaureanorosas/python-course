@@ -17,6 +17,12 @@ Exemplo:
 Tópicos da aula: decorators com parâmetros, @wraps, *args, **kwargs, raise
 """
 
+from __future__ import annotations
 
-def log(nivel: str):
-    ...
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
+
+def log(nivel: str) -> Callable[..., object]: ...

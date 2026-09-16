@@ -17,7 +17,7 @@ mutar o dict original (quebra o princípio de não-surpresa).
 """
 
 
-def criar_pessoa(nome: str, idade: int, email: str) -> dict:
+def criar_pessoa(nome: str, idade: int, email: str) -> dict[str, object]:
     """Cria um dict de pessoa com nome, idade e email.
 
     Parametros
@@ -42,10 +42,10 @@ def criar_pessoa(nome: str, idade: int, email: str) -> dict:
     >>> p['idade']
     25
     """
-    return dict(nome=nome, idade=idade, email=email)
+    return {"nome": nome, "idade": idade, "email": email}
 
 
-def atualizar_pessoa(pessoa: dict, **dados) -> dict:
+def atualizar_pessoa(pessoa: dict[str, object], **dados: object) -> dict[str, object]:
     """Retorna um novo dict da pessoa atualizado com **dados.
 
     A pessoa original não é modificada (cópia superficial).
@@ -76,7 +76,7 @@ def atualizar_pessoa(pessoa: dict, **dados) -> dict:
     return copia
 
 
-def listar_chaves(pessoa: dict) -> list:
+def listar_chaves(pessoa: dict[str, object]) -> list[str]:
     """Retorna a lista das chaves do dict.
 
     Parametros
@@ -100,8 +100,9 @@ def listar_chaves(pessoa: dict) -> list:
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
-    p1 = criar_pessoa('Ana', 25, 'ana@email.com')
+    p1 = criar_pessoa("Ana", 25, "ana@email.com")
     p2 = atualizar_pessoa(p1, idade=26)
     print(p2)
     print(listar_chaves(p2))

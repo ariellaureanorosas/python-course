@@ -42,25 +42,24 @@ from functools import singledispatch
 
 
 @singledispatch
-def descrever(valor) -> str:
-    ...
+def descrever(valor: object) -> str: ...
 
 
 @descrever.register(int)
-def _descrever_int(valor: int) -> str:
+def _descrever_int(valor: int) -> str:  # pyright: ignore[reportUnusedFunction]
     ...
 
 
 @descrever.register(str)
-def _descrever_str(valor: str) -> str:
+def _descrever_str(valor: str) -> str:  # pyright: ignore[reportUnusedFunction]
     ...
 
 
 @descrever.register(list)
-def _descrever_list(valor: list) -> str:
+def _descrever_list(valor: list[object]) -> str:  # pyright: ignore[reportUnusedFunction]
     ...
 
 
 @descrever.register(dict)
-def _descrever_dict(valor: dict) -> str:
+def _descrever_dict(valor: dict[object, object]) -> str:  # pyright: ignore[reportUnusedFunction]
     ...

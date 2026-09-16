@@ -21,8 +21,10 @@ import random
 QUANTIDADE_SORTEIO: int = 6
 numeros_sorteados: list[int] = []
 
+sorteio_aleatorio: random.SystemRandom = random.SystemRandom()
+
 while len(numeros_sorteados) < QUANTIDADE_SORTEIO:
-    numero_aleatorio: int = random.randint(1, 60)
+    numero_aleatorio: int = sorteio_aleatorio.randint(1, 60)
     if numero_aleatorio not in numeros_sorteados:
         numeros_sorteados.append(numero_aleatorio)
 

@@ -74,7 +74,7 @@ def divisao_segura(a: float, b: float) -> str:
         return f"{resultado:.2f}"
 
 
-def analisar_numero(texto: str) -> tuple:
+def analisar_numero(texto: str) -> tuple[int, bool]:
     """Converte e sinaliza sucesso; sempre confirma a validação.
 
     Parâmetros

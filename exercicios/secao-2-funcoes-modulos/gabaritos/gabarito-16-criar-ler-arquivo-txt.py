@@ -38,8 +38,8 @@ def escrever_arquivo(
     ['linha1', 'linha2']
     >>> os.remove(tmp)
     """
-    with open(nome_arquivo, 'w', encoding='utf-8') as arquivo:
-        arquivo.writelines(linha + '\n' for linha in linhas)
+    with open(nome_arquivo, "w", encoding="utf-8") as arquivo:
+        arquivo.writelines(linha + "\n" for linha in linhas)
 
 
 def ler_arquivo(
@@ -71,7 +71,7 @@ def ler_arquivo(
     []
     """
     try:
-        with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
+        with open(nome_arquivo, encoding="utf-8") as arquivo:
             return [linha.strip() for linha in arquivo.readlines()]
     except FileNotFoundError:
         return []
@@ -102,8 +102,8 @@ def adicionar_linha(
     ['um', 'dois']
     >>> os.remove(tmp)
     """
-    with open(nome_arquivo, 'a', encoding='utf-8') as arquivo:
-        arquivo.write(linha + '\n')
+    with open(nome_arquivo, "a", encoding="utf-8") as arquivo:
+        arquivo.write(linha + "\n")
 
 
 def ler_primeiras_linhas(
@@ -139,7 +139,7 @@ def ler_primeiras_linhas(
     >>> os.remove(tmp)
     """
     try:
-        with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
+        with open(nome_arquivo, encoding="utf-8") as arquivo:
             linhas: list[str] = []
             for _ in range(n):
                 linha = arquivo.readline()
@@ -151,8 +151,9 @@ def ler_primeiras_linhas(
         return []
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
 # Onde você provavelmente divergiu:
