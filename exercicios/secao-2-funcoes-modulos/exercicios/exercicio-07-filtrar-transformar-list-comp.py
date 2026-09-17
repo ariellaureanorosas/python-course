@@ -30,6 +30,8 @@ Crie as funções:
 Tópicos da aula: list comprehension, dict unpacking, lambda, sorted(), valores padrão
 """
 
+from typing import cast
+
 produtos = [
     {"nome": "Camiseta", "preco": 49.90},
     {"nome": "Calça", "preco": 129.90},
@@ -41,14 +43,29 @@ produtos = [
 
 def aumentar_preco_10(
     produtos: list[dict[str, str | float]],
-) -> list[dict[str, str | float]]: ...
+) -> list[dict[str, str | float]]:
+    return [
+        {**produto, "preco": round(cast("float", produto["preco"]) * 1.1, 2)}
+        for produto in produtos
+    ]
 
 
 def filtrar_caros(
     produtos: list[dict[str, str | float]], limite: float = 50.0
-) -> list[dict[str, str | float]]: ...
+) -> list[dict[str, str | float]]:
+    return [produto for produto in produtos if cast("float", produto["preco"]) > limite]
 
 
 def ordenar_por_preco(
     produtos: list[dict[str, str | float]], *, reverso: bool = False
-) -> list[dict[str, str | float]]: ...
+) -> list[dict[str, str | float]]:
+    return sorted(produtos, key=lambda p: cast("float", p["preco"]), reverse=True)
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+    print(aumentar_preco_10(produtos))
+    print(filtrar_caros(produtos))
+    print(ordenar_por_preco(produtos, reverso=True))

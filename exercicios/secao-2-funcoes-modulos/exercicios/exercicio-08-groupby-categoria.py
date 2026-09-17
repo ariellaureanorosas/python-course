@@ -24,6 +24,9 @@ A função deve:
 Tópicos da aula: itertools.groupby, sorted(), lambda, dict comprehension
 """
 
+from itertools import groupby
+from typing import cast
+
 produtos = [
     {"nome": "Arroz", "preco": 25.90, "categoria": "Alimento"},
     {"nome": "Feijão", "preco": 12.90, "categoria": "Alimento"},
@@ -36,4 +39,24 @@ produtos = [
 
 def agrupar_por_categoria(
     produtos: list[dict[str, str | float]],
-) -> dict[str, list[dict[str, str | float]]]: ...
+) -> dict[str, list[dict[str, str | float]]]:
+    ordenados = sorted(
+        produtos,
+        key=lambda p: cast("str", p["categoria"]),
+    )
+
+    return {
+        categoria: list(grupo)
+        for categoria, grupo in groupby(
+            ordenados, key=lambda p: cast("str", p["categoria"])
+        )
+    }
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+    resultado = agrupar_por_categoria(produtos)
+    for categoria, itens in resultado.items():
+        print(f"{categoria}: {[i['nome'] for i in itens]}")

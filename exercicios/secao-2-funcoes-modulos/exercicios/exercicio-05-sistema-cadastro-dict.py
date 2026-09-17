@@ -25,15 +25,18 @@ apenas estar correto.
 """
 
 
-def criar_pessoa(nome: str, idade: int, email: str) -> dict[str, str | int]: ...
+def criar_pessoa(nome: str, idade: int, email: str) -> dict[str, object]:
+    return {"Nome": nome, "idade": idade, "Email": email}
 
 
-def atualizar_pessoa(
-    pessoa: dict[str, str | int], **dados: object
-) -> dict[str, str | int]: ...
+def atualizar_pessoa(pessoa: dict[str, object], **dados: object) -> dict[str, object]:
+    copia = dict(pessoa)
+    copia.update(dados)
+    return copia
 
 
-def listar_chaves(pessoa: dict[str, str | int]) -> list[str]: ...
+def listar_chaves(pessoa: dict[str, object]) -> list[str]:
+    return list(pessoa.keys())
 
 
 if __name__ == "__main__":

@@ -25,7 +25,11 @@ if TYPE_CHECKING:
     from collections.abc import Callable
 
 
-def criar_multiplicador(multiplicador: int) -> Callable[[int], int]: ...
+def criar_multiplicador(multiplicador: int) -> Callable[[int], int]:
+    def multiplicar(numero: int) -> int:
+        return numero * multiplicador
+
+    return multiplicar
 
 
 if __name__ == "__main__":

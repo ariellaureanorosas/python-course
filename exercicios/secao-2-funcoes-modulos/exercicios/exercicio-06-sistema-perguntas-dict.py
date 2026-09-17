@@ -22,8 +22,29 @@ Use seu próprio raciocínio — o gabarito não precisa ser igual,
 apenas estar correto.
 """
 
+from typing import cast
 
-def executar_quiz(perguntas: list[dict[str, str | dict[str, str]]]) -> int: ...
+
+def verificar_resposta(
+    pergunta: dict[str, str | dict[str, str]], resposta: str
+) -> bool:
+    return resposta == pergunta["resposta"]
+
+
+def executar_quiz(perguntas: list[dict[str, str | dict[str, str]]]) -> int:
+    acertos = 0
+    for pergunta in perguntas:
+        print(pergunta)
+        texto = cast("dict[str, str]", pergunta["opcoes"])
+        for letra, conteudo in texto.items():
+            print(f"{letra}) {conteudo}")
+        resposta = input("Digite a opção correta: ").strip().lower()
+        if verificar_resposta(pergunta, resposta):
+            acertos += 1
+        else:
+            print(f"Incorreto! A resposta era {pergunta['resposta']}\n")
+    print(f"Você acertou {acertos} de {len(perguntas)} perguntas.")
+    return acertos
 
 
 if __name__ == "__main__":
