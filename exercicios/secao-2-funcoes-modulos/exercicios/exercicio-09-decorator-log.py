@@ -13,10 +13,30 @@ Tópicos da aula: decorators, @wraps, *args, **kwargs, print
 
 from __future__ import annotations
 
+from functools import wraps
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from collections.abc import Callable
 
 
-def log_execucao(func: Callable[..., object]) -> Callable[..., object]: ...
+def log_execucao(func: Callable[..., object]) -> Callable[..., object]:
+    @wraps(func)
+    def wraper(*args: object, **kwargs: object) -> None:
+        print(f"executando a função {func.__name__} com os argumentos {args, kwargs}")
+        execucao = func(*args, **kwargs)
+        print(f"resultado: {execucao}")
+
+    return wraper
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+
+    @log_execucao
+    def somar(*args: int) -> int:
+        return sum(args)
+
+    somar(3, 3)
