@@ -19,10 +19,38 @@ Tópicos da aula: decorators com parâmetros, @wraps, *args, **kwargs, raise
 
 from __future__ import annotations
 
+from functools import wraps
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from collections.abc import Callable
 
+NIVEIS_VALIDOS = ("INFO", "WARNING", "ERROR")
 
-def log(nivel: str) -> Callable[..., object]: ...
+
+def log(nivel: str) -> Callable[[Callable[..., object]], Callable[..., object]]:
+    if nivel not in NIVEIS_VALIDOS:
+        msg: str = f"Nível inválido: {nivel}. Use um dos {NIVEIS_VALIDOS}"
+        raise ValueError(msg)
+
+    def decorator(func: Callable[..., object]) -> Callable[..., object]:
+        @wraps(func)
+        def wrapper(*args: object, **kwargs: object) -> object:
+            print(f"[{nivel}] Executando {func.__name__} ({args}, {kwargs})")
+            return func(*args, **kwargs)
+
+        return wrapper
+
+    return decorator
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+
+    @log("INFO")
+    def multiplicar(a: int, b: int) -> int:
+        return a * b
+
+    print(multiplicar(4, 5))
