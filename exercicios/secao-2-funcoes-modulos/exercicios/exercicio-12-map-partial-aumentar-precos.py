@@ -22,11 +22,29 @@ Crie as funções abaixo usando map() e functools.partial.
      - Preço > 100: 15% de desconto
 """
 
-
-def aumentar(preco: float, percentual: float) -> float: ...
-
-
-def aplicar_aumento(precos: list[float], percentual: float) -> list[float]: ...
+from functools import partial
 
 
-def aplicar_descontos(precos: list[float]) -> list[float]: ...
+def aumentar(preco: float, percentual: float) -> float:
+    return round(preco * (1 + percentual / 100), 2)
+
+
+def aplicar_aumento(precos: list[float], percentual: float) -> list[float]:
+    return list(map(partial(aumentar, percentual=percentual), precos))
+
+
+def aplicar_descontos(precos: list[float]) -> list[float]:
+    return [
+        round(p * 0.95, 2)
+        if p <= 50
+        else (round(p * 0.90, 2))
+        if p <= 100
+        else round(p * 0.85, 2)
+        for p in precos
+    ]
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
