@@ -23,19 +23,38 @@ Crie as funções abaixo usando zip() e itertools.zip_longest().
    - Retorna lista de strings no formato: "Nome tem X anos e mora em Cidade"
 """
 
+from itertools import zip_longest
 
-def combinar_listas(nomes: list[str], idades: list[int]) -> list[str]: ...
+
+def combinar_listas(nomes: list[str], idades: list[int]) -> list[str]:
+    return [
+        f"{nome} tem {idade} anos" for nome, idade in zip(nomes, idades, strict=True)
+    ]
 
 
 def combinar_listas_desiguais(
     nomes: list[str],
     idades: list[int],
     preenchimento: int = 0,
-) -> list[str]: ...
+) -> list[str]:
+    return [
+        f"{nome} tem {idade} anos"
+        for nome, idade in zip_longest(nomes, idades, fillvalue=preenchimento)
+    ]
 
 
 def combinar_tres_listas(
     nomes: list[str],
     idades: list[int],
     cidades: list[str],
-) -> list[str]: ...
+) -> list[str]:
+    return [
+        f"{nome} tem {idade} anos e mora em {cidade}"
+        for nome, idade, cidade in zip(nomes, idades, cidades, strict=True)
+    ]
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
